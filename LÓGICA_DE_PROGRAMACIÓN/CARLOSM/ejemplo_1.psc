@@ -30,7 +30,7 @@ Algoritmo ejemplo_1
 	// mostrar cuántos años tendrá para el próximo año.
 	edad <- edad+1
 	// Salida de resultados
-	Escribir primerNombre,' ',primerApellido,', de estatura', estatura ,', el próximo año cumplirá ',edad,' años'
+	Escribir primerNombre,' ',primerApellido,', de estatura ', estatura ,', el próximo año cumplirá ',edad,' años'
 	// Se añade un condicional simple
 	// si edad < 18 entonces
 	// escribir 'NOTA: Usted es menor de edad'

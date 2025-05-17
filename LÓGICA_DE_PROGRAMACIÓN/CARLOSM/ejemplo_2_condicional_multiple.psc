@@ -1,38 +1,38 @@
 Algoritmo ejemplo_2_condicional_multiple
 	// Declaración de variables
-	Definir siglas Como Caracter
-	Definir resultado Como Caracter
+	definir siglas Como Caracter
+	definir resultado Como Caracter
 	// Inicialización de variables
 	siglas <- ''
 	// Entrada de datos
-	Escribir 'Por favor ingrese una de las siguientes siglas'
-	Escribir 'para conocer el nombre del lenguaje'
-	Escribir 'JS, PY, SQL, HTML, PHP'
-	Leer siglas
+	escribir 'Por favor ingrese una de las siguientes siglas'
+	escribir 'para conocer el nombre del lenguaje'
+	escribir 'JS, PY, SQL, HTML, PHP'
+	leer siglas
 	// Proceso
 	siglas <- Mayusculas(siglas)
-	Si siglas=='JS' Entonces
+	si siglas == 'JS' entonces
 		resultado <- 'JAVASCRIPT'
-	SiNo
-		Si siglas=='PY' Entonces
+	sino 
+		si siglas == 'PY' entonces
 			resultado <- 'PYTHON'
-		SiNo
-			Si siglas=='SQL' Entonces
+		sino
+			si siglas == 'SQL' entonces
 				resultado <- 'STRUCTURED QUERY LANGUAJE'
-			SiNo
-				Si siglas=='HTML' Entonces
+			sino 
+				si siglas == 'HTML' entonces
 					resultado <- 'HYPER TEXT MARK LANGUAJE'
-				SiNo
-					Si siglas=='PHP' Entonces
+				sino
+					si siglas == 'PHP' entonces 
 						resultado <- 'PREPROCESSOR HYPERTEXT'
-					SiNo
+					sino	
 						resultado <- 'NO SE TIENE INFORMACIÓN'
-					FinSi
-				FinSi
-			FinSi
-		FinSi
-	FinSi
+					fin si
+				fin si
+			fin si
+		fin si
+	fin si
 	// Salida al proceso
-	Escribir 'El lenguaje de programación es:',resultado
+	escribir 'El lenguaje de programación es:', resultado
+	
 FinAlgoritmo
-
