@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo08</title>
+    <link rel="stylesheet" href="./css/ejemplo08.css">
+</head>
+<body>
+    <h1>Ejemplo08</h1>
+    <div>
+        <table>
+            <tr>
+                <td>Ingrese el 1er valor:</td>
+                <td>
+                    <input type="number" name="n1" id="n1"
+                    step="0.01" placeholder="0.00">
+                </td>
+            </tr>
+            <tr>
+                <td>Ingrese el 2o valor:</td>
+                <td>
+                    <input type="number" name="n2" id="n2"
+                    step="0.01" placeholder="0.00">
+                </td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td>
+                    <input type="text" name="resultado" id="resultado" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button id="sumar" onclick="suma()">+</button>
+                    <button id="restar" onclick="resta()">-</button>
+                    <button id="multiplicar" onclick="multiplica()">*</button>
+                    <button id="dividir" onclick="divide()">/</button>
+                    <button id="limpiar" onclick="limpia()">Limpiar</button> 
+                </td>
+            </tr>
+        </table>
+        <div id="mensaje"></div>
+    </div>
+    <script src="./js/ejemplo08.js">
+    </script>
+</body>
+</html>

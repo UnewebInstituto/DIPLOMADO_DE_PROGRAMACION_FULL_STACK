@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo03</title>
+</head>
+
+<body>
+    <h1>Ejemplo03 - Formularios</h1>
+    <form action="/procesar_ejemplo03" method="post">
+        <table>
+            <tr>
+                <td>DNI:</td>
+                <td>
+                    <select name="documento" id="documento">
+                        <option value="V">V</option>
+                        <option value="E">E</option>
+                        <option value="P">P</option>
+                    </select>
+                    <input type="text" name="numero" id="numero" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td>
+                    <input type="text" name="nombre" id="nombre" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Apellido:</td>
+                <td>
+                    <input type="text" name="apellido" id="apellido" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha de nacimiento:</td>
+                <td>
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Sexo:</td>
+                <td>
+                    <input type="radio" name="sexo" id="sexo" value="F" checked>Femenino
+                    <input type="radio" name="sexo" id="sexo" value="M">Masculino
+                </td>
+            </tr>
+            <tr>
+                <td>Correo electrónico:</td>
+                <td>
+                    <input type="email" name="correo" id="correo" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Dirección:</td>
+                <td>
+                    <textarea name="direccion" id="direccion" rows="3" cols="30" required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Enviar">
+                    <input type="reset" value="Limpiar">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
+
+<!--
+TRANSMISIÓN POR MÉTODO GET
+
+file:///C:/procesar_ejemplo03?documento=V&numero=1234567&nombre=ANA&apellido=VASQUEZ&fecha_nacimiento=1960-08-15&sexo=F&correo=AV%40GMAIL.COM&direccion=SANTA+FE
+
+-->
+
+
+
+<!-- 
+TRANSMISIÓN POR MÉTODO POST
+
+file:///C:/procesar_ejemplo03
+-->

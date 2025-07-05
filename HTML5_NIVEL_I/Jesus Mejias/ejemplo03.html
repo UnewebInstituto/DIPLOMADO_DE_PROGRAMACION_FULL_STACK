@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ejemplo03</title>
+</head>
+<body>
+  <h1>Ejemplo03 - Formularios</h1>
+  <form action="/procesar_ejemplo03" method="get">
+      <table>
+        <tr>
+          <td>DNI</td>
+          <td>
+            <select name="documento" id="documento">
+              <option value="V">V</option>
+              <option value="E">E</option>
+              <option value="p">p</option>
+            </select>
+            <input type="text" name="numero" id="numero">
+          </td>
+        </tr>
+          <td>    
+          <td>Nombre:</td>          
+        </td>
+            <input type="text" name="nombre" id="nombre">
+          </td>
+          <td>Apellido:</td>
+          <td>
+            <input type="text" name="apellido" id="apellido">
+          </td>
+          <td>fecha de nacimiento:</td>
+          <td>
+          <input type="date" name="fecha_de_nacimiento" id="fecha_de_nacimiento">  
+          </td>
+          <td>
+            <input type="submit" value="Enviar">
+          </td>
+        </tr>
+          <td>sexo:</td>
+        <td>
+          <input type="radio" name="sexo" id="femenino" value"F">Femenino
+          <input type="radio" name="sexo" id="masculino" value"M">Masculino
+        </td>
+        <tr>
+          <td>correo electronico:</td>
+          <td>
+            <input type="email" name="correo" id="correo">
+          </td>
+        </tr>
+        <tr>
+          <td>Direccion:
+          <td>
+            <textarea" name="direccion" id="direccion" rows="3" cols="30">
+          </td>
+        </tr>
+        <td>
+          <input type="submit" value="Enviar">
+          <input type="reset" value="Limpiar">
+        </td>
+      </table>
+</body>
+</html>

@@ -27,14 +27,15 @@ Algoritmo EJEMPLO_7_CICLO_MIENTRAS_SERIE_FIBONACCI
 	ESCRIBIR N1
 	ESCRIBIR N2
 	
-	MIENTRAS I<N HACER
+	Repetir
+		//I<N HACER
 		SUMA<- N1 + N2
 		ESCRIBIR SUMA
 		N1<-N2
 		N2<-SUMA
 		I<- I+1
-		
-	FinMientras
+	Hasta Que (i>=n)
+	
 	
 	ESCRIBIR 'FIN DEL LA SERIE'
 	

@@ -1,4 +1,4 @@
-Algoritmo ejemplo_8_ciclo_mientras_anidado
+Algoritmo ejemplo_16_ciclo_para_anidado
 	//Declaracion de variables
 	Definir i como entero
 	Definir j como entero
@@ -8,17 +8,22 @@ Algoritmo ejemplo_8_ciclo_mientras_anidado
 	//Inicializacion de variables
 	m <- 9
 	n <- 9
-	i <- 1
-	
+	Para i <- 1 hasta m
+	// i <-1
 	//Proceso
-	Mientras i <= m hacer
-		j <- 1
+	//Mientras i <= m hacer
+		//j <- 1
 		Escribir 'Tabla de multiplicar del ', i
-		Mientras j <= n Hacer
+		Para  j <- 1 hasta n
+		
+		//Mientras j <= n Hacer
 			Escribir i, ' x ', j, ' = ', i*j
-			j <- j + 1
-		FinMientras
-		i <- i + 1
+			//j <- j + 1
+		//FinMientras
+		//i <- i + 1
 		Escribir ''
-	FinMientras
+		//FinMientras
+	FinPara
+FinPara
+
 	FinAlgoritmo

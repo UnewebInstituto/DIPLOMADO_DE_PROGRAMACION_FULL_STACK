@@ -1,21 +1,21 @@
-Algoritmo Ejemplo_5_ciclo_mientras
-	// Nota: En el ciclo repetitivo mientras, la condicion
-	// Nota: de fin de ciclo, se evalua antes, de ejecutar cualquier
-	// accion
+Algoritmo ejemplo_5_ciclo_mientras
+	// Nota: En el ciclo repetitivo Mientras, la condición
+	// de fin de ciclo, se evalúa antes, de ejecutar cualquier
+	// acción
 	
 	// Declaración de variables
-	Definir i Como Entero
-	Definir n Como Entero
+	definir i Como Entero
+	definir n Como Entero
 	
-	// Inicializacion de variables
-	n <- 5 
+	// Inicialización de variables
+	n <- 5
 	i <- 0
 	
 	// Proceso
-	
-	Mientras  i < n Hacer
+	Mientras i < n Hacer
 		Escribir i
 		i <- i + 1
 	FinMientras
-	escribir  'Fin del ciclo Mientras'
-	Fin algoritmo
+	
+	Escribir 'Fin del ciclo Mientras'
+FinAlgoritmo

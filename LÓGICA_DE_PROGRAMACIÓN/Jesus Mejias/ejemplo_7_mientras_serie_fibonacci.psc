@@ -23,7 +23,6 @@ Algoritmo ejemplo_7_mientras_serie_fibonacci
 	
 	Escribir n1
 	Escribir n2
-	Escribir n
 	
 	Mientras i < n Hacer
 		suma <- n1 + n2

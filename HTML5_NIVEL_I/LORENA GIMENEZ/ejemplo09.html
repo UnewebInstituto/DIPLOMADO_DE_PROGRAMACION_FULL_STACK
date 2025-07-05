@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #encabezado_de_pagina{
+            padding: 20px;
+            background-color: beige;
+        }
+        #menu{
+            padding: 15px;
+            background-color: #cccccc;
+        }
+        #menu li{
+            list-style: none;
+            display: inline-block;
+            margin-right: 10px;  
+        }
+        #pie_de_pagina{
+            padding: 10px;
+            background-color: beige;
+            clear: both;
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-top-color: gray;
+        }
+        #contenido{
+            width: 80%;
+            margin-left: 10%;
+        } 
+        #seccion,#apartado, #articulo_1, #articulo_2, #cita_1, #cita_2{
+            display: block;
+            float: left;
+        } 
+        #seccion{
+            width: 50%;
+        }
+        #apartado{
+            width: 45%;
+            background-color: beige;
+            border-style: solid;
+            border-width: 1px;
+            margin-left: 10px;
+            margin-top: 10px;
+            border-radius: 35px;
+        }
+        #articulo_1 p, #articulo_2 p, #cita_1 p, #cita_2 p{
+            text-align: justify;
+            padding: 10px;
+        }
+        #articulo_1, #articulo_2{
+            margin-top: 10px;
+            background-color: beige;
+            border-style: solid;
+            border-width: 1px;
+            border-color: gray;
+        }
+        #articulo_1 h2, #articulo_2 h2{
+            padding: 10px;
+        }
+        #articulo_2{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="encabezado_de_pagina">
+        <h1>Título de la página</h1>
+    </div>
+    <div id="menu">
+        <ul> 
+            <a href="#"><li>Inicio</li></a>
+            <a href="#"><li>Productos</li></a>
+            <a href="#"><li>Servicios</li></a>
+            <a href="#"><li>Contactos</li></a>
+        </ul>
+    </div>
+    <div id="contenido">
+        <div id="seccion">
+            <div id="articulo_1">
+                <h2>Titulo primer articulo</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus voluptatem odio inventore, illo facere nobis. Alias nam, quas numquam deleniti sed veniam recusandae voluptatum, odio ut quibusdam aliquam non. Asperiores dolores quod magnam voluptatem, obcaecati vero aperiam? Reiciendis eaque sapiente saepe minus, libero temporibus nesciunt accusantium iste commodi rerum cupiditate, nemo ea veritatis obcaecati ducimus, necessitatibus non! Quam expedita, quo vel cumque ratione quae animi alias dolor, non eius pariatur porro exercitationem ipsa sapiente</p>
+                <img src="../img/windows.jfif" alt="">
+                <p>Pie imagen primer artículo</p>
+            </div>
+            <div id="articulo_2">
+                <h2>Titulo segundo articulo</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus voluptatem odio inventore, illo facere nobis. Alias nam, quas numquam deleniti sed veniam recusandae voluptatum, odio ut quibusdam aliquam non. Asperiores dolores quod magnam voluptatem, obcaecati vero aperiam? Reiciendis eaque sapiente saepe minus, libero temporibus nesciunt accusantium iste commodi rerum cupiditate, nemo ea veritatis obcaecati ducimus, necessitatibus non! Quam expedita, quo vel cumque ratione quae animi alias dolor, non eius pariatur porro exercitationem ipsa sapiente</p>
+                <img src="../img/linux.jfif" alt="">
+                <p>Pie imagen segundo artículo</p>
+            </div>
+        </div>
+        <div id="apartado">
+        <div id="cita_1">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit, nemo in est ab accusamus delectus ut, esse consequatur enim eos nam similique dolore praesentium facere rerum iure aut voluptate at a dolorum! Maxime excepturi omnis et molestias eos voluptatibus nam harum quas exercitationem voluptatem libero quae officiis vero similique, tenetur obcaecati debitis, id odio modi sit eveniet. Distinctio optio maiores reprehenderit. Aperiam voluptatibus voluptatem natus architecto laudantium impedit expedita enim harum! Sunt, suscipit eius</p>
+            </div>
+            <div id="cita_2">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit, nemo in est ab accusamus delectus ut, esse consequatur enim eos nam similique dolore praesentium facere rerum iure aut voluptate at a dolorum! Maxime excepturi omnis et molestias eos voluptatibus nam harum quas exercitationem voluptatem libero quae officiis vero similique, tenetur obcaecati debitis, id odio modi sit eveniet. Distinctio optio maiores reprehenderit. Aperiam voluptatibus voluptatem natus architecto laudantium impedit expedita enim harum! Sunt, suscipit eius.</p>
+            </div>
+        </div>
+    </div>
+    <div id="pie_de_pagina">
+        HTML5 nivel I UNEWEB &copy; 2025
+    </div>
+</body>    
+</html>

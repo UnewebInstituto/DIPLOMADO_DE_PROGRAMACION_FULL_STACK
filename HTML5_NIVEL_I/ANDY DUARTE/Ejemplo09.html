@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo09</title>
+    <style>
+        *{
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+
+        }
+        #encabezado_de_pagina{
+            padding: 20px;
+            background-color: rgb(75, 144, 169)
+        }
+        #menu{
+            padding: 15px;
+            background-color: rgb(212, 212, 212);
+        }
+        #menu li{
+            list-style: none;
+            display: inline-block;
+            margin-right: 10px;
+
+        }
+        #pie_de_pagina{
+            padding: 10px;
+            background-color: rgb(226, 218, 218);
+            clear: both;
+            border-top-style:solid;
+            border-top-width:1px;
+            border-top-color:gray ;
+        }
+        #contenido{
+            width: 80%;
+            margin-left: 10% ;
+        }
+        #articulo_1, #articulo_2, #cita_1, #cita_2, #seccion,  #apartado {
+            display: block;
+            float: left;
+        }
+        #seccion{
+            width: 50%;
+        }
+        #apartado{
+            width: 45%;
+            background-color: beige;
+            border-style: solid;
+            border-width: 1px;
+            border-color: gray;
+            margin-left: 10px;
+            margin-top: 10px;
+            border-radius: 30px;
+        }
+        #articulo_1 p, #articulo_2 p, #cita_1 p, #cita_2 p{
+            text-align: justify;
+            padding: 10px;
+        }
+        #articulo_1, #articulo_2{
+            margin-top: 10px;
+            background-color: rgb(250, 228, 202);
+            border-style: solid;
+            border-width: 1px;
+            border-color: gray;
+        }
+        #articulo_2{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="encabezado_de_pagina">
+        <h1>Titulo de la pagina</h1>
+    </div>
+    <div id="menu">
+        <ul>
+            <a href="#"><li>Inicios</li></a>
+            <a href="#"><li>Productos</li></a>
+            <a href="#"><li>Servicios</li></a>
+            <a href="#"><li>Contactos</li></a> 
+        </ul>
+    </div>
+    <div id="contenido">
+        <div id="seccion">
+            <div id="articulo_1">
+                <h2>Titulo del Primer Articulo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit hic odit magnam maiores, reprehenderit delectus nostrum amet libero repudiandae aliquid alias exercitationem laborum ea. Veniam, veritatis? Odio accusantium veritatis minus, pariatur porro necessitatibus amet blanditiis voluptas laborum, adipisci tempore delectus, dolorem facilis ea possimus tenetur autem fugit quas provident accusamus sequi. Nobis molestiae laboriosam, illo dolor velit beatae non mollitia suscipit sint harum possimus? Voluptate tenetur mollitia eaque modi dolorem, vitae dolore enim numquam id?</p>
+                <img src="../img/windows.jfif" alt="">
+                <p>pie imagen primer articulo</p>
+            </div>
+            <div id="articulo_2">
+                <h2>Titulo del Segundo Articulo</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat sapiente a eius totam id voluptatum harum adipisci, incidunt tempore maxime facere, iste, aliquam maiores eum nemo molestias esse dicta! Hic doloremque vel nisi quia! Nisi quas unde alias aut dolor quod repellat quia illum sequi dolores. Ex, corporis. Quidem praesentium nemo alias, tempora odit molestias doloremque omnis quas quisquam ad enim provident voluptate labore nobis, voluptatibus maiores obcaecati. Iure veniam est voluptatibus. Tempora sit, provident odio consequatur minima dolore impedit alias? Iusto recusandae, ipsa alias quia, officia, eveniet et nobis ducimus provident natus impedit in similique corporis voluptates omnis quos!</p>
+                <img src="../img/linux.jfif" alt="">
+                <p>pie imagen Segundo Articulo</p>
+            </div>
+        </div>
+        <div id="apartado">
+            <div id="cita_1">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, ullam! Inventore quae voluptate asperiores ex dolorum, eligendi temporibus voluptatibus, ipsa officiis error quis minima laborum. Mollitia obcaecati cum eligendi. Quaerat eum recusandae nobis iusto dolore tenetur, rem commodi aspernatur eius sed officia odit architecto aperiam praesentium cum a reprehenderit et eveniet amet totam. Ab doloremque, maxime molestiae non voluptates corrupti qui veniam repellendus! Saepe illo a ea voluptas sunt perferendis assumenda neque debitis ipsam corporis!</p>
+            </div>
+            <div id="cita_2">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio tenetur praesentium odit voluptatum hic, necessitatibus voluptates molestias facere rem explicabo dicta consectetur quasi maiores, eligendi, aut at nobis sunt pariatur. Odio numquam illum quae eius placeat eos nemo a laborum? Et consequuntur itaque voluptas debitis animi nobis, blanditiis recusandae mollitia hic ex quaerat magni maiores repellat ea iste dicta reprehenderit sint ad explicabo. Neque, corporis autem hic totam ut at quaerat laboriosam aliquam quos cupiditate.</p>
+            </div>
+        </div>
+    </div>
+    <div id="pie_de_pagina">
+        HTML5 nivel I UNEWEB &copy; 2025
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo04</title>
+    <style>
+        img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejemplo04 - formularios</h1>
+    <form action="/processar_ejemplo03" method="get">
+        <table>
+            <tr>
+                <td>DNI:</td>
+                <td>
+                    <SElect name="documento" id="documento">
+                        <option value="V">V</option>
+                        <OPtion value="E">E</OPtion>
+                        <OPtion value="P">P</OPtion>
+                    </SElect>
+                    <input type="text" name="numero" id="numero" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td>
+                    <input type="text" name="nombre" id="nombre" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Apellido:</td>
+                <td>
+                    <input type="text" name="apellido" id="apellido" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha de Nacimiento:</td>
+                <td>
+                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
+                </td>
+            </tr>
+            <tr>
+                <td>sexo:</td>
+                <td>
+                    <input type="radio" name="sexo" id="sexo" value="F">Femenino
+                    <input type="radio" name="sexo" id="sexo" value="M" checked>Masculino
+                </td>
+            </tr>
+            <tr>
+                <td>Correo Electronico:</td>
+                <td>
+                    <input type="email" name="correo" id="correo" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Direccion:</td>
+                <td>
+                    <textarea name="Direccion" id="direccion" rows="3" cols="30" required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Edad:</td>
+                <td>
+                    <input type="number" name="edad" id="edad" min="0" max="120" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Estatura:</td>
+                <td>
+                    <input type="number" name="estatura" id="estatura" step="0.01" min="0" max="2.20" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Hora:</td>
+                <td>
+                    <input type="time" name="hora" id="hora" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Color:</td>
+                <td>
+                    <input type="color" name="color" id="color" value="#000000" required>
+                </td>
+            </tr>
+            <tr>
+                <td>oculto:</td>
+                <td>
+                    <input type="hidden" name="oculto" id="oculto" value="valor_oculto">
+                </td>
+            </tr>
+            <tr>
+                <td>Sema:</td>
+                <td>
+                    <input type="week" name="semana" id="semana" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha y hora local:</td>
+                <td>
+                    <input type="datetime-local" name="Fecha_hora" id="Fecha_hora" required>
+                </td>
+            </tr>
+            <tr>
+                <td>Contraseña:</td>
+                <td>
+                    <input type="password" name="Contrasena" id="Contrasena" required><img src="../img/ver.png" alt="" id="verIcon"
+                        onclick="ocultarMostrarContrasena()">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Enviar">
+                    <input type="reset" value="Limpiar">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+<script>
+    function ocultarMostrarContrasena() {
+        const ContrasenaInput = document.getElementById('Contrasena');
+        const verIcon = document.getElementById('verIcon');
+        if (ContrasenaInput.type === 'password') {
+            ContrasenaInput.type = 'text';
+            verIcon.src = '../img/ver.png'
+        } else {
+            ContrasenaInput.type = 'password';
+            verIcon.src= '../img/nover.png'
+        }
+    }
+</script>
+
+</html>

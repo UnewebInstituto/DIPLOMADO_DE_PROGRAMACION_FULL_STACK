@@ -39,6 +39,10 @@ Algoritmo Ejemplo_4_condicional_anidado
 		SiNo
 			x1 <- (-b+RC(sub_radical))/(2*a)
 			x2 <- (-b-RC(sub_radical))/(2*a)
+			// Equivalente a
+			// x1 <- (-b+(sub_radical)^(1/2))/(2*a)
+			// x2 <- (-b-(sub_radical)^(1/2))/(2*a)
+			
 			escribir 'x1:', x1, ',x2:', x2
 			resultado <- ''
 		FinSi
