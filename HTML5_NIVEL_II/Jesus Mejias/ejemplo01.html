@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 01</title>
+    <style>
+        video{
+            width: 500px;
+            height: 500px;  
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejemplo 01 - Etiquetas Multimedia</h1>
+    <h2>Video</h2>
+    <p>Uso de la etiqueta en forma nativa</p>
+    <video src="../video/3129671-uhd_3840_2160_30fps.mp4" id="MiVideo" controls></video>
+    <hr>
+    <h2>Video en combinación con la etiqueta "source"</h2>
+    <p>Source hace referencia a los formatos *.mp4, *.ogg y *.webm</p>
+    <video controls>
+        <source src="../video/3129671-uhd_3840_2160_30fps.mp4" type="video/mp4"
+    ><!--
+        <source src="../viedo/3129671-uhd_3840_2160_30fps.ogg" type="viedo/ogg">
+        <source src="../viedo/3129671-uhd_3840_2160_30fps.webm" type="video/webm">
+-->
+    </video>
+    <hr>
+    <h2>Video y Track</h2>
+    <p>Uso de la etiqueta video en combinacion con la etiqueta track</p>
+    <video src="../video/3129671-uhd_3840_2160_30fps.mp4" controls>
+     <track src="./track_es.vtt" type="subtitles" lang="es" label="ESPAÑOL">
+     <track src="./track_en.vtt" type="subtitles" lang="es" label="INGLES">
+    </video>
+    <hr>
+    <h2>Audio</h2> 
+    <p>Uso de la etiqueta "Audio" de forma basica</p>
+    <audio src="../audio/binary-code-interface-sound-effects-sci-fi-computer-ui-sounds-209403.mp3" controls></audio>
+    <hr>
+    <h2>Audio en combinacion con la etiqueta "Source"</h2>
+    <p>Se consideran formatos tales como: .mp3, .oggy .wav</p>   
+    <audio controls>
+        <source src="../audio/binary-code-interface-sound-effects-sci-fi-computer-ui-sounds-209403.mp3" id="MiAudio" type="audio/mp3">
+        <source src="../audio/binary-code-interface-sound-effects-sci-fi-computer-ui-sounds-209403.ogg" type="audio/ogg">
+        <source src="../audio/binary-code-interface-sound-effects-sci-fi-computer-ui-sounds-209403.wav" type="audio/wav">
+    </audio>
+    <hr>
+    <h2>Video con Audio</h2>
+    <p>Ejemplo d video + Audio</p>
+    <video src="../video/WhatsApp Video 2025-07-05 at 3.29.30 PM.mp4" controls></video>
+    <script src="../js/comun.js"></script>
+</body>
+</html>
