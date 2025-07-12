@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocalización</title>
+</head>
+    <link rel="stylesheet" href="./CSS/ejemplo04_canvas.css">
+<body>
+    <h1>Ejemplo 04: Canvas</h1>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API" target="_blank">Referencia documentación Geolocalización</a>
+    <hr>
+    <a href="./ejemplo03.html">Regresar al menu</a>
+    <hr>
+    <button onclick="obtener()">Obtener Ubicación</button>
+    <button onclick="ver()" disabled id="btn_ver">Ver mapa</button>
+    <hr>
+    <div id="resultado"></div>
+    <script>
+        function ubicacionExitosa(posicion){
+            console.log(posicion);
+            latitud = posicion.coords.latitude,
+            longitud = posicion.coords.longitude;
+            mensaje = "Latitud =" + latitud + ", Longitud =" + longitud;
+            document.getElementById("resultado").innerHTML = mensaje;
+            document.getElementById("btn_ver").disabled = false;
+        }
+        function manejoDeError(error){
+            console.log(error);
+            switch (error.code) {
+                case 1:
+                    mensaje = "Usuario negó acceso a ubicación geográfica";
+                    break;
+                case 2: 
+                    mensaje = "Ubicación no disponible";
+                    break;   
+                case 3: 
+                    mensaje = "Se exedio el tiempo de espera";
+                    break;
+                default:
+                    mensaje = "Error desconocido";
+                    break;
+            } 
+            document.getElementById("resultado").innerHTML = mensaje;
+        }
+        function obtener(){
+            /*
+            Verificar que el navegador soporta geolocalizacion
+            */
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(ubicacionExitosa, manejoDeError);   
+            }else{
+            documento.getElementById("resutltado").innerHTML = "Error: su navegador no soporta geolocalización";
+            }
+        }
+
+        function ver(){
+            let url = "https://www.openstreetmap.org/#map=10/10.3392/-66.8024";
+            url = url + latitud + "/" + longitud;
+            window.open(url);
+        }
+        //Delcaracion de variables
+        var latitud, longitud, mensaje;
+        //Inicialiacion de varables
+        mensaje = "";
+    </script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Ejemplo05 Geolocalización</h1>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API" target="_blank">Referencia documentación Geolocalización</a>
+  <hr>
+  <a href="./ejemplo03.html">Regresar al menú</a>
+  <hr>
+  <button onclick="obtener()">Obtener ubicación</button>
+  <button onclick="ver()" disabled id="btn_ver">Ver mapa</button>
+  <hr>
+  <div id="resultado"></div>
+  <script>
+    function ubicacionExitosa(posicion){
+      console.log(posicion);
+      latitud = posicion.coords.latitude;
+      longitud = posicion.coords.longitude;
+      mensaje = "Latitud=" + latitud + ", Longitud=" + longitud;
+      document.getElementById("resultado").innerHTML = mensaje;
+      document.getElementById("btn_ver").disabled = false;
+    }
+
+    function manejoDeError(error) {
+      console.log(error);
+      switch (error.code) {
+        case 1:
+          mensaje = "Usuario negó acceso a ubicación geográfica";
+          break;
+        case 2:
+          mensaje = "Ubicación no disponible";
+          break;
+        case 3:
+          mensaje = "Se excedio en el tiempo de espera";
+          break;
+        default:
+          mensaje = "Error desconocido";
+          break;
+      }
+      document.getElementById("resultado").innerHTML = mensaje;
+    }
+
+    function obtener() {
+      /* 
+        Verificar que el navegador soporta geolocalización
+      */
+      if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(ubicacionExitosa, manejoDeError);
+      }else{
+        documento.getElementById("resultado").innerHTML = "Error: Su navegador no soporta Geolocalización.";
+      }
+    }
+
+    function ver(){
+      let url = "https://www.openstreetmap.org/#map=17/";
+      url = url + latitud + "/" + longitud;
+      window.open(url);
+    }
+
+    // Declaración de variables
+    var latitud, longitud, mensaje;
+    // Inicialización de variables
+    mensaje = "";
+
+  </script>
+</body>
+</html>
