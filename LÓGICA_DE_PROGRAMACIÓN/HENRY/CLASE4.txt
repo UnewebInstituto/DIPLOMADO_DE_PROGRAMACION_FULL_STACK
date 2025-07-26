@@ -1,0 +1,11 @@
+ARREGLO: Es una estructura de datos estática, que
+permite el almacenamiento de múltiples valores, 
+bajo el mismo identificador de variable. 
+El acceso a los elementos
+o valores contenidos, se realizar a través de un índice 
+el cual inicia en cero y en función de su incremento
+se accede a los valores posteriores.
+
+Declaración en pseint
+
+Dimension alumnos(20)

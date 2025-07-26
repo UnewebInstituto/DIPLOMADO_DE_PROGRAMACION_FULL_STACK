@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ejemplo03 - Formularios</h1>
+    <form action="/processar_ejemplo03" method="post">   
+        <table>
+            <tr>
+                <td>DNI:</td>
+                <td>
+                <select name="documento" id="documento" required>
+                    <option value="V">V</option>
+                    <option value="E">E</option>
+                    <option value="P">P</option>
+                </select>
+                <input type="text" name="numero" id="numero" required>
+            </td>
+            </tr>
+                <td>Nombre:</td>
+                <td>    
+                    <input type="text" name="nombre" id="nombre" required></td>
+                </tr>
+                <td>Apellido:</td>
+                <td>    
+                    <input type="text" name="apellido" id="apellido" required></td>
+                </tr>
+                <td>Fecha_de_nacimiento</td>
+                <td>
+                    <input type="date" name="fecha de nacimiento" id="fecha_de_nacimiento" required></td>
+                </tr>
+                <td>Sexo</td>
+                <td>
+                    <input type="radio" name="sexo" id="sexo" value"F" checked>Femenino
+                    <input type="radio" name="sexo" id="sexo" value"M">Masculino
+                </td>
+                </tr>
+                <td>Correo electrónico:</td>
+                <td>
+                    <input type="email" name="correo" id="correo" required></td>
+                </tr>
+                <td>Dirección</td>
+                <td>
+                    <textarea name="dirección" id ="dirección" required rows="3" cols="30"></textarea>
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <input type="submit" value="Enviar">
+                    <input type="reset" value="Limpiar">
+            </td>
+        </tr>
+        </table>
+    </form>
+</body>
+</html>
+
+<!--Transmision de datos=>por metodo get
+
+file:///C:/procesar_ejemplo03?documento=V&numero=1234567&nombre=ANA&apellido=VASQUEZ&fecha_nacimiento=1960-08-15&sexo=F&correo=AV%40GMAIL.COM&direccion=SANTA+FE
+
+<!--Transmision de datos=>por metodo post
+file:///C:/procesar_ejemplo03

@@ -1,0 +1,185 @@
+Un CDN, o Red de Entrega de Contenido (Content Delivery Network), es un sistema de servidores distribuidos geográficamente que trabajan juntos para entregar contenido web de manera rápida y eficiente a los usuarios. En lugar de que todo el contenido provenga de un solo servidor, un CDN almacena copias del contenido en múltiples ubicaciones, permitiendo que los usuarios obtengan el contenido del servidor más cercano a ellos, lo que reduce la latencia y mejora la velocidad de carga. 
+
+
+BOOTSTRAP
+https://getbootstrap.com/
+https://www.w3schools.com/bootstrap5/index.php
+
+
+
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox
+
+http://127.0.0.1:5507/ANDY%20DUARTE/ejemplo09.html
+
+
+servidor
+
+Para desarrollar un programa Node.js que almacene los datos de un formulario HTML en un archivo plano, asumiendo el rol de un desarrollador Node.js/JavaScript, te proporciono los requisitos y el código necesario.
+
+**Requisitos para el Desarrollo e Implementación:**
+
+1.  **Entorno de Ejecución:**
+
+      * **Node.js:** Debes tener Node.js instalado en tu sistema. Puedes descargarlo desde el sitio web oficial de Node.js ([https://nodejs.org/](https://nodejs.org/)).
+      * **npm (Node Package Manager):** Viene incluido con la instalación de Node.js.
+
+2.  **Estructura del Proyecto:**
+
+      * Un directorio raíz para tu proyecto.
+      * Dentro de este directorio, el archivo HTML (`ejemplo10.html`).
+      * Un archivo JavaScript para el servidor Node.js (por ejemplo, `server.js`).
+      * Un directorio (opcional, pero recomendado) para almacenar los datos (por ejemplo, `data`).
+
+3.  **Módulos de Node.js a Utilizar:**
+
+      * `http`: Módulo nativo de Node.js para crear servidores web.
+      * `fs` (File System): Módulo nativo de Node.js para interactuar con el sistema de archivos (leer y escribir archivos).
+      * `querystring`: Módulo nativo de Node.js para parsear cadenas de consulta URL (útil para procesar datos de formularios `application/x-www-form-urlencoded`).
+      * `path`: Módulo nativo de Node.js para trabajar con rutas de archivos y directorios.
+
+4.  **Consideraciones de Seguridad y Robustez (para una aplicación real):**
+
+      * **Validación de Datos:** En una aplicación de producción, es crucial validar los datos en el servidor para evitar datos maliciosos o incorrectos.
+      * **Manejo de Errores:** Implementar un manejo de errores robusto para todas las operaciones (lectura/escritura de archivos, manejo de solicitudes).
+      * **Asincronía:** Node.js es asíncrono por naturaleza. Utiliza callbacks, Promises o `async/await` para manejar operaciones I/O.
+      * **JSON vs. Texto Plano:** Para una estructura de datos más compleja o para facilitar la lectura programática, considera almacenar los datos en formato JSON en lugar de texto plano simple.
+      * **Concurrent Access:** If multiple users submit forms simultaneously, you'll need to consider how to handle concurrent writes to the file to avoid data corruption (e.g., using a queue or a database).
+      * **Scalability:** For high-traffic applications, a flat file might not be the most scalable solution; a database (SQL or NoSQL) would be more appropriate.
+
+**Programa Node.js (`server.js`):**
+
+Crea un archivo llamado `server.js` en el mismo directorio que `ejemplo10.html` (o ajusta las rutas según tu estructura).
+
+```javascript
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const querystring = require('querystring');
+
+const PORT = 3000;
+const DATA_DIR = path.join(__dirname, 'data'); // Directorio para almacenar los datos
+const DATA_FILE = path.join(DATA_DIR, 'form_submissions.txt'); // Archivo plano para los datos
+
+// Crear el directorio 'data' si no existe
+if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR);
+}
+
+const server = http.createServer((req, res) => {
+    // Servir el archivo HTML
+    if (req.url === '/' && req.method === 'GET') {
+        fs.readFile(path.join(__dirname, 'ejemplo10.html'), (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Error interno del servidor al cargar el formulario.');
+                return;
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
+    }
+    // Procesar los datos del formulario
+    else if (req.url === '/' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString(); // Convierte Buffer a string
+        });
+
+        req.on('end', () => {
+            const formData = querystring.parse(body); // Parsea los datos del formulario
+
+            const { documento, numero, nombre, apellido } = formData;
+
+            // Formatear los datos para el archivo plano
+            const dataToSave = `Fecha/Hora: ${new Date().toISOString()}\n` +
+                               `Cédula: ${documento}-${numero}\n` +
+                               `Nombre: ${nombre}\n` +
+                               `Apellido: ${apellido}\n` +
+                               `----------------------------------------\n`;
+
+            // Anexar los datos al archivo plano
+            fs.appendFile(DATA_FILE, dataToSave, (err) => {
+                if (err) {
+                    console.error('Error al escribir en el archivo:', err);
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Error al guardar los datos.');
+                    return;
+                }
+                console.log('Datos guardados exitosamente:', formData);
+                res.writeHead(200, { 'Content-Type': 'text/plain' });
+                res.end('¡Datos recibidos y guardados con éxito!');
+            });
+        });
+    }
+    // Manejar otras rutas/métodos
+    else {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('No encontrado');
+    }
+});
+
+server.listen(PORT, () => {
+    console.log(`Servidor Node.js ejecutándose en http://localhost:${PORT}`);
+    console.log(`Accede al formulario en http://localhost:${PORT}`);
+    console.log(`Los datos se guardarán en: ${DATA_FILE}`);
+});
+```
+
+**Instrucciones de Ejecución:**
+
+1.  **Guarda los archivos:**
+
+      * Guarda el contenido del formulario HTML en `ejemplo10.html`.
+      * Guarda el código Node.js anterior en `server.js` en el *mismo directorio* que `ejemplo10.html`.
+
+2.  **Abre tu terminal o línea de comandos.**
+
+3.  **Navega al directorio donde guardaste los archivos:**
+
+    ```bash
+    cd /ruta/a/tu/directorio/del/proyecto
+    ```
+
+4.  **Ejecuta el servidor Node.js:**
+
+    ```bash
+    node server.js
+    ```
+
+5.  **Accede al formulario:**
+    Abre tu navegador web y ve a `http://localhost:3000`.
+
+6.  **Envía el formulario:**
+    Rellena los campos y haz clic en "ENVIAR".
+
+7.  **Verifica los datos:**
+    En el directorio de tu proyecto, se creará una carpeta `data` (si no existe) y dentro de ella, un archivo `form_submissions.txt`. Este archivo contendrá los datos enviados desde el formulario. Cada envío se anexará al final del archivo.
+
+**Explicación del Código:**
+
+  * **`const http = require('http');`**: Importa el módulo HTTP para crear un servidor web.
+  * **`const fs = require('fs');`**: Importa el módulo File System para interactuar con archivos.
+  * **`const path = require('path');`**: Importa el módulo `path` para manejar rutas de archivos de manera segura y multiplataforma.
+  * **`const querystring = require('querystring');`**: Importa el módulo `querystring` para parsear los datos enviados por el formulario (que llegan como una cadena URL-encoded).
+  * **`const PORT = 3000;`**: Define el puerto en el que el servidor escuchará.
+  * **`DATA_DIR` y `DATA_FILE`**: Definen la ruta del directorio y del archivo donde se guardarán los datos. `path.join(__dirname, 'data')` asegura que el directorio `data` se cree junto a `server.js`.
+  * **`if (!fs.existsSync(DATA_DIR)) { fs.mkdirSync(DATA_DIR); }`**: Verifica si el directorio `data` existe y lo crea si no. `mkdirSync` es síncrono para asegurar que el directorio esté disponible antes de que el servidor intente escribir en él.
+  * **`http.createServer((req, res) => { ... });`**: Crea un servidor HTTP. La función de callback se ejecuta cada vez que el servidor recibe una solicitud.
+      * **`req` (Request):** Objeto que contiene información sobre la solicitud entrante (URL, método HTTP, cabeceras, etc.).
+      * **`res` (Response):** Objeto para enviar la respuesta de vuelta al cliente (código de estado, cabeceras, cuerpo de la respuesta).
+  * **Servir `ejemplo10.html` (`if (req.url === '/' && req.method === 'GET')`):**
+      * Cuando el navegador hace una solicitud GET a la raíz (`/`), el servidor lee `ejemplo10.html` y lo envía como respuesta con el tipo de contenido `text/html`.
+  * **Procesar datos del formulario (`else if (req.url === '/' && req.method === 'POST')`):**
+      * Cuando el formulario se envía (usando el método POST), los datos llegan en el "cuerpo" de la solicitud.
+      * **`req.on('data', chunk => { ... });`**: Escucha el evento `data`, que se dispara cuando se reciben fragmentos del cuerpo de la solicitud. Los `chunk` se concatenan en la variable `body`.
+      * **`req.on('end', () => { ... });`**: Escucha el evento `end`, que se dispara cuando se ha recibido todo el cuerpo de la solicitud.
+          * **`querystring.parse(body);`**: Parsea la cadena `body` (que está en formato `key=value&key2=value2`) en un objeto JavaScript.
+          * **Desestructuración (`const { documento, numero, nombre, apellido } = formData;`)**: Extrae los valores de los campos del formulario.
+          * **`fs.appendFile(DATA_FILE, dataToSave, (err) => { ... });`**: Anexa la cadena `dataToSave` al final del archivo `form_submissions.txt`.
+              * Este es un método asíncrono. El callback `(err) => { ... }` se ejecuta una vez que la operación de escritura ha terminado (o ha ocurrido un error).
+              * Si hay un error (`err`), se registra en la consola del servidor y se envía una respuesta de error al cliente.
+              * Si tiene éxito, se registra en la consola y se envía una respuesta de éxito al cliente.
+  * **Manejo de rutas no encontradas (`else { ... }`):**
+      * Para cualquier otra solicitud que no coincida con las anteriores, se envía una respuesta 404 "No encontrado".
+  * **`server.listen(PORT, () => { ... });`**: Inicia el servidor y lo pone a escuchar en el puerto especificado. El callback se ejecuta una vez que el servidor está escuchando, mostrando un mensaje en la consola.
+

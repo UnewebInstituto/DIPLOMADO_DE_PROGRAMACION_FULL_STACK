@@ -1,0 +1,82 @@
+francysr2405@gmail.com;
+jesusmejias2000@gmail.com;
+dobleah94@gmail.com;
+duarteandy421@gmail.com;
+jespain2021@gmail.com;
+carlosmr999@hotmail.com;
+
+
+echo "# DIPLOMADO_DE_PROGRAMACION_FULL_STACK" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+
+git remote remove origin
+
+git remote add origin https://github.com/UnewebInstituto/DIPLOMADO_DE_PROGRAMACION_FULL_STACK.git
+
+git push -u origin main
+
+git remote add origin https://github.com/UnewebInstituto/DIPLOMADO_DE_PROGRAMACION_FULL_STACK.git
+git branch -M main
+git push -u origin main
+
+https://elcodigoascii.com.ar/
+
+
+¡Hola! Asumiendo mi rol como desarrollador en PSeInt, el error principal que veo en tu algoritmo `ejemplo_2_condicional_multiple` radica en la **comparación de cadenas de texto (caracteres)**.
+
+En PSeInt, la comparación de cadenas de texto es **sensible a mayúsculas y minúsculas**. Esto significa que si el usuario ingresa "js" (en minúsculas), no coincidirá con la condición `'JS'` (en mayúsculas), y por lo tanto, el algoritmo no identificará correctamente el lenguaje.
+
+**Para corregir este error, tienes principalmente dos opciones:**
+
+1.  **Convertir la entrada del usuario a mayúsculas antes de la comparación:** Esto asegura que, independientemente de cómo el usuario ingrese las siglas, la comparación se realizará en mayúsculas.
+
+2.  **Incluir comparaciones para ambas versiones (mayúsculas y minúsculas) en cada condición:** Esto haría el algoritmo más extenso y menos elegante.
+
+**A continuación, te muestro la primera opción implementada en el algoritmo corregido:**
+
+```pseudocodigo
+Algoritmo ejemplo_2_condicional_multiple_corregido
+	// Declaración de variables
+	Definir siglas Como Caracter
+	Definir resultado Como Caracter
+	// Inicialización de variables
+	siglas <- ""
+	// Entrada de datos
+	Escribir "Por favor ingrese una de las siguientes siglas"
+	Escribir "para conocer el nombre del lenguaje"
+	Escribir "JS, PY, SQL, HTML, PHP"
+	Leer siglas
+	// Proceso
+	// Convertir las siglas ingresadas a mayúsculas para la comparación
+	siglas <- Mayusculas(siglas)
+	Si siglas == "JS" Entonces
+		resultado <- "JAVASCRIPT"
+	SiNo Si siglas == "PY" Entonces
+		resultado <- "PYTHON"
+	SiNo Si siglas == "SQL" Entonces
+		resultado <- "STRUCTURED QUERY LANGUAGE"
+	SiNo Si siglas == "HTML" Entonces
+		resultado <- "HYPER TEXT MARK LANGUAGE"
+	SiNo Si siglas == "PHP" Entonces
+		resultado <- "PREPROCESSOR HYPERTEXT"
+	SiNo
+		resultado <- "NO SE TIENE INFORMACIÓN"
+	FinSi
+	// Generar salida
+	Escribir "EL NOMBRE DEL LENGUAJE ES:", resultado
+FinAlgoritmo
+```
+
+En este algoritmo corregido, he añadido la línea `siglas <- Mayusculas(siglas)` después de la lectura de las siglas. La función `Mayusculas()` (que es una función estándar en PSeInt) convierte la cadena de texto almacenada en la variable `siglas` a su equivalente en mayúsculas. De esta manera, las comparaciones posteriores con `'JS'`, `'PY'`, `'SQL'`, `'HTML'`, y `'PHP'` funcionarán correctamente, independientemente de si el usuario ingresó las siglas en mayúsculas, minúsculas o una combinación de ambas.
+
+Este es el error principal que identifico. El resto de la lógica del algoritmo parece correcta para el propósito que describe. ¡Espero que esta explicación te sea útil!
+
+PRÓXIMA CLASE : ESTRUCTURAS DE CONTROL REPETITIVAS
+
+1-MIENTRAS
+2-PARA 
+3-REPETIR
+

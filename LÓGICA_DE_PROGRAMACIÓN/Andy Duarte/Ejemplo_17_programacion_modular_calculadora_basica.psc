@@ -1,0 +1,67 @@
+
+// 1-Declaración de librerias o modulos
+
+//2-declaracion de funciones
+FUNCION SUMAR <- SUMA(ARG_N1,ARG_N2)
+	SUMAR <- ARG_N1 + ARG_N2
+FinFuncion
+
+FUNCION RESTAR <- RESTA(ARG_N1,ARG_N2)
+	RESTAR <- ARG_N1 - ARG_N2
+FinFuncion
+
+FUNCION MULTIPLICAR <- MULTIPLICA(ARG_N1,ARG_N2)
+	MULTIPLICAR <- ARG_N1 * ARG_N2
+FinFuncion
+
+
+FUNCION DIVIDIR <- DIVIDE(ARG_N1,ARG_N2)
+	SI ARG_N2 == 0 ENTONCES 
+		DIVIDIR <- -9999999//ERROR DIVISON POR CERO
+	SINO
+		DIVIDIR <- ARG_N1/ARG_N2
+	FinSi
+FinFuncion
+
+//FUNCION PONTENCIA <- PONT(ARG_N1,ARG_N2)
+//PONTENCIA <- ARG_N1 + ARG_N2
+//FinFuncion
+
+
+
+Algoritmo Ejemplo_17_programcion_modular_calculadora_basica
+
+	//3 declaracion de variables
+	DEFINIR N1 COMO ENTERO
+	DEFINIR N2 COMO ENTERO
+	DEFINIR OP COMO CARACTER
+	DEFINIR RESULTADO COMO ENTERO
+	
+	//4 declaracion del cuerpo principal del programa
+	N1<-0
+	N2<-0
+	OP<-' '
+	RESULTADO <- 0
+	
+	escribir "CALCULADORA BASICA"
+	ESCRIBIR "INGRESE EL 1er VALOR:"
+	LEER N1
+	ESCRIBIR "INGRESE EL 2er VALOR:"
+	LEER N2
+	ESCRIBIR "INGRESE LA OPERACION A EFECTUAR +,-,*,/,^:"
+	LEER OP
+	
+	SEGUN OP HACER
+		CASO '+':
+			RESULTADO <- SUMA(N1,N2)
+		CASO '-':
+			RESULTADO <- RESTA(N1,N2)
+		CASO '*':
+			RESULTADO <- MULTIPLICA(N1,N2)
+		CASO '/':
+			RESULTADO <- DIVIDE(N1,N2)
+		//CASO '^':RESULTADO <- POTENCIA(N1,N2)
+		De Otro Modo:ESCRIBIR  'ERROR: OPERACION NO VALIDA'
+	FinSegun
+	ESCRIBIR RESULTADO
+FinAlgoritmo

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo06</title>
+</head>
+<body>
+  <h1>Ejemplo06</h1>
+  <label onclick="cambio1(this)" 
+  onmouseenter="cambio2(this)" 
+  onmouseleave="cambio3(this)">Haga click para cambiar el color</label>
+  <!--Segunda forma de declarar JavaScript en el codigo-->
+  <script>
+    function cambio1(etiqueta){
+      etiqueta.style.color = 'green';
+      etiqueta.style.fontSize = '48px';
+    }
+    function cambio2 (etiqueta){
+      etiqueta.style.color = 'yellow';
+      etiqueta.style.fontSize = '8px';
+    }
+    function cambio3(etiqueta){
+      etiqueta.style.color = 'black';
+      etiqueta.style.fontSize = '';
+    }
+  </script>
+</body>
+</html>

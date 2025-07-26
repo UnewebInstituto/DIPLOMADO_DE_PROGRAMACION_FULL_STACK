@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo04 Canvas</title>
+    <link rel="stylesheet" href="./CSS/ejemplo04_canvas.css">
+</head>
+<body>
+    <h1>Ejemplo 04: Canvas</h1>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank">Referencia documentación Canvas</a>
+    <hr>
+    <a href="./ejemplo03.html">Regresar al menu</a>
+    <hr>
+    <button onclick="dibujar()">Ejecutar Canvas</button>
+    <hr>
+    <canvas id="lienzo"></canvas>
+    <script>
+        //Declaracion de variables
+        const canvas = document.getElementById('lienzo')
+        const ctx = canvas.getContext('2d')
+        const colores = ['yellow','blue','red','green','purple','orange'];
+        console.log(ctx);
+        function dibujar(){
+        let i = 0;
+        let x = 100;
+        let y = 100;
+        while (i < 6){
+            ctx.fillstyle = colores[i];
+            ctx.fillrect(x,y,100,100)
+            x = x + 100;
+            console.log(ctx.fillstyle);
+            ctx.fillrect
+            y = y + 100;
+            i = i + 1;
+        }
+            
+        }
+    </script>
+</body>
+</html>

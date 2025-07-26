@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ejemplo03</title>
+</head>
+<body>
+<h1>ejemplo03-formularios</h1>
+<form action="/procesar ejemplo03-formularios" method="get">
+  <table>
+<tr>
+<td>DNI</td>
+<td>
+<select name="documento" id="documento">
+<option value="V">V</option> 
+<option value="E">E</option>
+<option value="P">P</option>
+</select>
+<input type="text" name="numero" id="numero" required>
+
+</td>
+</tr>
+<tr>
+  <td>nombre</td>
+  <td>
+    <input type="text" name="nombre" id="nombre" required>
+  </td>
+</tr>
+<tr>
+  <td>apellido</td>
+  <td>
+    <input type="text" name="apellido" id="apellido" required>
+ </td>
+<tr>
+  <td>fecha de nacimiento</td>
+  <td>
+    <input type="date" name="fecha_de_nacimiento"id="fecha_de_nacimiento" required>
+  </td>
+</tr>
+<tr>
+  <td>sexo</td>
+  <td>
+    <input type="radio" name="sexo" id="sexo" value="F" checked> Femenino
+    <input type="radio" name="sexo" id="sexo" value="M" checked>Masculino
+  </td>
+</tr>
+<tr>
+  <td>correo electronico</td>
+  <td>
+    <input type="email" name="correo" id="correo" required>
+
+  </td>
+</tr>
+<tr>
+  <td>direccion</td>
+  <td><textarea name="direccion" id="direccion" rows="3" cols="30" required></textarea>
+  </td>
+</tr>
+<td>
+  <input type="submit" value="Enviar">
+  <input type="reset" value="Limpiar">
+</td>
+</tr>
+
+  </table>
+
+</form>
+
+
+  
+</body>
+</html>
+
+<!--
+TRANSMICION POR METODO POST
+FILE:file:///C:/procesar%20ejemplo03-formularios?documento=V&numero=516551&nombre=cristiano&apellido=ronaldo&fecha_de_nacimiento=1985-02-05&sexo=M&correo=ishbi%40gamil.com&direccion=rbgiwebig
+-->
+<!--
+
+-->

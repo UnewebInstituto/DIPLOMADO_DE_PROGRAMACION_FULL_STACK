@@ -1,0 +1,7 @@
+Estructura general de una aplicación:
+
+1) Declaración de librerías o módulos.
+2) Declaración de funciones.
+3) Declaración de variables.
+4) Declaración del cuerpo principal del programa. 
+

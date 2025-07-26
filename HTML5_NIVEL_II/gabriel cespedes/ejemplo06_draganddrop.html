@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="./css/ejemplo06_draganddrop.css">
+</head>
+
+<body>
+   <h1>Ejemplo06 Drag and drop</h1>
+   <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API" target="_blank">Referencia
+      documentación Drag and drop</a>
+   <br>
+   <a href="https://www.w3schools.com/html/html5_draganddrop.asp" target="_blank">Otra referencia</a>
+   <hr>
+   <a href="./ejemplo03.html">Regresar al menú</a>
+   <hr>
+   <div class="cajas" id="caja1"ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+      <img src="../img/linux.jfif" alt="" id="linux" draggable="true" ondragstart="dragstartHandler(event)">
+   </div>
+   <div class="cajas" id="caja2" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+  
+  <script src="./js/ejemplo06_draganddrop.js">
+      
+   </script>
+</body>
+
+</html>
+
+
+
+
+

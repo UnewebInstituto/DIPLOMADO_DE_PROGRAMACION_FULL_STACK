@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webworker</title>
+</head>
+
+<body>
+  <h1>Ejemplo07 Webworker</h1>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker" target="_blank">Referencia documentacion
+    Webworker</a>
+  <br>
+  <a href="https://www.w3schools.com/html/html5_webworkers.asp" target="_blank">Otra referencia</a>
+  <hr>
+  <a href="./ejemplo03.html">Regresar al menu</a>
+  <hr>
+  <label for="">Contador de números:</label>
+  <div id="cuenta"></div>
+  <div id="mensaje"></div>
+  <br>
+  <!--
+   <button id="btnInicio" onclick="disparo()">Iniciar trabajo</button>
+   -->
+  <button id="btnInicio" onclick="inicio()">Iniciar trabajo</button>
+  <button id="btnFin" onclick="fin()">Finalizar trabajo</button>
+  <script>
+    const x = document.getElementById('cuenta');
+    const msj = document.getElementById('mensaje');
+
+    function inicio() {
+      if (typeof (Worker) !== "undefined") {
+        msj.innerHTML = 'Exito. su navegador web, si soporta web worker';
+        if (typeof (w) == "undefined") {
+          w = new Worker("./js/webworker.js");
+        }
+        w.onmessage = function (event) {
+          console.warn('Data de contador recibida:', event.data);
+          x.innerHTML = event.data;
+        }
+      } else {
+        msj.innerHTML = 'Atencion. Navegador no soporta web ;worker';
+      }
+    }
+
+    function fin() {
+      w.terminate();
+      w = undefined;
+      msj.innerHTML = "webworker finalizado.";
+    }
+  </script>
+
+  <!---
+   <script src="./js/webworker.js"></script>
+   --->
+</body>
+
+</html>

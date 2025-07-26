@@ -1,0 +1,22 @@
+    *{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }	
+    p{
+      text-align: justify;
+      line-height: 1.5;
+    }
+    th,
+    td{
+      border-style: solid;
+      border-width: 1px;
+      text-align: justify;
+      color:cornflowerblue
+    }
+    img{
+      width: 200px;
+      height; 200px;
+      border-radius: 30%;
+      border style::solid;
+      border-width: 2px;
+      border-color: darkblue;
+    }

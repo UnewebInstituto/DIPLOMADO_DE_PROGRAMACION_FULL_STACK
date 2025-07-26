@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/icono.png" type="image/x-icon">
+    <title>Ejemplo 10</title>
+</head>
+<body>
+    <h1>Ejemplo 10</h1>
+    <table>
+        <tr>
+            <td>CEDULA</td>
+            <td>
+                <select name="documento" id="c_documento"></select>
+                <input type="number" name="numero" id="c_numero" required placeholder="12345678" min="100000" max="999999999">
+            </td>
+        </tr>
+        <tr>
+            <td>NOMBRE</td>
+            <td>
+                <input type="text" name="nombre" id="c_nombre" required placeholder="">
+            </td>
+        </tr>
+        <tr>
+        <td>APELLIDO</td>
+        <td>
+            <input type="text" name="apellid" id="c_apellido" required placeholder= "Apellido">
+        </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="ENVIAR">
+                <input type="reset" value="LIMPIAR">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
