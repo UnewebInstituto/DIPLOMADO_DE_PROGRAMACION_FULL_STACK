@@ -1,0 +1,1061 @@
+CONEXIÓN A LA BASE DE DATOS
+
+mysql -u root -p
+
+
+Setting environment for using XAMPP for Windows.
+Profesor@DESKTOP-391LD27 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use bd_henry_20250802
+Database changed
+MariaDB [bd_henry_20250802]> describe proveedores;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombre    | varchar(80) | YES  |     | NULL    |                |
+| direccion | text        | YES  |     | NULL    |                |
+| telefono  | varchar(30) | YES  |     | NULL    |                |
+| correo    | varchar(80) | YES  | UNI | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.008 sec)
+
+MariaDB [bd_henry_20250802]> describe productos;
++--------------+---------------+------+-----+---------+----------------+
+| Field        | Type          | Null | Key | Default | Extra          |
++--------------+---------------+------+-----+---------+----------------+
+| id           | int(11)       | NO   | PRI | NULL    | auto_increment |
+| proveedor_id | int(11)       | YES  | MUL | NULL    |                |
+| nombre       | varchar(80)   | YES  |     | NULL    |                |
+| precio       | decimal(13,2) | YES  |     | NULL    |                |
+| existencia   | int(11)       | YES  |     | NULL    |                |
++--------------+---------------+------+-----+---------+----------------+
+5 rows in set (0.004 sec)
+
+MariaDB [bd_henry_20250802]> SELECT proveedores.nombre,
+    ->        proveedores.telefono,
+    ->        productos.nombre,
+    ->        productos.precio,
+    ->        productos.existencia
+    ->        from proveedores, productos
+    ->        where productos.proveedor_id = proveedores.id;
++------------------+-----------------+------------+--------+------------+
+| nombre           | telefono        | nombre     | precio | existencia |
++------------------+-----------------+------------+--------+------------+
+| GENERAL ELECTRIC | +58 212 1234567 | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | +58 212 1234567 | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | +58 212 1234567 | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | +58 212 1234567 | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | +58 212 1234567 | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | +58 414 9876543 | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | +58 414 9876543 | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | +58 414 9876543 | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | +58 414 9876543 | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | +58 414 9876543 | SECADORA   | 750.00 |          8 |
+| LG               | +58 212 6543212 | FREIDORA   | 280.25 |          8 |
+| LG               | +58 212 6543212 | PARRILLERA | 200.50 |          6 |
+| LG               | +58 212 6543212 | LAVAPLATOS | 350.75 |          8 |
+| LG               | +58 212 6543212 | MICRONDAS  | 250.00 |         12 |
+| LG               | +58 212 6543212 | NEVERA     | 450.00 |          9 |
+| MABE             | +58 212 7654321 | LAVADORA   | 580.75 |         12 |
+| MABE             | +58 212 7654321 | AA         | 500.50 |          3 |
+| MABE             | +58 212 7654321 | SECADORA   | 650.75 |          4 |
+| MABE             | +58 212 7654321 | MICRONDAS  | 350.00 |          6 |
+| MABE             | +58 212 7654321 | NEVERA     | 350.75 |          4 |
++------------------+-----------------+------------+--------+------------+
+20 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]> SELECT A.nombre as proveedor,
+    ->        A.telefono,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A, productos as B
+    ->        where B.proveedor_id = A.id;
++------------------+-----------------+------------+--------+------------+
+| proveedor        | telefono        | producto   | precio | existencia |
++------------------+-----------------+------------+--------+------------+
+| GENERAL ELECTRIC | +58 212 1234567 | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | +58 212 1234567 | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | +58 212 1234567 | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | +58 212 1234567 | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | +58 212 1234567 | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | +58 414 9876543 | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | +58 414 9876543 | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | +58 414 9876543 | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | +58 414 9876543 | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | +58 414 9876543 | SECADORA   | 750.00 |          8 |
+| LG               | +58 212 6543212 | FREIDORA   | 280.25 |          8 |
+| LG               | +58 212 6543212 | PARRILLERA | 200.50 |          6 |
+| LG               | +58 212 6543212 | LAVAPLATOS | 350.75 |          8 |
+| LG               | +58 212 6543212 | MICRONDAS  | 250.00 |         12 |
+| LG               | +58 212 6543212 | NEVERA     | 450.00 |          9 |
+| MABE             | +58 212 7654321 | LAVADORA   | 580.75 |         12 |
+| MABE             | +58 212 7654321 | AA         | 500.50 |          3 |
+| MABE             | +58 212 7654321 | SECADORA   | 650.75 |          4 |
+| MABE             | +58 212 7654321 | MICRONDAS  | 350.00 |          6 |
+| MABE             | +58 212 7654321 | NEVERA     | 350.75 |          4 |
++------------------+-----------------+------------+--------+------------+
+20 rows in set (0.000 sec)
+
+MariaDB [bd_henry_20250802]> describe proveedores;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nombre    | varchar(80) | YES  |     | NULL    |                |
+| direccion | text        | YES  |     | NULL    |                |
+| telefono  | varchar(30) | YES  |     | NULL    |                |
+| correo    | varchar(80) | YES  | UNI | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.003 sec)
+
+MariaDB [bd_henry_20250802]> SELECT A.nombre as proveedor,
+    ->        A.direccion
+    ->        A.telefono,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A, productos as B
+    ->        where B.proveedor_id = A.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.telefono,
+       A.correo,
+       B.nombre as producto,
+       B.precio,
+   ...' at line 3
+MariaDB [bd_henry_20250802]> SELECT A.nombre as proveedor,
+    ->        A.direccion,
+    ->        A.telefono,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A, productos as B
+    ->        where B.proveedor_id = A.id;
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| proveedor        | direccion                | telefono        | correo            | producto   | precio | existencia |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | NEVERA     | 350.75 |          4 |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+20 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]> SELECT A.nombre as proveedor,
+    ->        A.direccion,
+    ->        A.telefono,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A, productos as B
+    ->        where B.proveedor_id = A.id;
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| proveedor        | direccion                | telefono        | correo            | producto   | precio | existencia |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | NEVERA     | 350.75 |          4 |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+20 rows in set (0.000 sec)
+
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]> create view vista_prov_prod as
+    -> SELECT A.nombre as proveedor,
+    ->        A.direccion,
+    ->        A.telefono,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A, productos as B
+    ->        where B.proveedor_id = A.id;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [bd_henry_20250802]> SHOW TABLES;
++-----------------------------+
+| Tables_in_bd_henry_20250802 |
++-----------------------------+
+| contactos                   |
+| personas                    |
+| productos                   |
+| productos1                  |
+| productos2                  |
+| proveedores                 |
+| proveedores1                |
+| proveedores2                |
+| vista_prov_prod             |
++-----------------------------+
+9 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]> select * from vista_prov_prod;
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| proveedor        | direccion                | telefono        | correo            | producto   | precio | existencia |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | NEVERA     | 350.75 |          4 |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+20 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        inner join productos as B
+    ->        on B.proveedor_id = A.id;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
++------------------+-------------------+------------+--------+------------+
+20 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]> insert into proveedores(id, nombre, direccion, telefono, correo) values
+    -> (null,'SONY','AV. VICTORIA','+58 212 4234567', 'info@sony.com'),
+    -> (null,'PHILIPS','AV. URDANETA','+58 414 5876543', 'info@philips.com'),
+    -> (null,'ZENITH','AV. NVA. GRANADA','+58 212 7543212', 'info@zenith.com');
+Query OK, 3 rows affected (0.002 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [bd_henry_20250802]> select * from proveedores;
++----+------------------+--------------------------+-----------------+-------------------+
+| id | nombre           | direccion                | telefono        | correo            |
++----+------------------+--------------------------+-----------------+-------------------+
+|  1 | GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       |
+|  2 | WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com |
+|  3 | LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       |
+|  4 | MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     |
+|  5 | SONY             | AV. VICTORIA             | +58 212 4234567 | info@sony.com     |
+|  6 | PHILIPS          | AV. URDANETA             | +58 414 5876543 | info@philips.com  |
+|  7 | ZENITH           | AV. NVA. GRANADA         | +58 212 7543212 | info@zenith.com   |
++----+------------------+--------------------------+-----------------+-------------------+
+7 rows in set (0.000 sec)
+
+MariaDB [bd_henry_20250802]> select * from vista_prov_prod;
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| proveedor        | direccion                | telefono        | correo            | producto   | precio | existencia |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     | NEVERA     | 350.75 |          4 |
++------------------+--------------------------+-----------------+-------------------+------------+--------+------------+
+20 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]> create view vista_prod_prod_inner_join as
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        inner join productos as B
+    ->        on B.proveedor_id = A.id;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [bd_henry_20250802]> drop view vista_prod_prod_inner_join;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [bd_henry_20250802]> create view vista_prov_prod_inner_join as
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        inner join productos as B
+    ->        on B.proveedor_id = A.id;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [bd_henry_20250802]> select * from vista_prov_prod_inner_join;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
++------------------+-------------------+------------+--------+------------+
+20 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        left join productos as B
+    ->        on B.proveedor_id = A.id;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
+| SONY             | info@sony.com     | NULL       |   NULL |       NULL |
+| PHILIPS          | info@philips.com  | NULL       |   NULL |       NULL |
+| ZENITH           | info@zenith.com   | NULL       |   NULL |       NULL |
++------------------+-------------------+------------+--------+------------+
+23 rows in set (0.000 sec)
+
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]> show tables
+    -> ;
++-----------------------------+
+| Tables_in_bd_henry_20250802 |
++-----------------------------+
+| contactos                   |
+| personas                    |
+| productos                   |
+| productos1                  |
+| productos2                  |
+| proveedores                 |
+| proveedores1                |
+| proveedores2                |
+| vista_prov_prod             |
+| vista_prov_prod_inner_join  |
++-----------------------------+
+10 rows in set (0.019 sec)
+
+MariaDB [bd_henry_20250802]> select * from proveedores2;
+Empty set (0.004 sec)
+
+MariaDB [bd_henry_20250802]> select * from productos2;
+Empty set (0.001 sec)
+
+MariaDB [bd_henry_20250802]> show create tables productos2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tables productos2' at line 1
+MariaDB [bd_henry_20250802]> show create table productos2;
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table      | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| productos2 | CREATE TABLE `productos2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `proveedor_id` int(11) DEFAULT NULL,
+  `nombre` varchar(80) DEFAULT NULL,
+  `precio` decimal(13,2) DEFAULT NULL,
+  `existencia` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proveedor_id` (`proveedor_id`),
+  CONSTRAINT `productos2_ibfk_1` FOREIGN KEY (`proveedor_id`) REFERENCES `proveedores2` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci |
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [bd_henry_20250802]> alter table productos2 drop constraint;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [bd_henry_20250802]> alter table productos2 drop constraint productos2_ibfk_1;
+Query OK, 0 rows affected (0.004 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [bd_henry_20250802]> insert into productos2(id, proveedor_id, nombre, precio, existencia)
+    -> values
+    -> (null,1,'LAVADORA',800.25,12),
+    -> (null,1,'NEVERA',700.50,6),
+    -> (null,1,'COCINA',300.75,8),
+    -> (null,1,'AA',450.00,9),
+    -> (null,1,'SECADORA',600.00,8),
+    -> (null,2,'LAVADORA',800.25,12),
+    -> (null,2,'CONGELADOR',300.50,3),
+    -> (null,2,'COCINA',290.75,4),
+    -> (null,2,'VENTILADOR',150.00,6),
+    -> (null,2,'SECADORA',750.00,8),
+    -> (null,3,'FREIDORA',280.25,8),
+    -> (null,3,'PARRILLERA',200.50,6),
+    -> (null,3,'LAVAPLATOS',350.75,8),
+    -> (null,3,'MICRONDAS',250.00,12),
+    -> (null,3,'NEVERA',450.00,9),
+    -> (null,4,'LAVADORA',580.75,12),
+    -> (null,4,'AA',500.50,3),
+    -> (null,4,'SECADORA',650.75,4),
+    -> (null,4,'MICRONDAS',350.00,6),
+    -> (null,4,'NEVERA',350.75,4),
+    -> (null,9,'LAVADORA',580.75,12),
+    -> (null,9,'AA',500.50,3),
+    -> (null,9,'SECADORA',650.75,4),
+    -> (null,9,'MICRONDAS',350.00,6),
+    -> (null,9,'NEVERA',350.75,4);
+Query OK, 25 rows affected (0.002 sec)
+Records: 25  Duplicates: 0  Warnings: 0
+
+MariaDB [bd_henry_20250802]> create view vista_prov_prod_left_join as
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        left join productos as B
+    ->        on B.proveedor_id = A.id;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [bd_henry_20250802]> select * from vista_prov_prod_left_join;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
+| SONY             | info@sony.com     | NULL       |   NULL |       NULL |
+| PHILIPS          | info@philips.com  | NULL       |   NULL |       NULL |
+| ZENITH           | info@zenith.com   | NULL       |   NULL |       NULL |
++------------------+-------------------+------------+--------+------------+
+23 rows in set (0.002 sec)
+
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]>
+MariaDB [bd_henry_20250802]> show databases like '%_20250802%';
++------------------------+
+| Database (%_20250802%) |
++------------------------+
+| bd_andy_20250802       |
+| bd_gabriel_20250802    |
+| bd_henry_20250802      |
+| bd_jesus_20250802      |
+| bd_yisber_20250802     |
++------------------------+
+5 rows in set (0.001 sec)
+
+MariaDB [bd_henry_20250802]> use bd_yisber_20250202
+ERROR 1049 (42000): Unknown database 'bd_yisber_20250202'
+MariaDB [bd_henry_20250802]> use bd_yisber_20250802
+Database changed
+MariaDB [bd_yisber_20250802]> show tables;
++------------------------------+
+| Tables_in_bd_yisber_20250802 |
++------------------------------+
+| contactos                    |
+| personas                     |
+| productos                    |
+| productos1                   |
+| productos2                   |
+| proveedores                  |
+| proveedores1                 |
+| proveedores2                 |
+| vista_prov_prod              |
+| vista_prov_prod_inner_join   |
+| vista_prov_prod_letf_join    |
++------------------------------+
+11 rows in set (0.001 sec)
+
+MariaDB [bd_yisber_20250802]> show create table productos2;
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table      | Create Table                                                                                                                                                                                                                                                                                                                                                                 |
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| productos2 | CREATE TABLE `productos2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `proveedor_id` int(11) DEFAULT NULL,
+  `nombre` varchar(80) DEFAULT NULL,
+  `precio` decimal(13,2) DEFAULT NULL,
+  `existencia` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proveedor_id` (`proveedor_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci |
++------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [bd_yisber_20250802]> select * from productos;
++----+--------------+------------+--------+------------+
+| id | proveedor_id | nombre     | precio | existencia |
++----+--------------+------------+--------+------------+
+|  1 |            1 | LAVADORA   | 800.25 |         12 |
+|  2 |            1 | NEVERA     | 700.50 |          6 |
+|  3 |            1 | COCINA     | 300.75 |          8 |
+|  4 |            1 | AA         | 450.00 |          9 |
+|  5 |            1 | SECADORA   | 600.00 |          8 |
+|  6 |            2 | LAVADORA   | 800.25 |         12 |
+|  7 |            2 | CONGELADOR | 300.50 |          3 |
+|  8 |            2 | COCINA     | 290.75 |          4 |
+|  9 |            2 | VENTILADOR | 150.00 |          6 |
+| 10 |            2 | SECADORA   | 750.00 |          8 |
+| 11 |            3 | FREIDORA   | 280.25 |          8 |
+| 12 |            3 | PARRILLERA | 200.50 |          6 |
+| 13 |            3 | LAVAPLATOS | 350.75 |          8 |
+| 14 |            3 | MICRONDAS  | 250.00 |         12 |
+| 15 |            3 | NEVERA     | 450.00 |          9 |
+| 16 |            4 | LAVADORA   | 580.75 |         12 |
+| 17 |            4 | AA         | 500.50 |          3 |
+| 18 |            4 | SECADORA   | 650.75 |          4 |
+| 19 |            4 | MICRONDAS  | 350.00 |          6 |
+| 20 |            4 | NEVERA     | 350.75 |          4 |
++----+--------------+------------+--------+------------+
+20 rows in set (0.000 sec)
+
+MariaDB [bd_yisber_20250802]> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        right join productos as B
+    ->        on B.proveedor_id = A.id;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| MABE             | info@mabe.com     | FREIDORA   | 280.25 |          8 |
+| MABE             | info@mabe.com     | PARRILLERA | 200.50 |          6 |
+| MABE             | info@mabe.com     | LAVAPLATOS | 350.75 |          8 |
+| MABE             | info@mabe.com     | MICRONDAS  | 250.00 |         12 |
+| MABE             | info@mabe.com     | NEVERA     | 450.00 |          9 |
+| LG               | info@lg.com       | LAVADORA   | 580.75 |         12 |
+| LG               | info@lg.com       | AA         | 500.50 |          3 |
+| LG               | info@lg.com       | SECADORA   | 650.75 |          4 |
+| LG               | info@lg.com       | MICRONDAS  | 350.00 |          6 |
+| LG               | info@lg.com       | NEVERA     | 350.75 |          4 |
++------------------+-------------------+------------+--------+------------+
+20 rows in set (0.001 sec)
+
+MariaDB [bd_yisber_20250802]> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores2 as A
+    ->        right join productos2 as B
+    ->        on B.proveedor_id = A.id;
++-----------+--------+------------+--------+------------+
+| proveedor | correo | producto   | precio | existencia |
++-----------+--------+------------+--------+------------+
+| NULL      | NULL   | LAVADORA   | 800.25 |         12 |
+| NULL      | NULL   | NEVERA     | 700.50 |          6 |
+| NULL      | NULL   | COCINA     | 300.75 |          8 |
+| NULL      | NULL   | AA         | 450.00 |          9 |
+| NULL      | NULL   | SECADORA   | 600.00 |          8 |
+| NULL      | NULL   | LAVADORA   | 800.25 |         12 |
+| NULL      | NULL   | CONGELADOR | 300.50 |          3 |
+| NULL      | NULL   | COCINA     | 290.75 |          4 |
+| NULL      | NULL   | VENTILADOR | 150.00 |          6 |
+| NULL      | NULL   | SECADORA   | 750.00 |          8 |
+| NULL      | NULL   | FREIDORA   | 280.25 |          8 |
+| NULL      | NULL   | PARRILLERA | 200.50 |          6 |
+| NULL      | NULL   | LAVAPLATOS | 350.75 |          8 |
+| NULL      | NULL   | MICRONDAS  | 250.00 |         12 |
+| NULL      | NULL   | NEVERA     | 450.00 |          9 |
+| NULL      | NULL   | LAVADORA   | 580.75 |         12 |
+| NULL      | NULL   | AA         | 500.50 |          3 |
+| NULL      | NULL   | SECADORA   | 650.75 |          4 |
+| NULL      | NULL   | MICRONDAS  | 350.00 |          6 |
+| NULL      | NULL   | NEVERA     | 350.75 |          4 |
+| NULL      | NULL   | LAVADORA   | 580.75 |         12 |
+| NULL      | NULL   | AA         | 500.50 |          3 |
+| NULL      | NULL   | SECADORA   | 650.75 |          4 |
+| NULL      | NULL   | MICRONDAS  | 350.00 |          6 |
+| NULL      | NULL   | NEVERA     | 350.75 |          4 |
++-----------+--------+------------+--------+------------+
+25 rows in set (0.002 sec)
+
+MariaDB [bd_yisber_20250802]> select * from proveedores2;
+Empty set (0.001 sec)
+
+MariaDB [bd_yisber_20250802]> select * from productos2;;
++----+--------------+------------+--------+------------+
+| id | proveedor_id | nombre     | precio | existencia |
++----+--------------+------------+--------+------------+
+|  1 |            1 | LAVADORA   | 800.25 |         12 |
+|  2 |            1 | NEVERA     | 700.50 |          6 |
+|  3 |            1 | COCINA     | 300.75 |          8 |
+|  4 |            1 | AA         | 450.00 |          9 |
+|  5 |            1 | SECADORA   | 600.00 |          8 |
+|  6 |            2 | LAVADORA   | 800.25 |         12 |
+|  7 |            2 | CONGELADOR | 300.50 |          3 |
+|  8 |            2 | COCINA     | 290.75 |          4 |
+|  9 |            2 | VENTILADOR | 150.00 |          6 |
+| 10 |            2 | SECADORA   | 750.00 |          8 |
+| 11 |            3 | FREIDORA   | 280.25 |          8 |
+| 12 |            3 | PARRILLERA | 200.50 |          6 |
+| 13 |            3 | LAVAPLATOS | 350.75 |          8 |
+| 14 |            3 | MICRONDAS  | 250.00 |         12 |
+| 15 |            3 | NEVERA     | 450.00 |          9 |
+| 16 |            4 | LAVADORA   | 580.75 |         12 |
+| 17 |            4 | AA         | 500.50 |          3 |
+| 18 |            4 | SECADORA   | 650.75 |          4 |
+| 19 |            4 | MICRONDAS  | 350.00 |          6 |
+| 20 |            4 | NEVERA     | 350.75 |          4 |
+| 21 |            9 | LAVADORA   | 580.75 |         12 |
+| 22 |            9 | AA         | 500.50 |          3 |
+| 23 |            9 | SECADORA   | 650.75 |          4 |
+| 24 |            9 | MICRONDAS  | 350.00 |          6 |
+| 25 |            9 | NEVERA     | 350.75 |          4 |
++----+--------------+------------+--------+------------+
+25 rows in set (0.000 sec)
+
+ERROR: No query specified
+
+MariaDB [bd_yisber_20250802]>
+MariaDB [bd_yisber_20250802]> insert into proveedores2(id, nombre, direccion, telefono, correo) values
+    -> (null,'GENERAL ELECTRIC','AV. BARALT','+58 212 1234567', 'info@ge.com'),
+    -> (null,'WHIRPOOL','AV. SAN MARTIN','+58 414 9876543', 'info@whirpool.com'),
+    -> (null,'LG','AV. ROMULO GALLEGOS','+58 212 6543212', 'info@lg.com'),
+    -> (null,'MABE','AV. FRANCISCO DE MIRANDA','+58 212 7654321', 'info@mabe.com'),
+    -> (null,'SONY','AV. VICTORIA','+58 212 4234567', 'info@sony.com'),
+    -> (null,'PHILIPS','AV. URDANETA','+58 414 5876543', 'info@philips.com'),
+    -> (null,'ZENITH','AV. NVA. GRANADA','+58 212 7543212', 'info@zenith.com');
+Query OK, 7 rows affected (0.002 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+MariaDB [bd_yisber_20250802]> select * from proveedores2;
++----+------------------+--------------------------+-----------------+-------------------+
+| id | nombre           | direccion                | telefono        | correo            |
++----+------------------+--------------------------+-----------------+-------------------+
+|  1 | GENERAL ELECTRIC | AV. BARALT               | +58 212 1234567 | info@ge.com       |
+|  2 | WHIRPOOL         | AV. SAN MARTIN           | +58 414 9876543 | info@whirpool.com |
+|  3 | LG               | AV. ROMULO GALLEGOS      | +58 212 6543212 | info@lg.com       |
+|  4 | MABE             | AV. FRANCISCO DE MIRANDA | +58 212 7654321 | info@mabe.com     |
+|  5 | SONY             | AV. VICTORIA             | +58 212 4234567 | info@sony.com     |
+|  6 | PHILIPS          | AV. URDANETA             | +58 414 5876543 | info@philips.com  |
+|  7 | ZENITH           | AV. NVA. GRANADA         | +58 212 7543212 | info@zenith.com   |
++----+------------------+--------------------------+-----------------+-------------------+
+7 rows in set (0.000 sec)
+
+MariaDB [bd_yisber_20250802]> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores2 as A
+    ->        right join productos2 as B
+    ->        on B.proveedor_id = A.id;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
+| NULL             | NULL              | LAVADORA   | 580.75 |         12 |
+| NULL             | NULL              | AA         | 500.50 |          3 |
+| NULL             | NULL              | SECADORA   | 650.75 |          4 |
+| NULL             | NULL              | MICRONDAS  | 350.00 |          6 |
+| NULL             | NULL              | NEVERA     | 350.75 |          4 |
++------------------+-------------------+------------+--------+------------+
+25 rows in set (0.000 sec)
+
+MariaDB [bd_yisber_20250802]> create view vista_prov_prod_right_join as
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores2 as A
+    ->        right join productos2 as B
+    ->        on B.proveedor_id = A.id;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [bd_yisber_20250802]> select * from vista_prov_prod_right_join;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
+| NULL             | NULL              | LAVADORA   | 580.75 |         12 |
+| NULL             | NULL              | AA         | 500.50 |          3 |
+| NULL             | NULL              | SECADORA   | 650.75 |          4 |
+| NULL             | NULL              | MICRONDAS  | 350.00 |          6 |
+| NULL             | NULL              | NEVERA     | 350.75 |          4 |
++------------------+-------------------+------------+--------+------------+
+25 rows in set (0.001 sec)
+
+MariaDB [bd_yisber_20250802]> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        left join productos as B
+    ->        on B.proveedor_id = A.id;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| MABE             | info@mabe.com     | FREIDORA   | 280.25 |          8 |
+| MABE             | info@mabe.com     | PARRILLERA | 200.50 |          6 |
+| MABE             | info@mabe.com     | LAVAPLATOS | 350.75 |          8 |
+| MABE             | info@mabe.com     | MICRONDAS  | 250.00 |         12 |
+| MABE             | info@mabe.com     | NEVERA     | 450.00 |          9 |
+| LG               | info@lg.com       | LAVADORA   | 580.75 |         12 |
+| LG               | info@lg.com       | AA         | 500.50 |          3 |
+| LG               | info@lg.com       | SECADORA   | 650.75 |          4 |
+| LG               | info@lg.com       | MICRONDAS  | 350.00 |          6 |
+| LG               | info@lg.com       | NEVERA     | 350.75 |          4 |
+|  SONIC           | info@sonic.com    | NULL       |   NULL |       NULL |
+| PHILPHS          | info@philiphs.com | NULL       |   NULL |       NULL |
+| ZENITH           | info@zenith.com   | NULL       |   NULL |       NULL |
++------------------+-------------------+------------+--------+------------+
+23 rows in set (0.001 sec)
+
+MariaDB [bd_yisber_20250802]> UNION
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores2 as A
+    ->        right join productos2 as B
+    ->        on B.proveedor_id = A.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UNION
+SELECT A.nombre as proveedor,
+       A.correo,
+       B.nombre as produ...' at line 1
+MariaDB [bd_yisber_20250802]> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        left join productos as B
+    ->        on B.proveedor_id = A.id
+    -> UNION
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores2 as A
+    ->        right join productos2 as B
+    ->        on B.proveedor_id = A.id;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| MABE             | info@mabe.com     | FREIDORA   | 280.25 |          8 |
+| MABE             | info@mabe.com     | PARRILLERA | 200.50 |          6 |
+| MABE             | info@mabe.com     | LAVAPLATOS | 350.75 |          8 |
+| MABE             | info@mabe.com     | MICRONDAS  | 250.00 |         12 |
+| MABE             | info@mabe.com     | NEVERA     | 450.00 |          9 |
+| LG               | info@lg.com       | LAVADORA   | 580.75 |         12 |
+| LG               | info@lg.com       | AA         | 500.50 |          3 |
+| LG               | info@lg.com       | SECADORA   | 650.75 |          4 |
+| LG               | info@lg.com       | MICRONDAS  | 350.00 |          6 |
+| LG               | info@lg.com       | NEVERA     | 350.75 |          4 |
+|  SONIC           | info@sonic.com    | NULL       |   NULL |       NULL |
+| PHILPHS          | info@philiphs.com | NULL       |   NULL |       NULL |
+| ZENITH           | info@zenith.com   | NULL       |   NULL |       NULL |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
+| NULL             | NULL              | LAVADORA   | 580.75 |         12 |
+| NULL             | NULL              | AA         | 500.50 |          3 |
+| NULL             | NULL              | SECADORA   | 650.75 |          4 |
+| NULL             | NULL              | MICRONDAS  | 350.00 |          6 |
+| NULL             | NULL              | NEVERA     | 350.75 |          4 |
++------------------+-------------------+------------+--------+------------+
+38 rows in set (0.001 sec)
+
+MariaDB [bd_yisber_20250802]> create view vista_prov_prod_full_join as
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores as A
+    ->        left join productos as B
+    ->        on B.proveedor_id = A.id
+    -> UNION
+    -> SELECT A.nombre as proveedor,
+    ->        A.correo,
+    ->        B.nombre as producto,
+    ->        B.precio,
+    ->        B.existencia
+    ->        from proveedores2 as A
+    ->        right join productos2 as B
+    ->        on B.proveedor_id = A.id;
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [bd_yisber_20250802]> select * from vista_prov_prod_full_join;
++------------------+-------------------+------------+--------+------------+
+| proveedor        | correo            | producto   | precio | existencia |
++------------------+-------------------+------------+--------+------------+
+| GENERAL ELECTRIC | info@ge.com       | LAVADORA   | 800.25 |         12 |
+| GENERAL ELECTRIC | info@ge.com       | NEVERA     | 700.50 |          6 |
+| GENERAL ELECTRIC | info@ge.com       | COCINA     | 300.75 |          8 |
+| GENERAL ELECTRIC | info@ge.com       | AA         | 450.00 |          9 |
+| GENERAL ELECTRIC | info@ge.com       | SECADORA   | 600.00 |          8 |
+| WHIRPOOL         | info@whirpool.com | LAVADORA   | 800.25 |         12 |
+| WHIRPOOL         | info@whirpool.com | CONGELADOR | 300.50 |          3 |
+| WHIRPOOL         | info@whirpool.com | COCINA     | 290.75 |          4 |
+| WHIRPOOL         | info@whirpool.com | VENTILADOR | 150.00 |          6 |
+| WHIRPOOL         | info@whirpool.com | SECADORA   | 750.00 |          8 |
+| MABE             | info@mabe.com     | FREIDORA   | 280.25 |          8 |
+| MABE             | info@mabe.com     | PARRILLERA | 200.50 |          6 |
+| MABE             | info@mabe.com     | LAVAPLATOS | 350.75 |          8 |
+| MABE             | info@mabe.com     | MICRONDAS  | 250.00 |         12 |
+| MABE             | info@mabe.com     | NEVERA     | 450.00 |          9 |
+| LG               | info@lg.com       | LAVADORA   | 580.75 |         12 |
+| LG               | info@lg.com       | AA         | 500.50 |          3 |
+| LG               | info@lg.com       | SECADORA   | 650.75 |          4 |
+| LG               | info@lg.com       | MICRONDAS  | 350.00 |          6 |
+| LG               | info@lg.com       | NEVERA     | 350.75 |          4 |
+|  SONIC           | info@sonic.com    | NULL       |   NULL |       NULL |
+| PHILPHS          | info@philiphs.com | NULL       |   NULL |       NULL |
+| ZENITH           | info@zenith.com   | NULL       |   NULL |       NULL |
+| LG               | info@lg.com       | FREIDORA   | 280.25 |          8 |
+| LG               | info@lg.com       | PARRILLERA | 200.50 |          6 |
+| LG               | info@lg.com       | LAVAPLATOS | 350.75 |          8 |
+| LG               | info@lg.com       | MICRONDAS  | 250.00 |         12 |
+| LG               | info@lg.com       | NEVERA     | 450.00 |          9 |
+| MABE             | info@mabe.com     | LAVADORA   | 580.75 |         12 |
+| MABE             | info@mabe.com     | AA         | 500.50 |          3 |
+| MABE             | info@mabe.com     | SECADORA   | 650.75 |          4 |
+| MABE             | info@mabe.com     | MICRONDAS  | 350.00 |          6 |
+| MABE             | info@mabe.com     | NEVERA     | 350.75 |          4 |
+| NULL             | NULL              | LAVADORA   | 580.75 |         12 |
+| NULL             | NULL              | AA         | 500.50 |          3 |
+| NULL             | NULL              | SECADORA   | 650.75 |          4 |
+| NULL             | NULL              | MICRONDAS  | 350.00 |          6 |
+| NULL             | NULL              | NEVERA     | 350.75 |          4 |
++------------------+-------------------+------------+--------+------------+
+38 rows in set (0.001 sec)
+
+MariaDB [bd_yisber_20250802]>
