@@ -1,0 +1,5 @@
+Desde el panel de control de XAMPP, debe encontrarse en 
+ejecución APACHE y MYSQL. Es decir hay que dar start a 
+ambos.
+
+http://localhost/phpmyadmin/
