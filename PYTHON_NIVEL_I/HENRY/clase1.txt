@@ -1,0 +1,299 @@
+jesusmejias2000@gmail.com;
+duarteandy421@gmail.com;
+gabocespsa@gmail.com;
+yyrodriguezd11@gmail.com;
+morenodaniela2403@gmail.com;
+alejandrovilla2912@gmail.com;
+
+Consulta versión instalada de Python
+
+python --version
+
+INTERACCIÓN CON EL IDLE
+
+2+2
+4
+print("ESTO ES UNA PRUEBA")
+ESTO ES UNA PRUEBA
+contenido = "Esto es el contenido"
+contenido
+'Esto es el contenido'
+contenido.upper()
+'ESTO ES EL CONTENIDO'
+nombre = "ANA"
+edad = 20
+estatura = 1.60
+estudiante = True
+type(nombre)
+<class 'str'>
+type(edad)
+<class 'int'>
+type(estatura)
+<class 'float'>
+type(estudiante)
+<class 'bool'>
+estudiante = False
+# Entrada de datos
+print("INGRESE EL NOMBRE:")
+INGRESE EL NOMBRE:
+nombre = input()
+LAURA
+nombre
+'LAURA'
+edad = input("EDAD:")
+EDAD:26
+edad
+'26'
+eval(edad)
+26
+type(eval(edad))
+<class 'int'>
+int(edad)
+26
+float(edad)
+26.0
+nombre.center(80,'*')
+'*************************************LAURA**************************************'
+nombre
+'LAURA'
+
+
+1)DECLARACIÓN DE VARIABLES
+2)ESTRUCTURAS DE CONTROL
+    2-1)CONDICIONALES
+    2-2)REPETITIVAS
+
+# ESTRUCTURAS DE CONTROL CONDICIONALES
+estudiante
+False
+if estudiante:
+    print(nombre, " es estudiante")
+
+    
+estudiante = True
+if estudiante:
+    print(nombre, " es estudiante")
+
+    
+LAURA  es estudiante
+if estudiante:
+    print(nombre, "es estudiante")
+else:
+    print(nombre, "no es estudiante")
+
+    
+LAURA es estudiante
+estudiante = False
+
+if estudiante:
+    print(nombre, "es estudiante")
+else:
+    print(nombre, "no es estudiante")
+
+    
+LAURA no es estudiante
+lenguaje = "PY"
+if lenguaje = "JS":
+    
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
+if lenguaje == "JS":
+    print("JAVASCRIPT")
+elif lenguaje == "PHP":
+    print("PREPROCESSOR HYPERTEXT")
+else:
+    print("PYTHON")
+
+    
+PYTHON
+lenguaje = "JS"
+if lenguaje == "JS":
+    print("JAVASCRIPT")
+elif lenguaje == "PHP":
+    print("PREPROCESSOR HYPERTEXT")
+else:
+    print("PYTHON")
+
+    
+JAVASCRIPT
+
+# ESTRUCTURAS DE CONTROL REPETITIVAS
+i = 0
+while i < 5:
+    print(i)
+    i = i + 1
+
+    
+0
+1
+2
+3
+4
+range(5)
+range(0, 5)
+range(0,5)
+range(0, 5)
+for i in range(5):
+    print(i)
+
+    
+0
+1
+2
+3
+4
+edad = input('EDAD:')
+EDAD:A
+edad = int(input('EDAD:'))
+EDAD:A
+Traceback (most recent call last):
+  File "<pyshell#67>", line 1, in <module>
+    edad = int(input('EDAD:'))
+ValueError: invalid literal for int() with base 10: 'A'
+try:
+    edad = int(input('EDAD:'))
+except ValueError:
+    print("ERROR: Se espera que se ingrese un número:")
+
+    
+EDAD:A
+ERROR: Se espera que se ingrese un número:
+while True:
+    try:
+        edad = int(input('EDAD:'))
+        break
+    except ValueError:
+        print("ERROR: Se espera que se ingrese un número")
+    finally:
+        print("Atención: Se ha ingresado la edad")
+
+        
+EDAD:a
+ERROR: Se espera que se ingrese un número
+Atención: Se ha ingresado la edad
+EDAD:26
+Atención: Se ha ingresado la edad
+
+
+#REBANADO DE TEXTO
+nombre = "SUSANA"
+nombre[0]
+'S'
+nombre[0:3]
+'SUS'
+nombre[3:]
+'ANA'
+nombre[-1]
+'A'
+nombre[-2]
+'N'
+for letra in nombre:
+    print(letra)
+
+    
+S
+U
+S
+A
+N
+A
+i = 0
+while i < len(nombre):
+    print(nombre[i])
+    i += 1 # Es equivalente a i = i + 1
+
+    
+S
+U
+S
+A
+N
+A
+
+# ESTRUCTURAS DE DATOS EN PYTHON
+#LISTAS
+# Declaración de una lista vacía
+alumnos = []
+type(alumnos)
+<class 'list'>
+materias = list()
+type(materias)
+<class 'list'>
+len(alumnos)
+0
+alumnos = ["YISBER","DANIELA","ALEJANDRO"]
+alumnos
+['YISBER', 'DANIELA', 'ALEJANDRO']
+alumnos.append("ANDY")
+alumnos
+['YISBER', 'DANIELA', 'ALEJANDRO', 'ANDY']
+alumnos.append("JESUS")
+alumnos.append("GABRIEL")
+alumnos
+['YISBER', 'DANIELA', 'ALEJANDRO', 'ANDY', 'JESUS', 'GABRIEL']
+#Recorrido de una lista
+for alumno in alumnos:
+    print(alumno)
+
+    
+YISBER
+DANIELA
+ALEJANDRO
+ANDY
+JESUS
+GABRIEL
+i = 0
+while i < len(alumnos):
+    print(alumnos[i])
+    i += 1
+
+    
+YISBER
+DANIELA
+ALEJANDRO
+ANDY
+JESUS
+GABRIEL
+alumnos.sort()
+alumnos
+['ALEJANDRO', 'ANDY', 'DANIELA', 'GABRIEL', 'JESUS', 'YISBER']
+alumnos.reverse()
+alumnos
+['YISBER', 'JESUS', 'GABRIEL', 'DANIELA', 'ANDY', 'ALEJANDRO']
+alumnos.extend(['ANA','NELLY'])
+alumnos
+['YISBER', 'JESUS', 'GABRIEL', 'DANIELA', 'ANDY', 'ALEJANDRO', 'ANA', 'NELLY']
+alumnos.insert(3,'SUSANA')
+alumnos
+['YISBER', 'JESUS', 'GABRIEL', 'SUSANA', 'DANIELA', 'ANDY', 'ALEJANDRO', 'ANA', 'NELLY']
+alumnos.count('ANA')
+1
+alumnos.extend(['ANA','NELLY'])
+alumnos.count('ANA')
+2
+alumnos
+['YISBER', 'JESUS', 'GABRIEL', 'SUSANA', 'DANIELA', 'ANDY', 'ALEJANDRO', 'ANA', 'NELLY', 'ANA', 'NELLY']
+alumnos.index('SUSANA')
+3
+alumnos_copia = alumnos.copy()
+alumnos_copia
+['YISBER', 'JESUS', 'GABRIEL', 'SUSANA', 'DANIELA', 'ANDY', 'ALEJANDRO', 'ANA', 'NELLY', 'ANA', 'NELLY']
+alumnos.pop()
+'NELLY'
+alumnos
+['YISBER', 'JESUS', 'GABRIEL', 'SUSANA', 'DANIELA', 'ANDY', 'ALEJANDRO', 'ANA', 'NELLY', 'ANA']
+alumnos.remove('ANA')
+alumnos
+['YISBER', 'JESUS', 'GABRIEL', 'SUSANA', 'DANIELA', 'ANDY', 'ALEJANDRO', 'NELLY', 'ANA']
+alumnos.remove('ANA')
+alumnos
+['YISBER', 'JESUS', 'GABRIEL', 'SUSANA', 'DANIELA', 'ANDY', 'ALEJANDRO', 'NELLY']
+alumnos.clear()
+alumnos
+[]
+del(alumnos)
+alumnos
+Traceback (most recent call last):
+  File "<pyshell#141>", line 1, in <module>
+    alumnos
+NameError: name 'alumnos' is not defined. Did you mean: 'alumno'?
+
