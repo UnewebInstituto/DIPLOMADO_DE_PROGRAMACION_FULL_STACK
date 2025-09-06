@@ -297,3 +297,5 @@ Traceback (most recent call last):
     alumnos
 NameError: name 'alumnos' is not defined. Did you mean: 'alumno'?
 
+python -m idlelib
+

@@ -1,0 +1,700 @@
+En Python, no existe una estructura de control `switch` como la que se encuentra en otros lenguajes de programación como C++, Java o JavaScript. En su lugar, puedes lograr una funcionalidad similar utilizando una de las siguientes alternativas, dependiendo del caso de uso.
+
+## Uso de `if/elif/else`
+
+La forma más común y directa de replicar la funcionalidad de un `switch` es usando una cadena de sentencias `if`, `elif` y `else`. Esta estructura evalúa una condición tras otra hasta encontrar la que es verdadera.
+
+```python
+def dia_de_la_semana(dia):
+    if dia == 1:
+        return "Lunes"
+    elif dia == 2:
+        return "Martes"
+    elif dia == 3:
+        return "Miércoles"
+    elif dia == 4:
+        return "Jueves"
+    elif dia == 5:
+        return "Viernes"
+    elif dia == 6:
+        return "Sábado"
+    elif dia == 7:
+        return "Domingo"
+    else:
+        return "Número de día no válido"
+
+print(dia_de_la_semana(3))
+# Salida: Miércoles
+```
+
+-----
+
+## Uso de diccionarios
+
+Una alternativa más elegante y eficiente para **casos de igualdad** es utilizar un diccionario para mapear los valores de entrada a sus respectivas acciones o valores de salida. Esta es la opción más recomendada cuando la lógica es simple y se basa en una asignación directa.
+
+```python
+def dia_de_la_semana_dict(dia):
+    switcher = {
+        1: "Lunes",
+        2: "Martes",
+        3: "Miércoles",
+        4: "Jueves",
+        5: "Viernes",
+        6: "Sábado",
+        7: "Domingo"
+    }
+    return switcher.get(dia, "Número de día no válido")
+
+print(dia_de_la_semana_dict(5))
+# Salida: Viernes
+```
+
+En este ejemplo, el método `.get()` del diccionario es crucial: busca la clave (`dia`) y si la encuentra, devuelve el valor asociado. Si no la encuentra, devuelve el segundo argumento, que actúa como el equivalente al `default` del `switch`.
+
+Para **ejecutar funciones** según la clave, puedes almacenar funciones como valores del diccionario:
+
+```python
+def accion_lunes():
+    return "¡Es lunes, a empezar la semana!"
+
+def accion_sabado():
+    return "¡Es sábado, a descansar!"
+
+def accion_por_defecto():
+    return "Día no reconocido."
+
+def ejecutar_accion(dia_numero):
+    acciones = {
+        1: accion_lunes,
+        6: accion_sabado
+    }
+    accion = acciones.get(dia_numero, accion_por_defecto)
+    return accion()
+
+print(ejecutar_accion(1))
+# Salida: ¡Es lunes, a empezar la semana!
+print(ejecutar_accion(3))
+# Salida: Día no reconocido.
+```
+
+Esta técnica mejora la legibilidad y la eficiencia, especialmente cuando hay muchos casos, ya que el acceso a un diccionario es mucho más rápido que evaluar múltiples condiciones `if/elif`.
+
+-----
+
+## Uso de `match/case` (Python 3.10+)
+
+A partir de la versión **Python 3.10**, se introdujo la declaración `match/case`, que es la alternativa más directa y moderna a la estructura `switch`. Es la forma preferida de implementar un `switch` en versiones de Python 3.10 o superiores.
+
+```python
+def dia_de_la_semana_match(dia):
+    match dia:
+        case 1:
+            return "Lunes"
+        case 2:
+            return "Martes"
+        case 3:
+            return "Miércoles"
+        case 4:
+            return "Jueves"
+        case 5:
+            return "Viernes"
+        case 6:
+            return "Sábado"
+        case 7:
+            return "Domingo"
+        case _:
+            return "Número de día no válido"
+
+print(dia_de_la_semana_match(4))
+# Salida: Jueves
+```
+
+El `case _` actúa como el caso predeterminado o `default`, capturando cualquier valor que no coincida con los casos anteriores. `match/case` es más poderoso que un simple `switch`, ya que permite la desestructuración, la coincidencia de patrones y la adición de condiciones (`if`) dentro de los casos. 🚀
+
+--ACTIVACIÓN DEL ENTORNO VIRTUAL
+cd python_nivel_i
+cd henry
+-- Desde nuestro directorio, ejecutar inicio.bat
+-- Ejecutar el comando 
+python -m idlelib
+
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Enter "help" below or click "Help" above for more information.
+alumnos = (,)
+SyntaxError: invalid syntax
+alumnos = ('',)
+type(alumnos)
+<class 'tuple'>
+alumnos.add('HENRY')
+Traceback (most recent call last):
+  File "<pyshell#3>", line 1, in <module>
+    alumnos.add('HENRY')
+AttributeError: 'tuple' object has no attribute 'add'
+del alumnos
+alumnos=('ANDY','JESUS','GABRIEL','DANIELA','ALEJADRO')
+type(alumnos)
+<class 'tuple'>
+alumnos('ANDY')
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    alumnos('ANDY')
+TypeError: 'tuple' object is not callable
+alumnos.index('ANDY')
+0
+alumnos.index('GABRIEL')
+2
+alumnos.count('DANIELA')
+1
+alumnos.count('ALEJANDRO')
+0
+alumnos=('ANDY','JESUS','GABRIEL','DANIELA','ALEJANDRO')
+alumnos.count('ALEJANDRO')
+1
+alumnos[0]
+'ANDY'
+alumnos[-1]
+'ALEJANDRO'
+alumnos[-1] = 'ANA'
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    alumnos[-1] = 'ANA'
+TypeError: 'tuple' object does not support item assignment
+
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Enter "help" below or click "Help" above for more information.
+alumnos = ('ANDY','JESUS','GABRIEL','DANIELA','YISBER','ALEJANDRO')
+type(alumnos)
+<class 'tuple'>
+alumnos[0]='ANA'
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    alumnos[0]='ANA'
+TypeError: 'tuple' object does not support item assignment
+del alumnos
+type(alumnos)
+Traceback (most recent call last):
+  File "<pyshell#4>", line 1, in <module>
+    type(alumnos)
+NameError: name 'alumnos' is not defined
+alumnos_tuple = ('ANDY','JESUS','GABRIEL','DANIELA','YISBER','ALEJANDRO')
+alumnos_list = ['ANDY','JESUS','GABRIEL','DANIELA','YISBER','ALEJANDRO']
+for nombre in alumnos_tuple:
+    nombre
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+for nombre in alumnos_list:
+    nombre
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+#Recorrido usando while
+i = 0
+len(alumnos_list)
+6
+len(alumnos_tuple)
+6
+while i < len(alumnos_tuple):
+    alumnos_tuple[i]
+    i = i + 1
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+edad_alumnos = {"ANDY":14,"JESUS":20,"GABRIEL":18,"DANIELA":16,"YISBER":17,"ALEJANDRO":21}
+type(edad_alumnos)
+<class 'dict'>
+edad_alumnos["andy"]
+Traceback (most recent call last):
+  File "<pyshell#23>", line 1, in <module>
+    edad_alumnos["andy"]
+KeyError: 'andy'
+edad_alumnos["ANDY"]
+14
+edad_alumnos["DANIELA"]
+16
+for edad in edad_alumnos:
+    edad
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+for alumno in edad_alumnos:
+    edad_alumnos[alumno]
+
+    
+14
+20
+18
+16
+17
+21
+for alumno in edad_alumnos:
+    alumno, 'tiene ', edad_alumnos[alumno], ' años de edad'
+
+    
+('ANDY', 'tiene ', 14, ' años de edad')
+('JESUS', 'tiene ', 20, ' años de edad')
+('GABRIEL', 'tiene ', 18, ' años de edad')
+('DANIELA', 'tiene ', 16, ' años de edad')
+('YISBER', 'tiene ', 17, ' años de edad')
+('ALEJANDRO', 'tiene ', 21, ' años de edad')
+encuesta = {'V1234':['ANA',26,1.65,60],'V5678':['NELLY',56,1.68,62],'E8101':['JACKY',32,1.59,61]}
+encuesta
+{'V1234': ['ANA', 26, 1.65, 60], 'V5678': ['NELLY', 56, 1.68, 62], 'E8101': ['JACKY', 32, 1.59, 61]}
+for cedula in encuesta:
+    encuesta[cedula][0]
+    encuesta[cedula][1]
+    encuesta[cedula][2]
+    encuesta[cedula][3]
+
+    
+'ANA'
+26
+1.65
+60
+'NELLY'
+56
+1.68
+62
+'JACKY'
+32
+1.59
+61
+for cedula in encuesta:
+    print('Persona:', encuesta[cedula][0],',edad:',encuesta[cedula][1],',estatura:', encuesta[cedula][2], ',peso:', encuesta[cedula][3])
+
+    
+Persona: ANA ,edad: 26 ,estatura: 1.65 ,peso: 60
+Persona: NELLY ,edad: 56 ,estatura: 1.68 ,peso: 62
+Persona: JACKY ,edad: 32 ,estatura: 1.59 ,peso: 61
+palabra = 'ESTERNOCLEIDOMASTOIDEO'
+for letra in palabra:
+    letra
+
+    
+'E'
+'S'
+'T'
+'E'
+'R'
+'N'
+'O'
+'C'
+'L'
+'E'
+'I'
+'D'
+'O'
+'M'
+'A'
+'S'
+'T'
+'O'
+'I'
+'D'
+'E'
+'O'
+diccionario_letras = {}
+type(diccionario_letras)
+<class 'dict'>
+palabra
+'ESTERNOCLEIDOMASTOIDEO'
+palabra.count('E')
+4
+for letra in palabra:
+    diccionario_letras[letra] = palabra.count(letra)
+
+    
+diccionario_letras
+{'E': 4, 'S': 2, 'T': 2, 'R': 1, 'N': 1, 'O': 4, 'C': 1, 'L': 1, 'I': 2, 'D': 2, 'M': 1, 'A': 1}
+#CONJUNTOS
+letras = {'a','a','b','b','c','d','e','e','f','i','o','u','u'}
+type(letras)
+<class 'set'>
+letras
+{'u', 'a', 'e', 'o', 'b', 'i', 'd', 'f', 'c'}
+vocales = {'a','e','i','o','u'}
+letras.intersection(vocales)
+{'u', 'a', 'o', 'e', 'i'}
+letras.union(vocales)
+{'u', 'a', 'e', 'o', 'b', 'i', 'd', 'f', 'c'}
+letras.difference(vocales)
+{'f', 'b', 'c', 'd'}
+vocales.difference(letras)
+set()
+letras-vocales
+{'f', 'b', 'c', 'd'}
+vocales-letras
+set()
+(letras-vocales)+(vocales-letras)
+Traceback (most recent call last):
+  File "<pyshell#65>", line 1, in <module>
+    (letras-vocales)+(vocales-letras)
+TypeError: unsupported operand type(s) for +: 'set' and 'set'
+(letras-vocales)|(vocales-letras)
+{'f', 'b', 'c', 'd'}
+letras.symmetric_difference(vocales)
+{'b', 'd', 'f', 'c'}
+letras&vocales
+{'u', 'a', 'o', 'e', 'i'}
+letras^vocales
+{'b', 'd', 'f', 'c'}
+
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Enter "help" below or click "Help" above for more information.
+alumnos = ('ANDY','JESUS','GABRIEL','DANIELA','YISBER','ALEJANDRO')
+type(alumnos)
+<class 'tuple'>
+alumnos[0]='ANA'
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    alumnos[0]='ANA'
+TypeError: 'tuple' object does not support item assignment
+del alumnos
+type(alumnos)
+Traceback (most recent call last):
+  File "<pyshell#4>", line 1, in <module>
+    type(alumnos)
+NameError: name 'alumnos' is not defined
+alumnos_tuple = ('ANDY','JESUS','GABRIEL','DANIELA','YISBER','ALEJANDRO')
+alumnos_list = ['ANDY','JESUS','GABRIEL','DANIELA','YISBER','ALEJANDRO']
+for nombre in alumnos_tuple:
+    nombre
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+for nombre in alumnos_list:
+    nombre
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+#Recorrido usando while
+i = 0
+len(alumnos_list)
+6
+len(alumnos_tuple)
+6
+while i < len(alumnos_tuple):
+    alumnos_tuple[i]
+    i = i + 1
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+edad_alumnos = {"ANDY":14,"JESUS":20,"GABRIEL":18,"DANIELA":16,"YISBER":17,"ALEJANDRO":21}
+type(edad_alumnos)
+<class 'dict'>
+edad_alumnos["andy"]
+Traceback (most recent call last):
+  File "<pyshell#23>", line 1, in <module>
+    edad_alumnos["andy"]
+KeyError: 'andy'
+edad_alumnos["ANDY"]
+14
+edad_alumnos["DANIELA"]
+16
+for edad in edad_alumnos:
+    edad
+
+    
+'ANDY'
+'JESUS'
+'GABRIEL'
+'DANIELA'
+'YISBER'
+'ALEJANDRO'
+for alumno in edad_alumnos:
+    edad_alumnos[alumno]
+
+    
+14
+20
+18
+16
+17
+21
+for alumno in edad_alumnos:
+    alumno, 'tiene ', edad_alumnos[alumno], ' años de edad'
+
+    
+('ANDY', 'tiene ', 14, ' años de edad')
+('JESUS', 'tiene ', 20, ' años de edad')
+('GABRIEL', 'tiene ', 18, ' años de edad')
+('DANIELA', 'tiene ', 16, ' años de edad')
+('YISBER', 'tiene ', 17, ' años de edad')
+('ALEJANDRO', 'tiene ', 21, ' años de edad')
+encuesta = {'V1234':['ANA',26,1.65,60],'V5678':['NELLY',56,1.68,62],'E8101':['JACKY',32,1.59,61]}
+encuesta
+{'V1234': ['ANA', 26, 1.65, 60], 'V5678': ['NELLY', 56, 1.68, 62], 'E8101': ['JACKY', 32, 1.59, 61]}
+for cedula in encuesta:
+    encuesta[cedula][0]
+    encuesta[cedula][1]
+    encuesta[cedula][2]
+    encuesta[cedula][3]
+
+    
+'ANA'
+26
+1.65
+60
+'NELLY'
+56
+1.68
+62
+'JACKY'
+32
+1.59
+61
+for cedula in encuesta:
+    print('Persona:', encuesta[cedula][0],',edad:',encuesta[cedula][1],',estatura:', encuesta[cedula][2], ',peso:', encuesta[cedula][3])
+
+    
+Persona: ANA ,edad: 26 ,estatura: 1.65 ,peso: 60
+Persona: NELLY ,edad: 56 ,estatura: 1.68 ,peso: 62
+Persona: JACKY ,edad: 32 ,estatura: 1.59 ,peso: 61
+palabra = 'ESTERNOCLEIDOMASTOIDEO'
+for letra in palabra:
+    letra
+
+    
+'E'
+'S'
+'T'
+'E'
+'R'
+'N'
+'O'
+'C'
+'L'
+'E'
+'I'
+'D'
+'O'
+'M'
+'A'
+'S'
+'T'
+'O'
+'I'
+'D'
+'E'
+'O'
+diccionario_letras = {}
+type(diccionario_letras)
+<class 'dict'>
+palabra
+'ESTERNOCLEIDOMASTOIDEO'
+palabra.count('E')
+4
+for letra in palabra:
+    diccionario_letras[letra] = palabra.count(letra)
+
+    
+diccionario_letras
+{'E': 4, 'S': 2, 'T': 2, 'R': 1, 'N': 1, 'O': 4, 'C': 1, 'L': 1, 'I': 2, 'D': 2, 'M': 1, 'A': 1}
+#CONJUNTOS
+letras = {'a','a','b','b','c','d','e','e','f','i','o','u','u'}
+type(letras)
+<class 'set'>
+letras
+{'u', 'a', 'e', 'o', 'b', 'i', 'd', 'f', 'c'}
+vocales = {'a','e','i','o','u'}
+letras.intersection(vocales)
+{'u', 'a', 'o', 'e', 'i'}
+letras.union(vocales)
+{'u', 'a', 'e', 'o', 'b', 'i', 'd', 'f', 'c'}
+letras.difference(vocales)
+{'f', 'b', 'c', 'd'}
+vocales.difference(letras)
+set()
+letras-vocales
+{'f', 'b', 'c', 'd'}
+vocales-letras
+set()
+(letras-vocales)+(vocales-letras)
+Traceback (most recent call last):
+  File "<pyshell#65>", line 1, in <module>
+    (letras-vocales)+(vocales-letras)
+TypeError: unsupported operand type(s) for +: 'set' and 'set'
+(letras-vocales)|(vocales-letras)
+{'f', 'b', 'c', 'd'}
+letras.symmetric_difference(vocales)
+{'b', 'd', 'f', 'c'}
+letras&vocales
+{'u', 'a', 'o', 'e', 'i'}
+letras^vocales
+{'b', 'd', 'f', 'c'}
+# funciones
+def potencia(arg_base, arg_expo):
+    producto = 1
+    i = 0
+    while i < arg_expo:
+        producto = producto * arg_base
+        i = i + 1
+    return producto
+
+potencia(2,3)
+8
+8
+8
+import modulo_ej05
+modulo_ej05.sumar(2,4)
+6
+help()
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.50.4
+__future__          _sre                dbm                 pydoc
+__hello__           _ssl                decimal             pydoc_data
+__phello__          _ssl_d              difflib             pyexpat
+_abc                _stat               dis                 pyexpat_d
+_aix_support        _statistics         doctest             queue
+_android_support    _string             ejemplo01           quopri
+_apple_support      _strptime           ejemplo02           random
+_ast                _struct             ejemplo03           re
+_asyncio            _suggestions        ejemplo04           reprlib
+_asyncio_d          _symtable           ejemplo05           rlcompleter
+_bisect             _sysconfig          email               runpy
+_blake2             _testbuffer         encodings           sched
+_bz2                _testbuffer_d       ensurepip           secrets
+_bz2_d              _testcapi           enum                select
+_codecs             _testcapi_d         errno               select_d
+_codecs_cn          _testclinic         faulthandler        selectors
+_codecs_hk          _testclinic_d       filecmp             shelve
+_codecs_iso2022     _testclinic_limited fileinput           shlex
+_codecs_jp          _testclinic_limited_d fnmatch             shutil
+_codecs_kr          _testconsole        fractions           signal
+_codecs_tw          _testconsole_d      ftplib              site
+_collections        _testimportmultiple functools           smtplib
+_collections_abc    _testimportmultiple_d gc                  socket
+_colorize           _testinternalcapi   genericpath         socketserver
+_compat_pickle      _testinternalcapi_d getopt              sqlite3
+_compression        _testlimitedcapi    getpass             sre_compile
+_contextvars        _testlimitedcapi_d  gettext             sre_constants
+_csv                _testmultiphase     glob                sre_parse
+_ctypes             _testmultiphase_d   graphlib            ssl
+_ctypes_d           _testsinglephase    gzip                stat
+_ctypes_test        _testsinglephase_d  hashlib             statistics
+_ctypes_test_d      _thread             heapq               string
+_datetime           _threading_local    hmac                stringprep
+_decimal            _tkinter            html                struct
+_decimal_d          _tkinter_d          http                subprocess
+_elementtree        _tokenize           idlelib             symtable
+_elementtree_d      _tracemalloc        imaplib             sys
+_functools          _typing             importlib           sysconfig
+_hashlib            _uuid               inspect             tabnanny
+_hashlib_d          _uuid_d             io                  tarfile
+_heapq              _warnings           ipaddress           tempfile
+_imp                _weakref            itertools           test
+_interpchannels     _weakrefset         json                textwrap
+_interpqueues       _winapi             keyword             this
+_interpreters       _wmi                linecache           threading
+_io                 _wmi_d              locale              time
+_ios_support        _zoneinfo           logging             timeit
+_json               _zoneinfo_d         lzma                tkinter
+_locale             abc                 mailbox             token
+_lsprof             antigravity         marshal             tokenize
+_lzma               argparse            math                tomllib
+_lzma_d             array               mimetypes           trace
+_markupbase         ast                 mmap                traceback
+_md5                asyncio             modulefinder        tracemalloc
+_multibytecodec     atexit              modulo_ej05         tty
+_multiprocessing    base64              msvcrt              turtle
+_multiprocessing_d  bdb                 multiprocessing     turtledemo
+_opcode             binascii            netrc               types
+_opcode_metadata    bisect              nt                  typing
+_operator           builtins            ntpath              unicodedata
+_osx_support        bz2                 nturl2path          unicodedata_d
+_overlapped         cProfile            numbers             unittest
+_overlapped_d       calendar            opcode              urllib
+_pickle             cmath               operator            uuid
+_py_abc             cmd                 optparse            venv
+_pydatetime         code                os                  warnings
+_pydecimal          codecs              pathlib             wave
+_pyio               codeop              pdb                 weakref
+_pylong             collections         pickle              webbrowser
+_pyrepl             colorsys            pickletools         winreg
+_queue              compileall          pip                 winsound
+_queue_d            concurrent          pkgutil             winsound_d
+_random             configparser        platform            wsgiref
+_sha1               contextlib          plistlib            xml
+_sha2               contextvars         poplib              xmlrpc
+_sha3               copy                posixpath           xxsubtype
+_signal             copyreg             pprint              zipapp
+_sitebuiltins       csv                 profile             zipfile
+_socket             ctypes              pstats              zipimport
+_socket_d           curses              pty                 zlib
+_sqlite3            dataclasses         py_compile          zoneinfo
+_sqlite3_d          datetime            pyclbr              
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> 
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+pow(2,3)
+8
+sqrt(4)
+Traceback (most recent call last):
+  File "<pyshell#86>", line 1, in <module>
+    sqrt(4)
+NameError: name 'sqrt' is not defined
+import math
+math.sqrt(4)
+2.0
