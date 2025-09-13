@@ -1,5 +1,5 @@
 #declaracion de dependencia
-import match
+import math
 #cuerpo principal del prog
 while True:
     while True:
@@ -23,24 +23,15 @@ while True:
             break
         except ValueError:
             print("Error: El valor de c debe ser numérico")
-    subradical = pow(b,2) - 4*a*c
-    if subradical < 0>
-        print('error expresion subradical no puede ser negartiva')
+    subRadical = pow(b,2) - 4*a*c 
+    if subRadical < 0:
+        print("Error: Expresión sub radical no puede ser negativa")
     else:
         x1 = (-b + math.sqrt(subRadical))/(2*a)
         x2 = (-b - math.sqrt(subRadical))/(2*a)
         print("Resultado")
         print("x1:",x1)
         print("x2:",x2)
-    continuar = input('¿Desea efectura una nueva operación (S/N)?')
-    if continuar.upper() == 'S':
-        continue
-    else:
-        break
-
-
-
-
     continuar = input('¿Desea efectura una nueva operación (S/N)?')
     if continuar.upper() == 'S':
         continue
