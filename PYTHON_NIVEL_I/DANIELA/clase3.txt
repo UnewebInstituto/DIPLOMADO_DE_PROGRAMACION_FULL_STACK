@@ -1,0 +1,438 @@
+PERSISTENCIA
+Almacenamiento a través de archivos planos
+
+nombre_lógico_archivo = open("nombre_físico_archivo","modo_apertura")
+
+Los modos de apertura, pueden ser:
+
+w : SÓLO ESCRITURA
+a : ESCRITURA/AÑADIR
+r : SÓLO LECTURA
+
+
+Python 3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)] on win32
+Enter "help" below or click "Help" above for more information.
+help()
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> help symbols
+No Python documentation found for 'help symbols'.
+Use help() to get the interactive help utility.
+Use help(str) for help on the str class.
+
+help> 
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+
+
+
+
+
+help()
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> symbols
+
+Here is a list of the punctuation symbols which Python assigns special meaning
+to. Enter any symbol to get more help.
+
+!=                  +                   <<=                 _
+"                   +=                  <=                  __
+"""                 ,                   <>                  `
+%                   -                   ==                  b"
+%=                  -=                  >                   b'
+&                   .                   >=                  f"
+&=                  ...                 >>                  f'
+'                   /                   >>=                 j
+'''                 //                  @                   r"
+(                   //=                 J                   r'
+)                   /=                  [                   u"
+*                   :                   \                   u'
+**                  :=                  ]                   |
+**=                 <                   ^                   |=
+*=                  <<                  ^=                  ~
+
+help> keywords
+
+Here is a list of the Python keywords.  Enter any keyword to get more help.
+
+False               class               from                or
+None                continue            global              pass
+True                def                 if                  raise
+and                 del                 import              return
+as                  elif                in                  try
+assert              else                is                  while
+async               except              lambda              with
+await               finally             nonlocal            yield
+break               for                 not                 
+
+help> modules
+
+Please wait a moment while I gather a list of all available modules...
+
+test_sqlite3: testing with SQLite version 3.50.4
+__future__          _sre                dbm                 pyclbr
+__hello__           _ssl                decimal             pydoc
+__phello__          _ssl_d              difflib             pydoc_data
+_abc                _stat               dis                 pyexpat
+_aix_support        _statistics         doctest             pyexpat_d
+_android_support    _string             ejemplo01           queue
+_apple_support      _strptime           ejemplo02           quopri
+_ast                _struct             ejemplo03           random
+_asyncio            _suggestions        ejemplo04           re
+_asyncio_d          _symtable           ejemplo05           reprlib
+_bisect             _sysconfig          ejemplo06           rlcompleter
+_blake2             _testbuffer         email               runpy
+_bz2                _testbuffer_d       encodings           sched
+_bz2_d              _testcapi           ensurepip           secrets
+_codecs             _testcapi_d         enum                select
+_codecs_cn          _testclinic         errno               select_d
+_codecs_hk          _testclinic_d       faulthandler        selectors
+_codecs_iso2022     _testclinic_limited filecmp             shelve
+_codecs_jp          _testclinic_limited_d fileinput           shlex
+_codecs_kr          _testconsole        fnmatch             shutil
+_codecs_tw          _testconsole_d      fractions           signal
+_collections        _testimportmultiple ftplib              site
+_collections_abc    _testimportmultiple_d functools           smtplib
+_colorize           _testinternalcapi   gc                  socket
+_compat_pickle      _testinternalcapi_d genericpath         socketserver
+_compression        _testlimitedcapi    getopt              sqlite3
+_contextvars        _testlimitedcapi_d  getpass             sre_compile
+_csv                _testmultiphase     gettext             sre_constants
+_ctypes             _testmultiphase_d   glob                sre_parse
+_ctypes_d           _testsinglephase    graphlib            ssl
+_ctypes_test        _testsinglephase_d  gzip                stat
+_ctypes_test_d      _thread             hashlib             statistics
+_datetime           _threading_local    heapq               string
+_decimal            _tkinter            hmac                stringprep
+_decimal_d          _tkinter_d          html                struct
+_elementtree        _tokenize           http                subprocess
+_elementtree_d      _tracemalloc        idlelib             symtable
+_functools          _typing             imaplib             sys
+_hashlib            _uuid               importlib           sysconfig
+_hashlib_d          _uuid_d             inspect             tabnanny
+_heapq              _warnings           io                  tarfile
+_imp                _weakref            ipaddress           tempfile
+_interpchannels     _weakrefset         itertools           test
+_interpqueues       _winapi             json                textwrap
+_interpreters       _wmi                keyword             this
+_io                 _wmi_d              linecache           threading
+_ios_support        _zoneinfo           locale              time
+_json               _zoneinfo_d         logging             timeit
+_locale             abc                 lzma                tkinter
+_lsprof             antigravity         mailbox             token
+_lzma               argparse            marshal             tokenize
+_lzma_d             array               math                tomllib
+_markupbase         ast                 mimetypes           trace
+_md5                asyncio             mmap                traceback
+_multibytecodec     atexit              modulefinder        tracemalloc
+_multiprocessing    base64              modulo_ej05         tty
+_multiprocessing_d  bdb                 msvcrt              turtle
+_opcode             binascii            multiprocessing     turtledemo
+_opcode_metadata    bisect              netrc               types
+_operator           builtins            nt                  typing
+_osx_support        bz2                 ntpath              unicodedata
+_overlapped         cProfile            nturl2path          unicodedata_d
+_overlapped_d       calendar            numbers             unittest
+_pickle             cmath               opcode              urllib
+_py_abc             cmd                 operator            uuid
+_pydatetime         code                optparse            venv
+_pydecimal          codecs              os                  warnings
+_pyio               codeop              pathlib             wave
+_pylong             collections         pdb                 weakref
+_pyrepl             colorsys            pickle              webbrowser
+_queue              compileall          pickletools         winreg
+_queue_d            concurrent          pip                 winsound
+_random             configparser        pkgutil             winsound_d
+_sha1               contextlib          platform            wsgiref
+_sha2               contextvars         plistlib            xml
+_sha3               copy                poplib              xmlrpc
+_signal             copyreg             posixpath           xxsubtype
+_sitebuiltins       csv                 pprint              zipapp
+_socket             ctypes              profile             zipfile
+_socket_d           curses              pstats              zipimport
+_sqlite3            dataclasses         pty                 zlib
+_sqlite3_d          datetime            py_compile          zoneinfo
+
+Enter any module name to get more help.  Or, type "modules spam" to search
+for modules whose name or summary contain the string "spam".
+
+help> 
+
+You are now leaving help and returning to the Python interpreter.
+If you want to ask for help on a particular object directly from the
+interpreter, you can type "help(object)".  Executing "help('string')"
+has the same effect as typing a particular string at the help> prompt.
+import math
+math.sqrt(4)
+2.0
+
+= RESTART: C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_I\HENRY\ejemplo06.py
+Ingrese el valor de a:0
+Error: Valor de a, debe ser diferente de 0
+Ingrese el valor de a:1
+Ingrese el valor de b:1
+Ingrese el valor de c:1
+Error: Expresión sub radical no puede ser negativa
+¿Desea efectura una nueva operación (S/N)?s
+Ingrese el valor de a:1
+Ingrese el valor de b:4
+Ingrese el valor de c:1
+Resultado
+x1: -0.2679491924311228
+x2: -3.732050807568877
+¿Desea efectura una nueva operación (S/N)?n
+
+
+
+# Declaración del archivo de prrueba
+# Declaración del archivo de prueba
+estudiantes = open("./alumnos.txt","w")
+estudiantes
+<_io.TextIOWrapper name='./alumnos.txt' mode='w' encoding='cp1252'>
+type(estudiantes)
+<class '_io.TextIOWrapper'>
+estudiantes.write("Jesús,Gabriel,Daniela,Yisber,Alejandro,Andy")
+43
+estudiantes.close()
+#APERTURA EN MODO DE SÓLO LECTURA
+estudiantes = open("./alumnos.txt","r")
+estudiantes
+<_io.TextIOWrapper name='./alumnos.txt' mode='r' encoding='cp1252'>
+estudiantes.read()
+'Jesús,Gabriel,Daniela,Yisber,Alejandro,Andy'
+estudiantes.read()
+''
+estudiantes.close()
+estudiantes = open("./alumnos.txt","r")
+estudiantes.read()
+'Jesús,Gabriel,Daniela,Yisber,Alejandro,Andy'
+estudiantes.read()
+''
+#REUBICAR EL PUNTERO EN LA PSOSICIÓN DE INTERÉS
+estudiantes.seek(5)
+5
+estudiantes.read()
+',Gabriel,Daniela,Yisber,Alejandro,Andy'
+estudiantes.seek(8)
+8
+estudiantes.read()
+'briel,Daniela,Yisber,Alejandro,Andy'
+estudiantes.seek(13)
+13
+estudiantes.read()
+',Daniela,Yisber,Alejandro,Andy'
+estudiantes.close()
+estudiantes = open("./alumnos.txt","w")
+estudiantes.write("Jesús\n")
+6
+estudiantes.close()
+estudiantes = open("./alumnos.txt","w")
+estudiantes.write("Yisber\n")
+7
+estudiantes.close()
+# APERTURA DE ARCHIVO EN MODALIDAD DE AÑADIR
+estudiantes = open("./alumnos.txt","a")
+estudiantes.write("Daniel\nJesús\nAlejandro\nGabriel\nAndy\n")
+36
+estudiantes.close()
+estudiantes = open("./alumnos.txt","r")
+estudiantes.read()
+'Yisber\nDaniel\nJesús\nAlejandro\nGabriel\nAndy\n'
+estudiantes.read()
+''
+estudiantes.seek(0)
+0
+# Se ubicó al inicio
+estudiantes.readline()
+'Yisber\n'
+estudiantes.readline()
+'Daniel\n'
+estudiantes.readline()
+'Jesús\n'
+estudiantes.readline()
+'Alejandro\n'
+estudiantes.readline()
+'Gabriel\n'
+estudiantes.readline()
+'Andy\n'
+estudiantes.readline()
+''
+estudiantes.seek(0)
+0
+estudiantes.readlines()
+['Yisber\n', 'Daniel\n', 'Jesús\n', 'Alejandro\n', 'Gabriel\n', 'Andy\n']
+estudiantes.seek(0)
+0
+data = estudiantes.readlines()
+data
+['Yisber\n', 'Daniel\n', 'Jesús\n', 'Alejandro\n', 'Gabriel\n', 'Andy\n']
+data[1]='Daniela\n'
+data
+['Yisber\n', 'Daniela\n', 'Jesús\n', 'Alejandro\n', 'Gabriel\n', 'Andy\n']
+estudiantes.close()
+estudiantes = open("./alumnos.txt","w")
+estudiantes.writelines(data)
+estudiantes.close()
+# Verificar si el archivo está abierto o cerrado
+estudiantes.closed()
+Traceback (most recent call last):
+  File "<pyshell#70>", line 1, in <module>
+    estudiantes.closed()
+TypeError: 'bool' object is not callable
+estudiantes.closed
+True
+
+Requerimiento 1:
+Desarrolle un programa que permita el Almacenamiento 
+Nombre, Apellido, edad, peso, estatura
+El programa, debe evaluar los tipos de dato que se 
+ingresen para las cifras númerica.
+
+Requerimiento 2:
+Desarrolle un programa que permita la lectura del
+archivo plano anterior y genere el detalle de la 
+información almacenada, así como un promedio de
+edad, peso, estatura.
+
+encuesta = open("./encuesta.txt", "r")
+data_encuesta = encuesta.readlines()
+data_encuesta
+['ANA;VASQUEZ;59;60.0;1.6;\n', 'NELLY;CONTRERAS;56;58.0;1.7;\n', 'LIBIA;COLS;45;62.0;1.69;\n']
+data_encuesta[0]
+'ANA;VASQUEZ;59;60.0;1.6;\n'
+data_encuesta[1]
+'NELLY;CONTRERAS;56;58.0;1.7;\n'
+data_encuesta[2]
+'LIBIA;COLS;45;62.0;1.69;\n'
+detalle_encuesta = data_encuesta[0].split(";")
+detalle_encuesta
+['ANA', 'VASQUEZ', '59', '60.0', '1.6', '\n']
+
+
+¡Hola\! Asumiendo el rol de experto en Python, te presento los equivalentes modernos y recomendados para las instrucciones `print` que proporcionaste.
+
+-----
+
+## Equivalentes Modernos para Formato de Cadenas en Python
+
+El formato de cadenas con el operador `%` (también conocido como formato "printf-style") se considera obsoleto en Python 3. Existen dos alternativas principales que son más flexibles, legibles y eficientes. A continuación, te muestro cómo reescribir tu código usando estas opciones:
+
+### 1\. **F-Strings (Cadenas Literales Formateadas)** 🚀
+
+Esta es la forma más recomendada y popular a partir de Python 3.6. Los f-strings son **concisos**, **rápidos** y **fáciles de leer**. Simplemente antepones una `f` a la cadena y puedes insertar variables y expresiones directamente dentro de llaves `{}`.
+
+Para tu caso, el equivalente usando f-strings sería:
+
+```python
+print("Promedios:")
+print(f"Edad: {promedio_edad:.2f}")
+print(f"Peso: {promedio_peso:.2f}")
+print(f"Estatura: {promedio_estatura:.2f}")
+```
+
+El formato `:.2f` dentro de las llaves indica que el valor de la variable debe ser un número de punto flotante (`f`) con dos decimales de precisión (`.2`).
+
+-----
+
+### 2\. **El método `.format()`** 🛠️
+
+Este método se introdujo en Python 2.6 y 3.0, y es una mejora significativa respecto al operador `%`. Es **versátil** y permite un control detallado sobre el formato. Aunque los f-strings son generalmente preferidos por su simplicidad, el método `.format()` sigue siendo muy útil, especialmente para casos donde necesitas construir cadenas de forma dinámica.
+
+El equivalente usando `.format()` sería:
+
+```python
+print("Promedios:")
+print("Edad: {:.2f}".format(promedio_edad))
+print("Peso: {:.2f}".format(promedio_peso))
+print("Estatura: {:.2f}".format(promedio_estatura))
+```
+
+Aquí, las llaves `{}` actúan como marcadores de posición, y los valores se pasan al método `.format()` en el orden en que deben ser insertados.
+
+-----
+
+### Recomendación del experto 🤓
+
+Mi recomendación principal es que **siempre utilices f-strings** (`f"..."`) para nuevo código. Son la forma más moderna, legible y eficiente de formatear cadenas en Python. Sin embargo, si trabajas con bases de código más antiguas, es posible que te encuentres con el método `.format()` o incluso el operador `%`. Saber cómo funcionan todas las opciones te hace un programador más completo.
+
+
+-- GENERACIÓN DE EJECUTABLES
+
+
+1) Acceder al sistema operativo e instalar el paquete pyinstaller,
+de la siguiente forma:
+>pip install pyinstaller
+
+2) Una vez instalado, ir al directorio donde se encuentra la
+aplicación o programa fuente python y desde ese directorio correr
+el paquete pyinstaller, de la siguiente forma, debe indicar la
+extensión del programa fuente:
+    
+midirectorio\>pyinstaller miprograma.py
+Nota: Muestra la consola al correr el programa (todos)
+
+midirectorio\>pyinstaller --windowed miprograma.py
+Nota: No muestra la consola al correr, para el caso de
+aplicaciones que presentan interfaces gráficas, al utilizar
+el módulos como: Tkinter, PyQt, EasyGUI, IPython, otros
+(no aplica para programas tipo consola)
+
+midirectorio\>pyinstaller --windowed  --onefile miprograma.py
+
+midirectorio\>pyinstaller --onefile miprograma.py
+
+Nota: En los dos casos anteriores, generará un solo archivo
+con el ejecutable y no el conjunto de archivos que acompaña
+al proceso de compilación. 
+En cualquiera de los casos de compilación, antes descritos
+vaya al directorio:
+midirectorio\dist\miprograma\> Donde se generó el archivo miprograma.exe.
+Ya este programa, puede ser ejecutado directamente o a través de un acceso
+directo.
+
+EN CASO DE PROBLEMAS CON pip establecer la ruta de ubicación, desde
+la consola de comandos del sistema operativo:
+    
+set path=%path%;C:\ruta
+
+C:\Users\hduqu\AppData\Local\Programs\Python\Python38\Scripts\
+C:\Users\hduqu\AppData\Local\Programs\Python\Python38\
+                                                               
+
+
+
+
+
+

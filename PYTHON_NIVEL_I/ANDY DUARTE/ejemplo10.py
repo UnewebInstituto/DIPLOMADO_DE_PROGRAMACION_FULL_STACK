@@ -17,7 +17,7 @@ while True:
             print("Apellido:", detalle_contactos[2])
             print("Teléfono:", detalle_contactos[3])
             print("Correo:", detalle_contactos[4])
-            print ("---")
+            print("---")
         # Cerrar archivo contactos.txt
         contactos.close()
     except FileNotFoundError:
