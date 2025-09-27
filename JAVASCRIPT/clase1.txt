@@ -1,6 +1,48 @@
---jesusmejias2000@gmail.com;
+jesusmejias2000@gmail.com;
 duarteandy421@gmail.com;
 gabocespsa@gmail.com;
 yyrodriguezd11@gmail.com;
 alejandrovilla2912@gmail.com;
 heinrikken@gmail.com;
+
+var nombre, edad, estatura, estudiante
+undefined
+// Declaración de variable fué lo anterior
+undefined
+document.getElementById('nombre')
+<input type=​"text" name=​"nombre" id=​"nombre">​
+nombre = document.getElementById('nombre')
+<input type=​"text" name=​"nombre" id=​"nombre">​
+nombre
+<input type=​"text" name=​"nombre" id=​"nombre">​
+nombre.value
+'HENRY'
+nombre.placeholder
+''
+
+
+nombre.placeholder
+'Escriba su nombre'
+var entradas
+undefined
+document.getElementsByTagName('input')
+HTMLCollection(5) [input#nombre, input#edad, input#estatura, input#estudiante, input#estudiante, nombre: input#nombre, edad: input#edad, estatura: input#estatura, estudiante: input#estudiante]
+entradas = document.getElementsByTagName('input')
+HTMLCollection(5) [input#nombre, input#edad, input#estatura, input#estudiante, input#estudiante, nombre: input#nombre, edad: input#edad, estatura: input#estatura, estudiante: input#estudiante]
+entradas
+HTMLCollection(5) [input#nombre, input#edad, input#estatura, input#estudiante, input#estudiante, nombre: input#nombre, edad: input#edad, estatura: input#estatura, estudiante: input#estudiante]
+entradas[0].placeholder
+'Escriba su nombre'
+entradas[1].value
+'56'
+entradas[2].value
+'1.7'
+var entradas_radio
+undefined
+entradas_radio = document.getElementsByName('estudiante')
+NodeList(2) [input#estudiante, input#estudiante]
+entradas_radio[0]
+<input type=​"radio" name=​"estudiante" id=​"estudiante" value=​"SI">​
+
+entradas_radio[1]
+<input type=​"radio" name=​"estudiante" id=​"estudiante" value=​"NO" checked>​

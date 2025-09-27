@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png" type="image/x-icon">
+    <title>Ejemplo02</title>
+</head>
+<body>
+    <h1>Ejemplo02 Condicionales</h1>
+    <label for="">NOMBRE:</label>
+    <input type="text" name="nombre" id="nombre" placeholder="Escriba su nombre">
+    <br>
+    <label for="">EDAD:</label>
+    <input type="number" name="edad" id="edad" min="0" max="120">
+    <br>
+    <label for="">ESTATURA:</label>
+    <input type="number" name="estatura" id="estatura" min="0" max="2" step="0.1">
+    <br>
+    <label for="">¿ES ESTUDIANTE?:</label>
+    <input type="radio" name="estudiante" id="estudiante" value="SI">SI
+    <input type="radio" name="estudiante" id="estudiante" value="NO" checked>NO
+    <br>
+    <button onclick="
+        // Declaración de variables
+        var nombre, edad, estatura, estudiante, texto_salida, resultado_salida;
+        nombre = document.getElementById('nombre');
+        edad = document.getElementById('edad');
+        estatura = document.getElementById('estatura');
+        estudiante_seleccion = document.getElementsByName('estudiante');
+        if (estudiante_seleccion[0].checked){
+            estudiante = 'SI ES ESTUDIANTE';
+        };
+        if (estudiante_seleccion[1].checked){
+            estudiante = 'NO ES ESTUDIANTE';
+        };
+        texto_salida = '';
+        texto_salida += '<b>NOMBRE:</b>' + nombre.value + '<br>';
+        texto_salida += '<b>EDAD:</b>' + edad.value + '<br>';
+        texto_salida += '<b>ESTATURA:</b>' + estatura.value + '<br>';
+        texto_salida += '<b>¿ES ESTUDIANTE?:</b>' + estudiante + '<br>';
+        resultado_salida = document.getElementById('salida');
+        resultado_salida.innerHTML = texto_salida;
+    ">EVALUAR</button>
+    <div id="salida"></div>
+</body>
+</html>
