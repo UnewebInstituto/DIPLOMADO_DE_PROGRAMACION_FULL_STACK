@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../img/uneweb.png" type="image/x-icon">
+    <title>Ejemplo05 While</title>
+</head>
+<body>
+    <h1>Estructura de control While</h1>
+    <h2>Potencia de un numero</h2>
+    <label for="">Ingrese el valor de la base</label>
+    <input type="number" name="base" id="base" min="1"><br>
+    <label for="">Ingrese el valor del exponente</label>
+    <input type="number" name="exponente" id="exponente" min="0"><br>
+    <button onclick="calcular()">CALCULAR</button>
+    <button onclick="limpiar()">LIMPIAR</button>
+    <div id="resultado"></div>
+    <script>
+        //Declaracion de funciones
+        //Declaracion de funcion tradicional
+        function potencia(b,e){
+            let producto;
+            let contador;
+            producto = 1;
+            contador = 0;
+            while (contador < e){
+                producto = producto * b;
+                contador ++;
+            }
+            return producto
+        }
+
+
+        //Declaracion arrow function
+        const limpiar =() =>{
+            document.getElementById('base').value = '';
+            document.getElementById('exponente').value = '';
+            document.getElementById('resultado').innerHTML = '';
+        }
+
+        const calcular = () =>{
+            // Declaracion de variable con notacion snake case
+            let calculo_potencia = 0;
+            // Declaracion de variable con notacion camel case
+            //let calculoPotencia = 0;
+            // Declaracion de variable con notacion Kebab case
+            // No recomendada porque se puede interpretar como una resta
+            //let calculo-potencia = 0;
+            // Declaracion de variable con notacion Pascal case
+            //let Calculo_Potencia = 0;
+            // Declaracion de variable con notacion snake case en mayuscula
+            //Se emplea preferiblemente para constantes
+            //let CALCULO_POTENCIA = 0;
+            /**
+             * Se obtienen los valroes de base y exponente del 
+             * html ( todo valor ingresado a traves de teclado es texto)
+             * Posteriormente se convierte a numero entero
+             * */
+            base = parseInt(document.getElementById('base').value);
+            exponente = parseInt(document.getElementById('exponente').value);
+            calculo = potencia(base,exponente)
+            document.getElementById('resultado').innerHTML='La potencia de ' +base+ 'elevado a ' +exponente+ 'es igual a ' + calculo;
+        }
+
+        /* Declaracion de variable publica */
+        var base, exponente;
+
+
+    </script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,463 @@
+Estructuras de control repetitivas
+
+- while
+
+- do 
+
+- for
+
+var contador = 0;
+undefined
+while (contador < 5){
+    console.log(contador);
+    contador++; // contador = contador + 1;  contador += 1;
+}
+VM409:2 0
+VM409:2 1
+VM409:2 2
+VM409:2 3
+VM409:2 4
+4
+contador = 0;
+0
+do{
+    console.log(contador);
+    contador++;
+}while(contador<5);
+VM690:2 0
+VM690:2 1
+VM690:2 2
+VM690:2 3
+VM690:2 4
+4
+for (let contador = 0; contador < 5; contador++){
+    console.log(contador);
+}
+VM880:2 0
+VM880:2 1
+VM880:2 2
+VM880:2 3
+VM880:2 4
+undefined
+
+
+
+Este error es muy común cuando se empieza a usar los métodos de *arrays* de JavaScript como **`find()`** y **`filter()`**.
+
+La causa del error **`Uncaught TypeError: string "GABRIEL" is not a function`** es que le estás pasando un *string* (`'GABRIEL'`) directamente como argumento a los métodos `find()` y `filter()`, cuando estos métodos \**esperan una *función de *callback***.
+
+-----
+
+## Explicación del Error
+
+Los métodos **`Array.prototype.find()`** y **`Array.prototype.filter()`** están diseñados para iterar sobre cada elemento del *array* y ejecutar una función que tú les proporcionas. Esta función (*callback*) debe devolver un valor **booleano** (`true` o `false`) para indicar si el elemento cumple con la condición de búsqueda o filtro.
+
+Cuando JavaScript intenta ejecutar:
+
+1.  **`alumnos.find('GABRIEL')`**
+2.  **`alumnos.filter('GABRIEL')`**
+
+Internamente, el motor de JavaScript intenta llamar a `'GABRIEL'` como si fuera una función, lo cual falla porque un *string* no es una función, produciendo el **`TypeError`**.
+
+-----
+
+## Solución Correcta
+
+Para buscar o filtrar elementos, debes proporcionar una función de *callback* que compare el elemento actual con el valor que buscas:
+
+Asumiendo que `alumnos` es un *array* de nombres, la sintaxis correcta usando una **función flecha (arrow function)** sería:
+
+### 1\. Usando `find()`
+
+`find()` devuelve **el primer elemento** que cumple la condición.
+
+```javascript
+// Correcto
+const nombreBuscado = 'GABRIEL';
+const alumnoEncontrado = alumnos.find(alumno => alumno === nombreBuscado);
+// alumno => alumno === nombreBuscado es la función de callback.
+```
+
+### 2\. Usando `filter()`
+
+`filter()` devuelve un **nuevo *array*** con todos los elementos que cumplen la condición.
+
+```javascript
+// Correcto
+const nombreBuscado = 'GABRIEL';
+const alumnosFiltrados = alumnos.filter(alumno => alumno === nombreBuscado);
+// alumno => alumno === nombreBuscado es la función de callback.
+```
+
+### Ejemplo con un *Array* de Objetos (Caso más común)
+
+Si `alumnos` fuera un *array* de objetos con una propiedad `nombre`:
+
+```javascript
+const alumnos = [
+  { id: 1, nombre: 'GABRIEL' },
+  { id: 2, nombre: 'ANA' },
+  { id: 3, nombre: 'GABRIEL' }
+];
+
+// Usando find() para obtener el primer objeto 'GABRIEL'
+const gabriel1 = alumnos.find(a => a.nombre === 'GABRIEL');
+// Resultado: { id: 1, nombre: 'GABRIEL' }
+
+// Usando filter() para obtener todos los objetos 'GABRIEL'
+const todosLosGabrieles = alumnos.filter(a => a.nombre === 'GABRIEL');
+/*
+Resultado: [
+  { id: 1, nombre: 'GABRIEL' },
+  { id: 3, nombre: 'GABRIEL' }
+]
+*/
+```
+
+lumnos = []
+[]length: 0[[Prototype]]: Array(0)
+typeof(alumnos)
+'object'
+alumnos.
+VM976:1 Uncaught SyntaxError: Unexpected end of inputUnderstand this error
+alumnos.push('YISBER')
+1
+alumnos.push('ANDY')
+2
+alumnos.push('ALEJANDRO')
+3
+alumnos.push('RICARDO')
+4
+alumnos.push('JESÚS')
+5
+alumnos.push('GABRIEL')
+6
+alumnos
+(6) ['YISBER', 'ANDY', 'ALEJANDRO', 'RICARDO', 'JESÚS', 'GABRIEL']
+typeof(alumnos)
+'object'
+alu,m
+VM1808:1 Uncaught ReferenceError: alu is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM1808:1Understand this error
+alumnos.sort()
+(6) ['ALEJANDRO', 'ANDY', 'GABRIEL', 'JESÚS', 'RICARDO', 'YISBER']
+alumnos.find('GABRIEL')
+VM2048:1 Uncaught TypeError: string "GABRIEL" is not a function
+    at Array.find (<anonymous>)
+    at <anonymous>:1:9
+(anonymous) @ VM2048:1Understand this error
+alumnos.filter('GABRIEL')
+VM2130:1 Uncaught TypeError: string "GABRIEL" is not a function
+    at Array.filter (<anonymous>)
+    at <anonymous>:1:9
+(anonymous) @ VM2130:1Understand this error
+function potencia(b,e){
+    let producto;
+    let contador;
+    producto = 1;
+    contador = 0;
+    while (contador < e){
+        producto = producto * b;
+        contador++;
+    }
+    return producto;
+}
+undefined
+console.log(potencia(2,3))
+VM2665:1 8
+undefined
+function potencia(b,e){
+    let producto;
+    let contador;
+    producto = 1;
+    contador = 0;
+    while (contador < e){
+        producto = producto * b;
+        contador++;
+    }
+    return producto;
+}
+undefined
+const potencia = (b,e) => {
+    let producto;
+    let contador;
+    producto = 1;
+    contador = 0;
+    while (contador < e){
+        producto = producto * b;
+        contador++;
+    }
+    return producto;
+}
+VM2696:1 Uncaught SyntaxError: Identifier 'potencia' has already been declaredUnderstand this error
+const potencia_flecha = (b,e) => {
+    let producto;
+    let contador;
+    producto = 1;
+    contador = 0;
+    while (contador < e){
+        producto = producto * b;
+        contador++;
+    }
+    return producto;
+}
+undefined
+potencia_flecha(2,10)
+1024
+
+La detección del evento **`click`** en JavaScript es fundamental para hacer que las páginas web sean interactivas. Se logra mediante el uso de **oyentes de eventos** (*event listeners*).
+
+-----
+
+## El Proceso de Detección del Evento `click`
+
+El método más moderno y recomendado para manejar eventos es **`addEventListener()`**.
+
+### 1\. Seleccionar el Elemento
+
+Primero, necesitas obtener una referencia al elemento del **Modelo de Objetos del Documento (DOM)** en el que deseas escuchar el *click*.
+
+```javascript
+// Obtener el elemento por su ID. (Es el método más rápido y común)
+const boton = document.getElementById('miBoton');
+
+// O por su clase (devuelve una NodeList, necesitarías iterar si hay varios)
+// const botones = document.querySelectorAll('.claseBoton');
+
+// O por su etiqueta
+// const primerBoton = document.querySelector('button');
+```
+
+### 2\. Adjuntar el Oyente de Evento
+
+Una vez que tienes el elemento, usas el método **`addEventListener()`** para adjuntar una función que se ejecutará cuando ocurra el evento `click`.
+
+El método requiere dos argumentos:
+
+1.  El nombre del evento como un *string* (en este caso, `'click'`).
+2.  La función (*callback*) que se ejecutará.
+
+<!-- end list -->
+
+```javascript
+boton.addEventListener('click', function() {
+    // Código que se ejecuta cuando el botón es clickeado
+    console.log('¡El botón ha sido clickeado!');
+    // Por ejemplo: cambiar el texto del botón
+    boton.textContent = '¡Gracias!';
+});
+```
+
+### 3\. Usando la Función Flecha (Arrow Function)
+
+Es muy común y preferido en JavaScript moderno usar funciones flecha para el *callback*, ya que son más concisas y no cambian el valor de `this` de manera inesperada.
+
+```javascript
+boton.addEventListener('click', () => {
+    console.log('Click detectado con función flecha.');
+});
+```
+
+-----
+
+## Ejemplo Completo
+
+Aquí tienes un ejemplo que puedes probar directamente en tu consola, asumiendo que tienes un botón con `id="miBoton"` en tu HTML:
+
+### HTML
+
+```html
+<button id="miBoton">Haz clic aquí</button>
+<p id="mensaje"></p>
+```
+
+### JavaScript
+
+```javascript
+// 1. Seleccionar los elementos del DOM
+const botonElemento = document.getElementById('miBoton');
+const mensajeElemento = document.getElementById('mensaje');
+
+// 2. Definir la función de manejo del evento
+const manejarClick = (evento) => {
+    // El objeto 'evento' contiene información sobre el evento que ocurrió
+    console.log('Tipo de evento:', evento.type); // 'click'
+    
+    // 3. Ejecutar la lógica deseada
+    mensajeElemento.textContent = '¡Has interactuado con el botón!';
+    
+    // Evitar el comportamiento predeterminado (útil para enlaces <a> o formularios)
+    // evento.preventDefault(); 
+};
+
+// 4. Adjuntar el oyente de evento
+botonElemento.addEventListener('click', manejarClick);
+```
+
+-----
+
+## Buenas Prácticas y Alternativas
+
+### Eliminación del Oyente
+
+Si necesitas que el evento se dispare solo una vez, o si estás manejando componentes que se crean y destruyen dinámicamente, es crucial eliminar el *listener* para evitar fugas de memoria:
+
+```javascript
+botonElemento.removeEventListener('click', manejarClick);
+```
+
+### Manejo de Eventos en Muchos Elementos (Delegación)
+
+En lugar de añadir un *listener* a cada uno de los 50 botones en una lista, es mejor añadir un único *listener* al **contenedor padre**. Esto se llama **Delegación de Eventos**.
+
+```javascript
+const lista = document.getElementById('listaDeBotones');
+
+lista.addEventListener('click', (e) => {
+    // Comprobar si el elemento que se clickeó (target) es un botón
+    if (e.target.tagName === 'BUTTON') {
+        console.log('Botón clickeado:', e.target.textContent);
+        // Puedes acceder a datos específicos del botón, p. ej.:
+        // const id = e.target.dataset.itemId;
+    }
+});
+```
+
+Math.sqrt(9)
+3
+Math.pow(2,3)
+8
+Math.pow(4,0.5)
+2
+Math.pow(9,0.5)
+3
+
+var mensaje = document.getElementById('resultado')
+undefined
+mensaje.className = 'error'
+'error'
+mensaje.className = 'alerta'
+'alerta'
+mensaje.className = 'exito'
+'exito'
+
+
+var alumnos = ['YISBER','ANDY','GABRIEL','ALEJANDRO','JESÚS','RICARDO']
+undefined
+alumnos.sort()
+(6) ['ALEJANDRO', 'ANDY', 'GABRIEL', 'JESÚS', 'RICARDO', 'YISBER']
+var i = 0
+undefined
+while (i < alumnos.length){
+    console.log(alumnos[i])
+    i++
+}
+VM500:2 ALEJANDRO
+VM500:2 ANDY
+VM500:2 GABRIEL
+VM500:2 JESÚS
+VM500:2 RICARDO
+VM500:2 YISBER
+5
+i = 0
+0
+do{
+    console.log(alumnos[i])
+    i++
+}(i < alumnos.length)
+VM707:4 Uncaught SyntaxError: Unexpected token '('Understand this error
+do{
+    console.log(alumnos[i])
+    i++
+}while (i < alumnos.length)
+VM715:2 ALEJANDRO
+VM715:2 ANDY
+VM715:2 GABRIEL
+VM715:2 JESÚS
+VM715:2 RICARDO
+VM715:2 YISBER
+5
+for(let i = 0;i<alumnos.length;i++){
+    console.log(alumnos[i]
+VM955:2 Uncaught SyntaxError: missing ) after argument listUnderstand this error
+for(let i = 0;i<alumnos.length;i++){
+    console.log(alumnos[i])
+}
+VM968:2 ALEJANDRO
+VM968:2 ANDY
+VM968:2 GABRIEL
+VM968:2 JESÚS
+VM968:2 RICARDO
+VM968:2 YISBER
+undefined
+
+Como experto en JavaScript, identifico que hay un error de **acceso a la variable** y un problema de **legibilidad/eficiencia** en tu función `forEach()`.
+
+Aquí está la corrección y la explicación detallada:
+
+## Corrección del Código
+
+El objetivo de `forEach` es iterar sobre el *array* `alumnos`. La función *callback* que le pasas debe recibir el **elemento actual** del *array* como su primer argumento.
+
+Asumiendo que `alumnos` es un *array* de nombres (strings):
+
+```javascript
+// Opción 1: Corrección Estándar
+alumnos.forEach((nombre) => {
+    console.log(nombre); // 'nombre' es el elemento actual del array
+});
+
+// Opción 2: Si 'alumnos' es un array de objetos con una propiedad 'nombre'
+alumnos.forEach((alumno) => {
+    console.log(alumno.nombre); // Accede a la propiedad 'nombre' del objeto 'alumno'
+});
+```
+
+-----
+
+## Análisis y Causa del Error
+
+El problema principal en tu código original, `alumnos.forEach(() => { console.log(nombre) })`, es la **referencia a la variable `nombre`**:
+
+1.  **Parámetro Faltante:** El método **`forEach()`** llama a su función *callback* para cada elemento, pasándole el **elemento actual** como su primer argumento. Tu función flecha **`() => {...}`** no declara ningún parámetro de entrada.
+2.  **Variable No Definida:** Dentro de la función, intentas imprimir `nombre`. Dado que `nombre` **no fue pasado como parámetro** ni está declarado en el ámbito global o superior, JavaScript no puede encontrar esta variable.
+
+Si el código original se ejecutara, produciría un error **`ReferenceError: nombre is not defined`** (a menos que `nombre` existiera globalmente, lo cual sería una mala práctica).
+
+### La Solución Clave
+
+Al escribir **`alumnos.forEach((nombre) => {...})`**, estás haciendo dos cosas:
+
+1.  Le dices a `forEach` que pase el elemento actual del *array* a la función.
+2.  Asignas ese elemento (por ejemplo, `'GABRIEL'`, `'ANA'`) a la variable **local** llamada `nombre` **dentro del ámbito** de la función *callback*, permitiendo que `console.log(nombre)` acceda a él correctamente.
+
+alumnos.forEach((nombre)=>{console.log(nombre)})
+VM1229:1 ALEJANDRO
+VM1229:1 ANDY
+VM1229:1 GABRIEL
+VM1229:1 JESÚS
+VM1229:1 RICARDO
+VM1229:1 YISBER
+undefined
+datos = []
+[]
+datos.push(['ANDY',14,1.65,67])
+1
+datos.push(['ANA',25,1.70,65])
+2
+datos
+(2) [Array(4), Array(4)]0: (4) ['ANDY', 14, 1.65, 67]1: (4) ['ANA', 25, 1.7, 65]length: 2[[Prototype]]: Array(0)
+datos.forEach((detalle) =>{ console.log(dato) })
+VM1568:1 Uncaught ReferenceError: dato is not defined
+    at <anonymous>:1:41
+    at Array.forEach (<anonymous>)
+    at <anonymous>:1:7
+(anonymous) @ VM1568:1
+(anonymous) @ VM1568:1Understand this error
+datos.forEach((detalle) =>{ console.log(detalle) })
+VM1606:1 (4) ['ANDY', 14, 1.65, 67]
+VM1606:1 (4) ['ANA', 25, 1.7, 65]
+undefined
+
+
