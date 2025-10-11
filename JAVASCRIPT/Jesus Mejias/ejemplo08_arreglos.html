@@ -3,9 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="../img/uneweb.png" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo08</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h1 class="text-center">Encuesta</h1>
+        <!--
+        <form action="" method="post">
+        -->
+        <div id="formulario">
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-6">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre">
+                </div>
+                <div class="mb-3 mt-3 col-md-6">
+                    <label for="apellido" class="form-label">Apellido:</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-6">
+                    <label for="sexo" class="form-label">Sexo:</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="sexo" id="sexo" value="F" checked>Femenino
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="sexo" id="sexo" value="M">Masculino
+                    </div>
+                </div>
+                <div class="mb-3 mt-3 col-md-6">
+                    <label for="edad" class="form-label">Edad:</label>
+                    <input type="number" class="form-control" name="edad" id="edad" min="0" max="120">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-6">
+                    <label for="estatura" class="form-label">Estatura:</label>
+                    <input type="number" class="form-control" name="estatura" id="estatura" min="0" max="2" step="0.01">
+                </div>
+                <div class="mb-3 mt-3 col-md-6">
+                    <label for="peso" class="form-label">Peso:</label>
+                    <input type="number" class="form-control" name="peso" id="peso" min="0" step="0.01">
+                </div>
+            </div>
+            <div class="mb-3 mt-3 text-center">
+                <button id="btnGuardar" class="btn btn-primary">Guardar</button>
+                <button id="btnLimpiar" class="btn btn-secondary">Limpiar</button>
+                <button id="btnVerDatos" class="btn btn-warning">Ver datos</button>
+            </div>
+        <!--
+        </form>
+        -->
+        </div>
+        <div class="mb-3 mt-3" id="mensaje"></div>
+        <table class='table table-hover tablebordered table-stripped'>
+            <!--<thead>
+            <tr>
+                <td>NOMBRE</td>
+                <td>APELLIDO</td>
+                <td>SEXO</td>
+                <td>EDAD</td>
+                <td>PESO</td>
+                <td>ESTATURA</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>-->
+    </div>
+    <script>
+        // Declaración de funciones
+        const guardar = () =>{
+            // Extracción de los datos desde el formulario
+            let nombre = document.getElementById('nombre').value;
+            let apellido = document.getElementById('apellido').value;
+            let edad = document.getElementById('edad').value;
+            let peso = document.getElementById('peso').value;
+            let estatura = document.getElementById('estatura').value;
+            let seleccionSexo = document.getElementsByName('sexo')
+            let sexo = '';
+            let textoMensaje = "<div class='alert alert-info'><strong>Atención: </strong>Datos de la encuesta se almacenaron con éxito.</div>";
+            if (seleccionSexo[0].checked){
+                sexo = 'F';
+            }else{
+                sexo = 'M';
+            }
+            // Valores extraídos se añaden en los arreglos
+            nombres.push(nombre);
+            apellidos.push(apellido);
+            edades.push(edad);
+            pesos.push(peso);
+            estaturas.push(estatura);
+            sexos.push(sexo);
+            mensaje.innerHTML = textoMensaje;
+            console.log(nombres,apellidos,edades,pesos,estaturas,sexos);
+            btnVerDatos.hidden = false;
+        }
+
+        const limpiar = () =>{
+            document.getElementById('nombre').value = '';
+            document.getElementById('apellido').value = '';
+            document.getElementById('edad').value = '';
+            document.getElementById('peso').value = '';
+            document.getElementById('estatura').value = '';
+            let seleccionSexo = document.getElementsByName('sexo');
+            seleccionSexo[0].checked = true;
+            mensaje.innerHTML = '';
+        }
+
+        const verDatos = () =>{
+            formulario.hidden = true;
+            mensaje.innerHTML = '';
+            let contenidoDatos = `<thead>
+            <tr>
+                <td>NOMBRE</td>
+                <td>APELLIDO</td>
+                <td>SEXO</td>
+                <td>EDAD</td>
+                <td>PESO</td>
+                <td>ESTATURA</td>
+            </tr>
+            </thead>
+            <tbody>`;
+                for(let index = 0; index < nombres.length; index++){
+                    contenidoDatos += `<try>`;
+                    contenidoDatos += `<td>${nombres[index]}</td>`;
+                    contenidoDatos += `<td>${apellidos[index]}</td>`;
+                    contenidoDatos += `<td>${nombres[index]}</td>`;
+                }
+        }
+
+        
+
+        // Declaración de Variables
+        var nombres = new Array();
+        var apellidos = [];
+        var sexos = [];
+        var edades = [];
+        var pesos = [];
+        var estaturas = [];
+
+        // Cuerpo principal del programa
+        const btnGuardar = document.getElementById('btnGuardar');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+        const mensaje = document.getElementById('mensaje');
+        const btnVerDatos = document.getElementById('btnVerDatos');
+        const formulario = document.getElementById(formulario);
+
+        btnGuardar.addEventListener('click',guardar);
+        btnLimpiar.addEventListener('click',limpiar);
+        btnVerDatos.addEventListener('click',verDatos)
+    </script>
 </body>
 </html>
