@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png" type="image/x-icon">
+    <title>Ejemplo09_json</title>
+</head>
+
+<body>
+    <Script>
+        var estudiante0={'nombre':'ANA', 'apellido':'VASQUEZ','edad':60,'sexo':'F','estatura':1.65,'peso':65}
+        var estudiante1={'nombre':'YOLANDA', 'apellido':'TORTOZA','edad':45,'sexo':'F','estatura':1.65,'peso':65}
+        var estudiante2={'nombre':'NELLY', 'apellido':'CONTRERAS','edad':60,'sexo':'F','estatura':1.68,'peso':65}
+        var estudiantes = [];
+
+        estudiantes.push(estudiante0);
+        estudiantes.push(estudiante1);
+        estudiantes.push(estudiante2);
+
+        console.log(estudiantes);
+
+        for (let index = 0; index < estudiantes.length; index++) {
+            console.log(estudiantes[index].id,estudiantes[index].nombre,estudiantes[index].apellido,);
+            console.log('---');
+        }
+
+    </Script>
+    
+</body>
+</html>

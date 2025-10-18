@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo13 Expresiones reguales</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Registro de usuarios</h1>
+        <form action="" method="post">
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-4"></div>
+                <div class="mb-3 mt-3 col-md-4">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" title="Atención: Sólo se admiten carácteres alfabéticos en mayúscula y espacios en blanco" onblur="validarNombre()" onchange="validarNombre()">
+                    <div id="msjNombre"></div>
+                </div>
+            <div>
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-4"></div>
+                <div class="mb-3 mt-3 col-md-4">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido" title="Atención: Sólo se admiten carácteres alfabéticos en mayúscula y espacios en blanco" onblur="validarApellido()" onchange="validarApellido()">
+                    <div id="msjApellido"></div>
+                </div>
+            <div>
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-4"></div>
+                <div class="mb-3 mt-3 col-md-4">
+                    <label for="correo" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" name="correo" id="correo" onblur="validarCorreoElectronico()" onchange="validarCorreoElectronico()" title="Por favor ingrese un correo electrónico, cuyo formato sea válido.">
+                    <div id="msjCorreo"></div>
+                </div>
+            <div>
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-4"></div>
+                <div class="mb-3 mt-3 col-md-4">
+                    <label for="clave1" class="form-label">Clave</label>
+                    <input type="password" class="form-control" name="clave1" id="clave1" onblur="validarClave()" onchange="validarClave()" title="Atención.
+La clave debe cumplir con los siguientes criterios:
+- Mínimo 8 caracteres.
+- Máximo 15 caracteres.
+- Debe iniciar con una letra mayúscula.
+- El resto del contenido debe estar en minúscula.
+- Debe contener un dígito numérico.
+- Debe contener un caracter especial de los siguientes: *,_,$,#,?,-¿">
+                    <div id="msjClave"></div>
+                </div>
+            <div>
+            <div class="row">
+                <div class="mb-3 mt-3 col-md-4"></div>
+                <div class="mb-3 mt-3 col-md-4">
+                    <label for="clave2" class="form-label">Repetir Clave</label>
+                    <input type="password" class="form-control" name="clave2" id="clave2" title="Ingrese el valor de la clave que corresponda al mismo de la clave inicial." onblur="validarRepetirClave()" onchange="validarRepetirClave()">
+                    <div id="msjRepetirClave"></div>
+                </div>
+            <div>
+            <div class="text-center">
+                <button id="btnEnviar" class="btn btn-success" type="submit" disabled>Enviar</button>
+                <button class="btn btn-warning" type="reset">Limpiar</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Declaración de funciones
+
+        function validarNombre(){
+            const regexNombre = /^[A-Z\s]+$/;
+            let nombre = document.getElementById('nombre');
+            let msjNombre = document.getElementById('msjNombre');
+            if (!regexNombre.test(nombre.value)){
+                msjNombre.style.fontSize = '12px';
+                msjNombre.style.color = 'red';
+                msjNombre.innerHTML = 'ERROR: Formato de nombre no válido';
+                control['nombre'] = false;
+            }else{
+                msjNombre.style.fontSize = '';
+                msjNombre.style.color = '';
+                msjNombre.innerHTML = '';
+                control['nombre'] = true;
+            }
+            validarControl();
+        }
+
+        function validarApellido(){
+            const regexApellido = /^[A-Z\s]+$/;
+            let apellido = document.getElementById('apellido');
+            let msjApellido = document.getElementById('msjApellido');
+            if (!regexApellido.test(apellido.value)){
+                msjApellido.style.fontSize = '12px';
+                msjApellido.style.color = 'red';
+                msjApellido.innerHTML = 'ERROR: Formato de apellido no válido';
+                control['apellido'] = false;
+            }else{
+                msjApellido.style.fontSize = '';
+                msjApellido.style.color = '';
+                msjApellido.innerHTML = '';
+                control['apellido'] = true;
+            }
+            validarControl();
+        }
+
+        function validarCorreoElectronico(){
+            //const regexCorreoElectronico = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;
+            /**
+             * https://es.stackoverflow.com/questions/453176/como-validar-correctamente-un-email-con-expresiones-regulares
+             */
+            const regexCorreoElectronico = /^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}$/;
+            let correoElectronico = document.getElementById('correo');
+            let msjCorreo = document.getElementById('msjCorreo');
+            if (!regexCorreoElectronico.test(correoElectronico.value)){
+                msjCorreo.style.fontSize = '12px';
+                msjCorreo.style.color = 'red';
+                msjCorreo.innerHTML = 'ERROR: Formato de correo electrónico no válido';
+                control['correo'] = false;
+            }else{
+                msjCorreo.style.fontSize = '';
+                msjCorreo.style.color = '';
+                msjCorreo.innerHTML = '';
+                control['correo'] = true;
+            }
+            validarControl();
+        }
+
+        function validarClave(){
+            const regexClave = /^(?=.*[0-9])(?=.*[*_$.#?¿-])[A-Z][a-z0-9*_$.#?¿-]{7,14}$/;
+            let clave = document.getElementById('clave1');
+            let msjClave = document.getElementById('msjClave');
+            if (!regexClave.test(clave.value)){
+                msjClave.style.fontSize = '12px';
+                msjClave.style.color = 'red';
+                msjClave.innerHTML = 'ERROR: Formato de la clave no válido';
+                control['clave1'] = false;
+            }else{
+                msjClave.style.fontSize = '';
+                msjClave.style.color = '';
+                msjClave.innerHTML = '';
+                control['clave1'] = true;
+            }
+            validarControl();
+        }
+
+        function validarRepetirClave(){
+            let repetirClave = document.getElementById('clave2');
+            let clave = document.getElementById('clave1');
+            if (control['clave1'] == true && repetirClave.value != clave.value){
+                msjRepetirClave.style.fontSize = '12px';
+                msjRepetirClave.style.color = 'red';
+                msjRepetirClave.innerHTML = 'ERROR: Clave no coincide';
+                control['clave2'] = false;
+            }else if (control['clave1'] == false){
+                msjRepetirClave.style.fontSize = '12px';
+                msjRepetirClave.style.color = 'red';
+                msjRepetirClave.innerHTML = 'ERROR: Formato de la clave no válido: Clave incorrecta';
+                control['clave2'] = false;
+            }else if (control['clave1'] == true && repetirClave.value == clave.value){
+                msjRepetirClave.style.fontSize = '';
+                msjRepetirClave.style.color = '';
+                msjRepetirClave.innerHTML = '';
+                control['clave2'] = true;
+            }
+            validarControl();
+        }
+
+        function validarControl(){
+            let btnEnviar = document.getElementById('btnEnviar');
+            if (control['nombre'] == true && 
+                control['apellido'] == true &&
+                control['correo'] == true &&
+                control['clave1'] == true &&
+                control['clave2'] == true){
+                btnEnviar.disabled = false;
+            }else{
+                btnEnviar.disabled = true;
+            }
+        }
+
+        // Declaración de variables
+        var nombre, apellido, correoElectronico, clave, repetirClave; 
+        var control ={'nombre':false,'apellido':false,'correo':false,'clave1':false,'clave2':false};
+
+
+    </script>
+</body>
+</html>

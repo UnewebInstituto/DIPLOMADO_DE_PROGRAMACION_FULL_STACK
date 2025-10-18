@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo12 XML</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de estudiantes (Usando XML)</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Estatura</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo_tabla"></tbody>
+        </table>
+        <script>
+            // 1. Definición de los datos en formato XML (como una cadena de texto)
+            const xmlData = `
+                <estudiantes>
+                    <estudiante>
+                        <id>1</id>
+                        <nombre>ANA</nombre>
+                        <apellido>VASQUEZ</apellido>
+                        <edad>60</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.65</estatura>
+                        <peso>65</peso>
+                    </estudiante>
+                    <estudiante>
+                        <id>2</id>
+                        <nombre>YOLANDA</nombre>
+                        <apellido>TORTOZA</apellido>
+                        <edad>45</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.69</estatura>
+                        <peso>57</peso>
+                    </estudiante>
+                    <estudiante>
+                        <id>3</id>
+                        <nombre>NELLY</nombre>
+                        <apellido>CONTRERAS</apellido>
+                        <edad>56</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.68</estatura>
+                        <peso>60</peso>
+                    </estudiante>
+                </estudiantes>
+            `;
+
+            // 2. Parsear la cadena XML para obtener un objeto Document (XML DOM)
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlData, "text/xml");
+
+            // 3. Obtener todos los nodos de 'estudiante'
+            const estudiantesXML = xmlDoc.getElementsByTagName('estudiante');
+
+            let salida = '';
+
+            // Función de ayuda para obtener el valor de texto de un tag hijo dentro de un nodo estudiante
+            const getXMLValue = (estudianteNode, tagName) => 
+                estudianteNode.getElementsByTagName(tagName)[0].textContent;
+
+            // 4. Iterar sobre los nodos de estudiante y construir la tabla
+            for (let index = 0; index < estudiantesXML.length; index++) {
+                const estudiante = estudiantesXML[index];
+                
+                salida += `
+                    <tr>
+                        <td>${getXMLValue(estudiante, 'id')}</td>
+                        <td>${getXMLValue(estudiante, 'nombre')}</td>
+                        <td>${getXMLValue(estudiante, 'apellido')}</td>
+                        <td>${getXMLValue(estudiante, 'sexo')}</td>
+                        <td>${getXMLValue(estudiante, 'edad')}</td>
+                        <td>${getXMLValue(estudiante, 'estatura')}</td>
+                        <td>${getXMLValue(estudiante, 'peso')}</td>
+                    </tr>`;
+            }
+
+            // 5. Inyectar el HTML generado en el cuerpo de la tabla
+            document.getElementById('cuerpo_tabla').innerHTML = salida;
+        </script>
+    </div>
+
+</body>
+</html>

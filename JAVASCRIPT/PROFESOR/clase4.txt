@@ -1,0 +1,404 @@
+Entendido. Para adaptar el código y que maneje **XML** en lugar de objetos **JSON/JavaScript**, necesitamos cambiar la forma en que se estructuran y acceden los datos.
+
+En JavaScript del lado del cliente (navegador), el manejo de XML se realiza típicamente con el objeto **`DOMParser`** para analizar (parsear) la cadena XML en un objeto **`Document`** (que representa el DOM de XML). Luego, se utilizan métodos de manipulación del DOM (como `getElementsByTagName` o `querySelector`) para acceder a los datos.
+
+Aquí está el código adaptado:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png">
+    <title>Ejemplo09 XML</title>
+</head>
+<body>
+    <script>
+        // 1. Definición de los datos en formato XML (como una cadena de texto)
+        const xmlData = `
+            <estudiantes>
+                <estudiante>
+                    <id>1</id>
+                    <nombre>ANA</nombre>
+                    <apellido>VASQUEZ</apellido>
+                    <edad>60</edad>
+                    <sexo>F</sexo>
+                    <estatura>1.65</estatura>
+                    <peso>65</peso>
+                </estudiante>
+                <estudiante>
+                    <id>2</id>
+                    <nombre>YOLANDA</nombre>
+                    <apellido>TORTOZA</apellido>
+                    <edad>45</edad>
+                    <sexo>F</sexo>
+                    <estatura>1.69</estatura>
+                    <peso>57</peso>
+                </estudiante>
+                <estudiante>
+                    <id>3</id>
+                    <nombre>NELLY</nombre>
+                    <apellido>CONTRERAS</apellido>
+                    <edad>56</edad>
+                    <sexo>F</sexo>
+                    <estatura>1.68</estatura>
+                    <peso>60</peso>
+                </estudiante>
+            </estudiantes>
+        `;
+
+        // 2. Parsear la cadena XML para obtener un objeto Document (XML DOM)
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlData, "text/xml");
+
+        // *************** Lógica de Acceso y Lectura de Datos ***************
+
+        // 3. Obtener todos los nodos de 'estudiante'
+        const estudiantesXML = xmlDoc.getElementsByTagName('estudiante');
+
+        // El objeto estudiantesXML es una NodeList (similar a un array de nodos)
+        console.log(estudiantesXML);
+
+        // 4. Iterar sobre los nodos y acceder a la información
+        for (let i = 0; i < estudiantesXML.length; i++) {
+            const estudiante = estudiantesXML[i];
+            
+            // Acceder a los elementos hijos de cada 'estudiante' y obtener su texto
+            const id = estudiante.getElementsByTagName('id')[0].textContent;
+            const nombre = estudiante.getElementsByTagName('nombre')[0].textContent;
+            const apellido = estudiante.getElementsByTagName('apellido')[0].textContent;
+
+            // Mostrar los datos en la consola
+            console.log(id, nombre, apellido);
+            console.log('---');
+        }
+    </script>
+</body>
+</html>
+```
+
+-----
+
+## Explicación de los Cambios Clave
+
+1.  **Datos en Formato XML**:
+      * En lugar de definir objetos de JavaScript (`estudiante0`, `estudiante1`, etc.), los datos se definen como una **única cadena de texto** (`xmlData`) que contiene la estructura XML.
+2.  **Uso de `DOMParser`**:
+      * En JavaScript, el método estándar para convertir una cadena XML en un objeto con el que se pueda interactuar es **`new DOMParser().parseFromString(string, "text/xml")`**. Esto crea el objeto **`xmlDoc`**, que es el *Document Object Model* (DOM) del XML.
+3.  **Acceso a los Datos (DOM API)**:
+      * Para obtener la lista de estudiantes, usamos **`xmlDoc.getElementsByTagName('estudiante')`**, que devuelve una lista de nodos (una `NodeList`).
+      * Dentro del bucle, para acceder a un valor específico (como el nombre o el ID), se utiliza el método **`estudiante.getElementsByTagName('nombre')[0].textContent`**.
+          * `getElementsByTagName('nombre')` encuentra el elemento hijo llamado `<nombre>`.
+          * `[0]` selecciona el primer (y único) elemento con ese nombre dentro del nodo actual.
+          * `.textContent` extrae el valor de texto dentro de ese elemento (ej. 'ANA').
+
+
+¡Excelente\! Adaptar este código requiere cambiar la fuente de datos de objetos JavaScript (que simulan JSON) a una **cadena XML** y, lo más importante, modificar la lógica de JavaScript para **analizar (parsear) el XML** y **acceder a sus elementos** usando el DOM (Document Object Model) del XML.
+
+Aquí está el código adaptado.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo11 XML Reporte</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de estudiantes (XML)</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Estatura</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo_tabla"></tbody>
+        </table>
+        <script>
+            // 1. Definición de los datos en formato XML (como una cadena de texto)
+            const xmlData = `
+                <estudiantes>
+                    <estudiante>
+                        <id>1</id>
+                        <nombre>ANA</nombre>
+                        <apellido>VASQUEZ</apellido>
+                        <edad>60</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.65</estatura>
+                        <peso>65</peso>
+                    </estudiante>
+                    <estudiante>
+                        <id>2</id>
+                        <nombre>YOLANDA</nombre>
+                        <apellido>TORTOZA</apellido>
+                        <edad>45</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.69</estatura>
+                        <peso>57</peso>
+                    </estudiante>
+                    <estudiante>
+                        <id>3</id>
+                        <nombre>NELLY</nombre>
+                        <apellido>CONTRERAS</apellido>
+                        <edad>56</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.68</estatura>
+                        <peso>60</peso>
+                    </estudiante>
+                </estudiantes>
+            `;
+
+            // 2. Parsear la cadena XML para obtener un objeto Document (XML DOM)
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlData, "text/xml");
+
+            // 3. Obtener todos los nodos de 'estudiante'
+            const estudiantesXML = xmlDoc.getElementsByTagName('estudiante');
+
+            let salida = '';
+
+            // 4. Iterar sobre los nodos de estudiante y construir la tabla
+            for (let index = 0; index < estudiantesXML.length; index++) {
+                const estudiante = estudiantesXML[index];
+                
+                // Función auxiliar para obtener el valor de texto de un tag hijo
+                // getElementsByTagName devuelve una lista, seleccionamos el primer elemento [0]
+                // y luego obtenemos su contenido de texto (.textContent)
+                const getXMLValue = (tagName) => estudiante.getElementsByTagName(tagName)[0].textContent;
+
+                salida += `
+                    <tr>
+                        <td>${getXMLValue('id')}</td>
+                        <td>${getXMLValue('nombre')}</td>
+                        <td>${getXMLValue('apellido')}</td>
+                        <td>${getXMLValue('sexo')}</td>
+                        <td>${getXMLValue('edad')}</td>
+                        <td>${getXMLValue('estatura')}</td>
+                        <td>${getXMLValue('peso')}</td>
+                    </tr>`;
+            }
+
+            // 5. Inyectar el HTML generado en el cuerpo de la tabla
+            document.getElementById('cuerpo_tabla').innerHTML = salida;
+        </script>
+    </div>
+
+</body>
+</html>
+```
+
+-----
+
+## Resumen de la Adaptación Clave
+
+La principal diferencia está en el manejo de los datos dentro del bloque `<script>`:
+
+1.  **Fuente de Datos**: Las variables individuales (`estudiante0`, `estudiante1`, etc.) se reemplazan por una única cadena **`xmlData`** que contiene todos los datos estructurados en XML.
+2.  **Análisis (Parsing)**: Se utiliza el objeto **`DOMParser`** para convertir la cadena `xmlData` en un **`xmlDoc`** (el DOM de XML), que JavaScript puede manipular.
+    ```javascript
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlData, "text/xml");
+    ```
+3.  **Acceso a los Datos**:
+      * Para obtener la lista de registros, se usa **`xmlDoc.getElementsByTagName('estudiante')`**.
+      * Dentro del bucle, para acceder a un campo específico (ej., `nombre`), ya no usamos la notación de punto (`estudiantes[index].nombre`), sino la API del DOM: **`estudiante.getElementsByTagName('nombre')[0].textContent`**. Este método navega desde el nodo actual (`estudiante`) hasta el nodo hijo deseado y extrae su texto.
+
+
+¡Como experto en JavaScript, aquí tienes la expresión regular (Regex) que cumple con todos los requisitos solicitados\!
+
+La expresión regular es la siguiente:
+
+$$\text{/^(?=.*[0-9])(?=.*[\*_\$\.\#\?\¿\-])[A-Z][a-z]{6,13}$/}$$
+
+-----
+
+## Desglose y Explicación de la Expresión Regular
+
+La expresión se construye combinando **anclajes**, **grupos** y **lookaheads** para asegurar que se cumplan todas las condiciones de longitud, formato y contenido.
+
+| Componente | Descripción | Cumple con |
+| :--- | :--- | :--- |
+| **`^`** | Ancla la búsqueda al **inicio** de la cadena. | |
+| **`(?=.*[0-9])`** | **Lookahead positivo** (búsqueda avanzada): Asegura que, en cualquier punto de la cadena, exista **al menos un dígito** (`[0-9]`). | *Debe contener al menos un número.* |
+| **`(?=.*[\*_\$\.\#\?\¿\-])`** | **Lookahead positivo** (búsqueda avanzada): Asegura que, en cualquier punto de la cadena, exista **al menos uno de los caracteres especiales** especificados. | *Debe contener al menos un carácter especial.* |
+| **`[A-Z]`** | El primer carácter debe ser una **letra mayúscula** (de la 'A' a la 'Z'). | *Debe iniciar con letra mayúscula.* |
+| **`[a-z]`** | El resto de los caracteres deben ser **letras minúsculas** (de la 'a' a la 'z'). | *El resto en minúscula.* |
+| **`{6,13}`** | Cuantificador que aplica al bloque `[a-z]`. Indica que debe haber entre **6 y 13** caracteres minúsculos, sumado al carácter mayúscula inicial, lo que cumple con la longitud total. | |
+| **`$`** | Ancla la búsqueda al **final** de la cadena. | |
+
+### Validación de la Longitud
+
+La longitud mínima de 8 y máxima de 15 se asegura con:
+
+  * **1** carácter inicial Mayúscula (`[A-Z]`).
+  * **6 a 13** caracteres minúsculos restantes (`[a-z]{6,13}`).
+
+$$\text{Longitud Total} = 1 + (6 \text{ a } 13) = 7 \text{ a } 14 \text{ caracteres}$$
+
+**¡Corrección Necesaria\!** 🚨 Para alcanzar los límites de 8 a 15, el cuantificador debe ser `{7,14}`:
+
+$$\text{Longitud Total} = 1 + (7 \text{ a } 14) = 8 \text{ a } 15 \text{ caracteres}$$
+
+-----
+
+## Expresión Regular Final y Optimizada para JavaScript
+
+Basado en la corrección de longitud, la expresión final es:
+
+$$\text{/^(?=.*[0-9])(?=.*[\*_\$\.\#\?\¿\-])[A-Z][a-z0-9\*_\$\.\#\?\¿\-]{7,14}$/}$$
+
+**¡Atención\!** La restricción "el resto en minúscula" entra en conflicto con las restricciones "debe contener al menos un número" y "al menos un carácter especial". Un número o carácter especial no es una letra minúscula.
+
+**Asumo que el requisito de "el resto en minúscula" aplica al contenido alfabético después del inicio, pero que se permite la inclusión de números y caracteres especiales en las posiciones restantes.**
+
+**Si la cadena restante solo puede tener minúsculas, la expresión original (corregida en longitud) es imposible de validar si se requieren números y símbolos.**
+
+### Opción 1: Cadena Rígida (La opción estricta que no permite números/símbolos **excepto** en los lookaheads)
+
+**Si tu intención era que los lookaheads validaran *implícitamente* el resto de la cadena, permitiendo que un número o símbolo *sustituyera* a una minúscula en las posiciones siguientes:**
+
+$$\text{/^(?=.*[0-9])(?=.*[\*_\$\.\#\?\¿\-])[A-Z][a-z]{7,14}$/}$$
+
+  * Esta expresión es **IMPOSIBLE de validar** porque las posiciones 2 a 15 solo permiten `[a-z]`, pero los lookaheads exigen `[0-9]` y `[\*_\$\.\#\?\¿\-]` que no son minúsculas.
+
+### Opción 2: Cadena Flexible (La opción más común y funcional) ✅
+
+**Esta es la versión funcional que respeta todas las condiciones (mayúscula inicial, longitud, número, símbolo) y asume que el "resto en minúscula" se refiere a que la mayoría del contenido debe ser alfabético minúsculo, pero permitiendo los caracteres requeridos por las otras reglas.**
+
+$$\text{/^(?=.*[0-9])(?=.*[\*_\$\.\#\?\¿\-])[A-Z][a-z0-9\*_\$\.\#\?\¿\-]{7,14}$/}$$
+
+  * **`[A-Z]`**: Mayúscula inicial.
+  * **`[a-z0-9\*_\$\.\#\?\¿\-]`**: El resto de la cadena (7 a 14 caracteres) puede contener **minúsculas, números y los símbolos especiales**.
+
+### Ejemplo de Uso en JavaScript
+
+```javascript
+const regex = /^(?=.*[0-9])(?=.*[*_$.#?¿-])[A-Z][a-z0-9*_$.#?¿-]{7,14}$/;
+
+console.log(regex.test("Aejemplo1*"));       // true (Longitud 10, cumple todo)
+console.log(regex.test("Aejemplo123456789*")); // true (Longitud 15, máximo)
+console.log(regex.test("Aejemplo*"));        // false (No tiene número)
+console.log(regex.test("Aejemplo1"));        // false (No tiene símbolo)
+console.log(regex.test("aejemplo1*"));       // false (No empieza con mayúscula)
+console.log(regex.test("Aejemplo1*M"));      // false (Contiene otra mayúscula)
+```
+
+Una **expresión regular** (o *regex*, del inglés *Regular Expression*) es una secuencia de caracteres que define un **patrón de búsqueda**. 🔎
+
+Su función principal es encontrar, validar o manipular cadenas de texto que sigan reglas específicas. Es una herramienta fundamental en programación y procesamiento de texto, utilizada para tareas como:
+
+1.  **Validación de Formatos**: Asegurar que un *email*, una *contraseña*, o un *número de teléfono* cumplan con una estructura predefinida.
+2.  **Búsqueda y Extracción**: Encontrar todas las ocurrencias de una palabra o un patrón complejo dentro de un texto grande.
+3.  **Reemplazo de Texto**: Sustituir todas las coincidencias de un patrón por otra cadena de texto.
+
+---
+
+## Componentes Clave
+
+Una expresión regular está compuesta por caracteres literales (que coinciden consigo mismos, como `a`, `b`, `1`) y **metacaracteres** (caracteres especiales con significados de control):
+
+| Metacarácter | Significado | Ejemplo |
+| :--- | :--- | :--- |
+| **`^`** | Inicio de la cadena. | `^A` busca una cadena que empiece por 'A'. |
+| **`$`** | Final de la cadena. | `ión$` busca una cadena que termine en 'ión'. |
+| **`.`** | Cualquier carácter (excepto salto de línea). | `a.b` coincide con 'a*b', 'a3b', 'acb'. |
+| **`*`** | Cero o más repeticiones del elemento anterior. | `ab*c` coincide con 'ac', 'abc', 'abbbc'. |
+| **`+`** | Una o más repeticiones del elemento anterior. | `ab+c` coincide con 'abc', 'abbbc', pero no con 'ac'. |
+| **`?`** | Cero o una repetición (hace que el elemento sea opcional). | `colou?r` coincide con 'color' y 'colour'. |
+| **`{n,m}`** | Mínimo $n$ y máximo $m$ repeticiones. | `a{2,4}` coincide con 'aa', 'aaa', 'aaaa'. |
+| **`[ ]`** | Define un **conjunto de caracteres** posibles. | `[aeiou]` coincide con cualquier vocal minúscula. |
+| **`\d`** | Representa cualquier **dígito** (`[0-9]`). | |
+| **`\w`** | Representa cualquier carácter de **palabra** (letra, número o guion bajo). | |
+
+---
+
+## Ejemplo Práctico
+
+La expresión:
+$$\text{/^\d{4}-\d{2}-\d{2}$/}$$
+
+* **`^`** y **`$`**: Aseguran que el patrón coincida con toda la cadena.
+* **`\d{4}`**: Cuatro dígitos (para el año).
+* **`-`**: Un guion literal.
+* **`\d{2}`**: Dos dígitos (para el mes y el día).
+
+Esta expresión valida cadenas que tienen el formato de fecha **AAAA-MM-DD** (ejemplo: `2025-10-18`).
+
+Aquí tienes una expresión regular que **solo admite letras mayúsculas (A-Z) y espacios en blanco** dentro de una cadena.
+
+$$\text{/^[A-Z\s]+$/}$$
+
+-----
+
+## Desglose de la Expresión Regular
+
+Esta expresión regular es concisa y cumple estrictamente el requisito:
+
+| Componente | Significado | Función |
+| :--- | :--- | :--- |
+| **`^`** | Anclaje de inicio | Asegura que la coincidencia comience al **principio** de la cadena. |
+| **`[`...`]`** | Conjunto de caracteres | Define qué caracteres están permitidos. |
+| **`A-Z`** | Rango de mayúsculas | Permite cualquier letra de la **'A' a la 'Z'**. |
+| **`\s`** | Metacarácter de espacio | Permite cualquier carácter de **espacio en blanco** (espacio, tabulación, salto de línea). |
+| **`+`** | Cuantificador | Indica que el conjunto de caracteres anterior (`[A-Z\s]`) debe aparecer **una o más veces**. Esto también asegura que la cadena no sea vacía. |
+| **`$`** | Anclaje de final | Asegura que la coincidencia termine al **final** de la cadena. |
+
+## Ejemplo de Uso en JavaScript
+
+```javascript
+const regex = /^[A-Z\s]+$/;
+
+// Cadenas que SÍ coinciden (TRUE)
+console.log(regex.test("NOMBRE COMPLETO"));  // true
+console.log(regex.test("SOLO MAYUSCULAS"));  // true
+console.log(regex.test("HOLA"));             // true
+
+// Cadenas que NO coinciden (FALSE)
+console.log(regex.test("Tiene minúsculas")); // false (por las 'i', 'e', 'n', etc.)
+console.log(regex.test("INCLUYE NUMEROS 123")); // false (por los '1', '2', '3')
+console.log(regex.test("Con_Simbolos"));     // false (por el guion bajo)
+console.log(regex.test(""));                 // false (el '+' requiere al menos 1 caracter)
+```
+
+Definir una expresión regular que valide **todos** los formatos de correo electrónico posibles según los estándares (RFC 5322) es extremadamente complejo y resulta en una *regex* casi ilegible e ineficiente.
+
+En la práctica de JavaScript, se utiliza una **expresión regular de compromiso** que cubre el **99%** de los formatos de correo electrónico comunes y válidos, sin la complejidad extrema de los casos raros.
+
+Aquí está una de las *regex* más utilizadas para la validación de email en el desarrollo web:
+
+$$\text{/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/}$$
+
+---
+
+## Desglose Detallado
+
+La expresión se divide en tres partes principales: el nombre de usuario, el símbolo arroba (`@`), y el nombre de dominio.
+
+### 1. Nombre de Usuario (Local Part): `[a-zA-Z0-9._%+-]+`
+
+| Componente | Significado |
+| :--- | :--- |
+| **`[`...`]`** | Conjunto de caracteres permitidos. |
+| **`a-zA-Z0-9`** | Permite letras **minúsculas, mayúsculas** y **números**. |
+| **`._%+-`** | Permite los caracteres especiales comunes: **punto (`.`), guion bajo (`_`), porcentaje (`%`), signo más (`+`) y guion medio (`-`)**. |
+| **`+`** | Indica que el conjunto anterior debe aparecer **una o más veces** (mínimo un carácter). |
+
+### 2. Símbolo Arroba (`@`): `@`
+
+| Componente | Significado |
+| :--- | :--- |
+| **`@`** | Coincide con el carácter arroba **literal**, que separa el nombre de usuario del dominio. |
+
+### 3. Nombre de Dominio (Domain Part):

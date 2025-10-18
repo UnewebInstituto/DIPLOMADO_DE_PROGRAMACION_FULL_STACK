@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo11 JSON</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de estudiantes</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Estatura</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo_tabla"></tbody>
+            </table>
+            <script>
+                var estudiante0={'id':1,'nombre':'ANA','apellido':'VASQUEZ','edad':60,'sexo':'F','estatura':1.65,'peso':65};
+                var estudiante1={'id':2,'nombre':'YOLANDA','apellido':'TORTOZA','edad':45,'sexo':'F','estatura':1.69,'peso':57};
+                var estudiante2={'id':3,'nombre':'NELLY','apellido':'CONTRERAS','edad':56,'sexo':'F','estatura':1.68,'peso':60};
+
+                var estudiantes = [];
+
+                var salida = '';
+
+                estudiantes.push(estudiante0);
+                estudiantes.push(estudiante1);
+                estudiantes.push(estudiante2);
+
+                console.log(estudiantes);
+
+                salida = ``;
+                for (let index = 0; index < estudiantes.length; index++) {
+                    salida = salida + `
+                    <tr>
+                        <td>${estudiantes[index].id}</td>
+                        <td>${estudiantes[index].nombre}</td>
+                        <td>${estudiantes[index].apellido}</td>
+                        <td>${estudiantes[index].sexo}</td>
+                        <td>${estudiantes[index].edad}</td>
+                        <td>${estudiantes[index].estatura}</td>
+                        <td>${estudiantes[index].peso}</td>
+                    </tr>`;
+                }
+                document.getElementById('cuerpo_tabla').innerHTML = salida;
+            </script>
+    </div>
+
+</body>
+</html>

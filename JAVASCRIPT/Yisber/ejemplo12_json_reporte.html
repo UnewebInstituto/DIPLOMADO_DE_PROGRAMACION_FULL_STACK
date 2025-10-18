@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo11_xml_reporte</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Reporte de estudiantes (Datos XML)</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Estatura</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo_tabla_xml"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // 1. Cadena de datos en formato XML
+        const estudiantesXMLString = `
+            <estudiantes>
+                <estudiante>
+                    <id>1</id>
+                    <nombre>ANA</nombre>
+                    <apellido>VASQUEZ</apellido>
+                    <sexo>F</sexo>
+                    <edad>60</edad>
+                    <estatura>1.65</estatura>
+                    <peso>65</peso>
+                </estudiante>
+                <estudiante>
+                    <id>2</id>
+                    <nombre>YOLANDA</nombre>
+                    <apellido>TORTOZA</apellido>
+                    <sexo>F</sexo>
+                    <edad>45</edad>
+                    <estatura>1.69</estatura>
+                    <peso>57</peso>
+                </estudiante>
+                <estudiante>
+                    <id>3</id>
+                    <nombre>NELLY</nombre>
+                    <apellido>CONTRERAS</apellido>
+                    <sexo>F</sexo>
+                    <edad>56</edad>
+                    <estatura>1.68</estatura>
+                    <peso>60</peso>
+                </estudiante>
+            </estudiantes>
+        `;
+
+        // 2. Parseo del XML
+        const parser = new DOMParser();
+        // El resultado es un objeto Document, que es un árbol de nodos manipulable.
+        const xmlDoc = parser.parseFromString(estudiantesXMLString, "text/xml");
+
+        // 3. Obtener todos los nodos 'estudiante'
+        // Esto devuelve un NodeList de todos los elementos <estudiante>
+        const estudiantesNodes = xmlDoc.getElementsByTagName("estudiante");
+
+        console.log("Nodos de estudiantes (XML):", estudiantesNodes);
+
+        let filasHTML = '';
+
+        // 4. Iterar sobre los nodos XML y construir el HTML
+        for (let i = 0; i < estudiantesNodes.length; i++) {
+            const estudianteNode = estudiantesNodes[i];
+
+            // Para cada nodo hijo (id, nombre, apellido, etc.), obtenemos su texto
+            const id = estudianteNode.getElementsByTagName("id")[0].textContent;
+            const nombre = estudianteNode.getElementsByTagName("nombre")[0].textContent;
+            const apellido = estudianteNode.getElementsByTagName("apellido")[0].textContent;
+            const sexo = estudianteNode.getElementsByTagName("sexo")[0].textContent;
+            const edad = estudianteNode.getElementsByTagName("edad")[0].textContent;
+            const estatura = estudianteNode.getElementsByTagName("estatura")[0].textContent;
+            const peso = estudianteNode.getElementsByTagName("peso")[0].textContent;
+
+            // Construir la fila <tr> usando Template Literals
+            filasHTML += `
+                <tr>
+                    <td>${id}</td>
+                    <td>${nombre}</td>
+                    <td>${apellido}</td>
+                    <td>${sexo}</td>
+                    <td>${edad}</td>
+                    <td>${estatura}</td>
+                    <td>${peso}</td>
+                </tr>
+            `;
+        }
+
+        // 5. Insertar el HTML generado en el DOM
+        document.getElementById('cuerpo_tabla_xml').innerHTML = filasHTML;
+    </script>
+
+</body>
+
+</html>

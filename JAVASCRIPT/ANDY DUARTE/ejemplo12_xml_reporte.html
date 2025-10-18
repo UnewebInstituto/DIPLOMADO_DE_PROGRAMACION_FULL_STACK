@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo11 XML</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Reporte de estudiantes (Usando XML)</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Estatura</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo_tabla"> </tbody>
+        </table>
+
+        <script>
+            // 1. Simulación del contenido XML (como si fuera cargado desde un archivo o una API)
+            const xmlString = `
+                <estudiantes>
+                    <estudiante id="1">
+                        <nombre>ANA</nombre><apellido>VASQUEZ</apellido><edad>60</edad><sexo>f</sexo><estatura>1.65</estatura><peso>65</peso>
+                    </estudiante>
+                    <estudiante id="2">
+                        <nombre>YOLANDA</nombre><apellido>TORTOZA</apellido><edad>45</edad><sexo>f</sexo><estatura>1.69</estatura><peso>67</peso>
+                    </estudiante>
+                    <estudiante id="3">
+                        <nombre>NELLY</nombre><apellido>CONTRERAS</apellido><edad>56</edad><sexo>f</sexo><estatura>1.68</estatura><peso>60</peso>
+                    </estudiante>
+                </estudiantes>
+            `;
+
+            // 2. Analizar la cadena XML en un objeto Documento XML
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+            // 3. Obtener todos los nodos 'estudiante' usando getElementsByTagName
+            const estudiantesXML = xmlDoc.getElementsByTagName("estudiante");
+            
+            // 4. Bucle para generar las filas de la tabla
+            let salida = ``;
+            for (let i = 0; i < estudiantesXML.length; i++) {
+                const estudiante = estudiantesXML[i];
+                
+                // Obtener datos de los nodos (elementos y atributos)
+                const id = estudiante.getAttribute('id');
+                const nombre = estudiante.getElementsByTagName('nombre')[0].childNodes[0].nodeValue;
+                const apellido = estudiante.getElementsByTagName('apellido')[0].childNodes[0].nodeValue;
+                const sexo = estudiante.getElementsByTagName('sexo')[0].childNodes[0].nodeValue;
+                const edad = estudiante.getElementsByTagName('edad')[0].childNodes[0].nodeValue;
+                const estatura = estudiante.getElementsByTagName('estatura')[0].childNodes[0].nodeValue;
+                const peso = estudiante.getElementsByTagName('peso')[0].childNodes[0].nodeValue;
+
+                // Construir la fila HTML
+                salida += `
+                <tr>
+                    <td>${id}</td>
+                    <td>${nombre}</td>
+                    <td>${apellido}</td>
+                    <td>${sexo}</td>
+                    <td>${edad}</td>
+                    <td>${estatura}</td>
+                    <td>${peso}</td>
+                </tr>
+                `;
+                
+                // Registro en consola similar al código original
+                console.log(id, nombre, apellido);
+                console.log('---');
+            }
+
+            // 5. Insertar el HTML generado en el cuerpo de la tabla
+            document.getElementById('cuerpo_tabla').innerHTML = salida;
+        </script>
+    </div>
+
+</body>
+
+</html>

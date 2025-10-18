@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/uneweb.png">
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <title>Ejemplo11 XML</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de estudiantes (Cargado con XML)</h1>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Estatura</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo_tabla"></tbody>
+        </table>
+        <script>
+            // 1. Definición de la estructura de datos XML como una cadena de texto
+            var xmlString = `
+                <estudiantes>
+                    <estudiante id="1">
+                        <nombre>ANA</nombre>
+                        <apellido>VASQUEZ</apellido>
+                        <edad>60</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.65</estatura>
+                        <peso>65</peso>
+                    </estudiante>
+                    <estudiante id="2">
+                        <nombre>YOLANDA</nombre>
+                        <apellido>TORTOZA</apellido>
+                        <edad>45</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.69</estatura>
+                        <peso>57</peso>
+                    </estudiante>
+                    <estudiante id="3">
+                        <nombre>NELLY</nombre>
+                        <apellido>CONTRERAS</apellido>
+                        <edad>56</edad>
+                        <sexo>F</sexo>
+                        <estatura>1.68</estatura>
+                        <peso>60</peso>
+                    </estudiante>
+                </estudiantes>`;
+
+            // 2. Parsear el string XML
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+            // Verificar si hay errores en el parseo
+            if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+                console.error("Error al parsear el XML.");
+                return; // Detener la ejecución si hay error
+            }
+
+            // 3. Obtener la colección de todos los elementos <estudiante>
+            var listaEstudiantesXML = xmlDoc.getElementsByTagName("estudiante");
+
+            var salida = '';
+
+            // 4. Recorrer la lista de elementos XML y construir las filas de la tabla
+            for (let i = 0; i < listaEstudiantesXML.length; i++) {
+                let estudianteXML = listaEstudiantesXML[i];
+                
+                // Extraer el 'id' que está como atributo
+                let id = estudianteXML.getAttribute("id");
+                
+                // Extraer los demás datos que están como elementos hijos
+                let nombre = estudianteXML.getElementsByTagName("nombre")[0].textContent;
+                let apellido = estudianteXML.getElementsByTagName("apellido")[0].textContent;
+                let sexo = estudianteXML.getElementsByTagName("sexo")[0].textContent;
+                let edad = estudianteXML.getElementsByTagName("edad")[0].textContent;
+                let estatura = estudianteXML.getElementsByTagName("estatura")[0].textContent;
+                let peso = estudianteXML.getElementsByTagName("peso")[0].textContent;
+
+                // Construir la fila HTML
+                salida = salida + `
+                    <tr>
+                        <td>${id}</td>
+                        <td>${nombre}</td>
+                        <td>${apellido}</td>
+                        <td>${sexo}</td>
+                        <td>${edad}</td>
+                        <td>${estatura}</td>
+                        <td>${peso}</td>
+                    </tr>`;
+            }
+
+            // 5. Insertar las filas generadas en el cuerpo de la tabla
+            document.getElementById('cuerpo_tabla').innerHTML = salida;
+        </script>
+    </div>
+</body>
+</html>
