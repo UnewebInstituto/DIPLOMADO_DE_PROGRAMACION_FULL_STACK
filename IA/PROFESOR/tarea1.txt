@@ -1,0 +1,16 @@
+
+TAREA:
+
+1-) INSTALAR CLIENTE Filezilla
+2-) REGISTRAR UN NUEVO DOMINIO EN www.alwaysdata.com 
+3-) ELEGIR UNA PLANTILLA DE www.bootsrapmade.com 
+4-) CAMBIAR EXTENSIÓN ARCHIVO A .txt DEL ARCHIVO INDEX.html. Guardar un respaldo de este archivo.
+5-) ENTREGAR A GEMINI EL ARCHIVO index.txt Y CON EL PROMPT APROPÍADO EFECTUAR LA ADAPTACIÓN.
+COPIAR CONTENIDO RESULTADO EN ARCHIVO index.html
+
+Asume el rol de experto en contenido para sitios web, no modificar imagenes, posiciones de fotos, enlaces, fuentes de letra, videos, en general respetar la plantilla. Toma el archivo anexo y sustituye el texto de las secciones de contenido, por contenido del área de Diseño Gráfico y todas sus vertientes en áreas tecnológicas del mismo. Genera el código html completo. 
+
+6-) INTENTAR SUBIR EL PROYECTO COMPLETO EN www.alwaysdata.com
+VER IMAGENES CONTENIDAS EN /PROFESOR/CLASE1
+
+ÉXITOS EN LA TAREA.

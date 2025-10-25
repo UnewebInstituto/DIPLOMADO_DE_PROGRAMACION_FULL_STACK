@@ -1,0 +1,47 @@
+duarteandy421@gmail.com;
+kaira0779@gmail.com;
+jesusmejias2000@gmail.com;
+alessandra.criptos25@gmail.com;
+morenodaniela2403@gmail.com;
+2020velasquez@gmail.com;
+alejandrovilla2912@gmail.com;
+yyrodriguezd11@gmail.com;
+henryeduardo56@gmail.com;
+hectormiiza1302@gmail.com;
+gabocespsa@gmail.com;
+
+
+1) Registro en www.alwaysdata.com
+Dominios registrados:
+https://danielamoreno.alwaysdata.net
+https://karensotomayor.alwaysdata.net
+https://alejandrovilla.alwaysdata.net
+https://moisesvelasquez.alwaysdata.net
+https://jesus-mejias.alwaysdata.net
+https://kairaacuna.alwaysdata.net
+https://yisberrodriguez.alwaysdata.net
+https://duarteandy.alwaysdata.net
+https://gabrielcespedes.alwaysdata.net
+https://hectorizaguirre.alwaysdata.net
+https://henrysantaella.alwaysdata.net
+
+
+2) Instalar VPN: Proton en Google Chrome como extensión.
+A los efectos de acceder a IA, cuyo acceso está restringido
+dada las razones que sean.
+
+3) Acceder a 
+https://bootstrapmade.com
+Seleccionar una plantilla y descargar.
+
+3) Tomar el archivo index.html de la plantilla elegida y duplicarlo 
+como index.txt
+
+4) Acceder a la IA Gemini, se da el enunciado del "prompt" a ejecutar
+
+Asume el rol de experto en contenido para sitios web, no modificar imagenes, posiciones de fotos, enlaces, fuentes de letra, videos, en general respetar la plantilla. Toma el archivo anexo y sustituye el texto de las secciones de contenido, por contenido del área de Diseño Gráfico y todas sus vertientes en áreas tecnológicas del mismo. Genera el código html completo. 
+
+
+
+
+
