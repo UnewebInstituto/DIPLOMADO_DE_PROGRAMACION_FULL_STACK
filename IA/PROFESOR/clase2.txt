@@ -1,0 +1,4 @@
+Prompt sugerido para la imagen:
+
+Asume el rol experto en diseño grafico, genera una imagen para "Imagen de Propiedad"  a fin de incluirla en el perfil de TawkTo, el sitio web es del área Negocio "Repuestos para Vehiculos", el tamaño de la imagen debe ser de 500px por 500px
+

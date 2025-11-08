@@ -33,12 +33,12 @@ git push -u origin main
 Dominios registrados:
 https://danielamoreno.alwaysdata.net
 https://karensotomayor.alwaysdata.net
-https://alejandrovilla.alwaysdata.net
+https://villaalejandro.alwaysdata.net
 https://moisesvelasquez.alwaysdata.net
 https://jesus-mejias.alwaysdata.net
 https://kairaacuna.alwaysdata.net
 https://yisberrodriguez.alwaysdata.net
-https://duarteandy.alwaysdata.net
+https://dianlogistic2025.alwaysdata.net
 https://gabrielcespedes.alwaysdata.net
 https://hectorizaguirre.alwaysdata.net
 https://henrysantaella.alwaysdata.net
