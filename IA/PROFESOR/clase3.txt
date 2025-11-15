@@ -1,0 +1,49 @@
+1-) Crear el entorno virtual.
+v   v   v    v
+py -m venv .venv
+
+2-) Activar el entorno virtual.
+.venv\scripts\activate
+
+3-) Instalar la dependencia
+pip install pandas --force
+
+4-) Consultar dependencias instaladas en el entorno virtual
+pip list
+
+Resultados de la ejecución
+(.venv) D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\PROFESOR\clase3p 
+y programa_enunciado2.py
+--- Proceso de Limpieza de Datos (Simulado) ---
+Fuente de datos: data_enunciado2.txt
+Salida simulada: consumo_harina_limpio.csv
+
+## 📋 Vista Previa del Archivo Limpio (Primeras 10 Filas)
+Ciudad,Mes,Toneladas de consumo
+Caracas,2014-01,110
+Maracaibo,2014-02,95
+Valencia,2014-03,88
+Barquisimeto,2014-04,75
+Maracay,2014-05,102
+Puerto La Cruz,2014-06,65
+Caracas,2014-07,115
+Maracaibo,2014-08,90
+Valencia,2014-09,85
+Barquisimeto,2014-10,72
+
+
+---
+## 📊 Resumen de Registros Eliminados
+Registros iniciales: 126
+Registros finales: 124
+------------------------------
+❌ Registros eliminados por valor en blanco (Ciudad): 2
+❌ Registros eliminados por duplicidad total: 0
+✅ Total de registros eliminados: 2
+
+(.venv) D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\PROFESOR\clase3> 
+
+
+RESULTADO EJEMPLO GAMMA IA 
+
+https://gamma.app/docs/Mercado-de-Harina-de-Maiz-Precocida-en-Venezuela-vvyufkomz4fx5op?mode=doc

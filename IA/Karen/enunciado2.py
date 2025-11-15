@@ -1,0 +1,185 @@
+import pandas as pd
+from io import StringIO
+
+def limpiar_datos_consumo(data_csv: str, nombre_archivo_salida: str = "datos_consumo_limpios.csv") -> str:
+    """
+    Limpia un conjunto de datos de consumo de harina de maíz precocida,
+    eliminando registros con valores en blanco en la columna 'Ciudad' y 
+    eliminando registros duplicados basados en todas las columnas.
+
+    Args:
+        data_csv: Una cadena que contiene los datos en formato CSV.
+        nombre_archivo_salida: El nombre del archivo CSV donde se guardarán los datos limpios.
+
+    Returns:
+        Un resumen de la operación de limpieza (registros eliminados y nombre del archivo de salida).
+    """
+    # 1. Cargar los datos desde la cadena CSV
+    df = pd.read_csv(StringIO(data_csv))
+
+    # Guardar el número inicial de registros
+    registros_iniciales = len(df)
+
+    # 2. Eliminar registros con valores en blanco en la columna 'Ciudad'
+    # La columna 'Ciudad' está vacía si el valor es NaN después de la carga CSV
+    # o si es una cadena vacía (aunque en este caso, CSV lo interpreta como NaN).
+    
+    # Rellenar NaN en 'Ciudad' con una cadena vacía para contarlos como "en blanco" si es necesario,
+    # pero dado el formato del input, pd.read_csv ya los marca como NaN.
+    # Usaremos dropna() en el subconjunto de 'Ciudad'
+    
+    df_sin_blanco = df.dropna(subset=['Ciudad'])
+    
+    registros_eliminados_blanco = len(df) - len(df_sin_blanco)
+    
+    # 3. Eliminar registros duplicados (considerando todas las columnas por defecto)
+    # Se utiliza .drop_duplicates() para mantener solo la primera ocurrencia de cada registro.
+    df_limpio = df_sin_blanco.drop_duplicates()
+
+    registros_eliminados_duplicados = len(df_sin_blanco) - len(df_limpio)
+    
+    # Calcular el total de registros eliminados
+    registros_eliminados_totales = registros_eliminados_blanco + registros_eliminados_duplicados
+    
+    # 4. Guardar los datos limpios en un nuevo archivo CSV
+    df_limpio.to_csv(nombre_archivo_salida, index=False)
+
+    # 5. Generar el resumen de la operación
+    resumen = (
+        f"--- Resumen de Limpieza de Datos ---\n"
+        f"Registros iniciales: {registros_iniciales}\n"
+        f"Registros eliminados por 'Ciudad' en blanco: {registros_eliminados_blanco}\n"
+        f"Registros eliminados por duplicados: {registros_eliminados_duplicados}\n"
+        f"Total de registros eliminados: {registros_eliminados_totales}\n"
+        f"Registros finales: {len(df_limpio)}\n"
+        f"Datos limpios guardados en: '{nombre_archivo_salida}'"
+    )
+
+    return resumen
+
+# --- Programa Principal ---
+
+# Los datos provienen del anexo (fuente 1)
+data_csv = """Ciudad,Mes,Año,Toneladas
+Caracas,1,2014,3500
+Maracaibo,1,2014,2800
+Valencia,1,2014,2100
+Caracas,2,2014,3600
+Barquisimeto,2,2014,1900
+,3,2014,1000
+Maracaibo,3,2014,2950
+Maracay,4,2014,1500
+Puerto La Cruz,5,2014,900
+Caracas,6,2014,3400
+Valencia,7,2014,2000
+Barquisimeto,8,2014,1850
+Maracaibo,9,2014,2700
+Caracas,10,2014,3550
+Maracay,11,2014,1600
+Puerto La Cruz,12,2014,950
+Valencia,1,2015,1800
+Caracas,2,2015,3100
+Maracaibo,3,2015,2500
+Barquisimeto,4,2015,1600
+Caracas,5,2015,3200
+Valencia,6,2015,1900
+Maracay,7,2015,1400
+,8,2015,800
+Puerto La Cruz,9,2015,750
+Maracaibo,10,2015,2650
+Caracas,11,2015,3300
+Valencia,12,2015,1750
+Barquisimeto,1,2016,1400
+Caracas,2,2016,2800
+Maracaibo,3,2016,2200
+Maracay,4,2016,1100
+Puerto La Cruz,5,2016,600
+Caracas,6,2016,2900
+Valencia,7,2016,1500
+Barquisimeto,8,2016,1350
+Maracaibo,9,2016,2150
+Caracas,10,2016,3000
+Maracay,11,2016,1200
+Puerto La Cruz,12,2016,650
+Valencia,1,2017,1400
+Caracas,2,2017,2700
+Maracaibo,3,2017,2000
+Barquisimeto,4,2017,1200
+Caracas,5,2017,2800
+Valencia,6,2017,1300
+Maracay,7,2017,1000
+,8,2017,500
+Puerto La Cruz,9,2017,450
+Maracaibo,10,2017,2050
+Caracas,11,2017,2900
+Valencia,12,2017,1250
+Barquisimeto,1,2018,1100
+Caracas,2,2018,2500
+Maracaibo,3,2018,1800
+Maracay,4,2018,900
+Puerto La Cruz,5,2018,400
+Caracas,6,2018,2600
+Valencia,7,2018,1150
+Barquisimeto,8,2018,1050
+Maracaibo,9,2018,1700
+Caracas,10,2018,2700
+Maracay,11,2018,950
+Puerto La Cruz,12,2018,420
+Valencia,1,2019,1000
+Caracas,2,2019,2300
+Maracaibo,3,2019,1600
+Barquisimeto,4,2019,900
+Caracas,5,2019,2400
+Valencia,6,2019,1050
+Maracay,7,2019,800
+,8,2019,350
+Puerto La Cruz,9,2019,300
+Maracaibo,10,2019,1650
+Caracas,11,2019,2500
+Valencia,12,2019,1000
+Barquisimeto,1,2020,800
+Caracas,2,2020,2100
+Maracaibo,3,2020,1500
+Maracay,4,2020,700
+Puerto La Cruz,5,2020,300
+Caracas,6,2020,2200
+Valencia,7,2020,950
+Barquisimeto,8,2020,850
+Maracaibo,9,2020,1400
+Caracas,10,2020,2300
+Maracay,11,2020,750
+Puerto La Cruz,12,2020,320
+Valencia,1,2021,1200
+Caracas,2,2021,2600
+Maracaibo,3,2021,1900
+Caracas,2,2021,2650
+Barquisimeto,4,2021,1000
+Valencia,12,2019,980
+Maracaibo,10,2019,1650
+Caracas,1,2022,3000
+Maracaibo,2,2022,2300
+Valencia,3,2022,1700
+Caracas,4,2022,3100
+Barquisimeto,5,2022,1500
+,6,2022,1100
+Maracay,7,2023,1900
+Puerto La Cruz,8,2023,1300
+Caracas,9,2023,3800
+Maracaibo,10,2023,3100
+Valencia,11,2023,2400
+Caracas,12,2023,3900
+Barquisimeto,1,2024,2200
+Maracaibo,2,2024,3200
+Caracas,3,2024,4000
+Caracas,3,2024,4050
+Maracay,4,2024,2000
+Puerto La Cruz,5,2024,1400
+Valencia,6,2024,2500
+"""
+
+# Ejecutar la función de limpieza y obtener el resumen
+resultado_limpieza = limpiar_datos_consumo(data_csv)
+
+print(resultado_limpieza)
+
+# Nota: El archivo 'datos_consumo_limpios.csv' se generará en el entorno de ejecución.

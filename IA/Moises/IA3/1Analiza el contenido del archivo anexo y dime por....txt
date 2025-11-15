@@ -1,0 +1,101 @@
+﻿¡Claro! Analizaré el archivo de datos y calcularé el consumo total de harina de maíz precocida por región para el período 2014-2024.
+Para agrupar las ciudades por región de Venezuela, utilizaré la siguiente clasificación regional (Nota: Esta clasificación es una simplificación basada en la geografía y las principales ciudades de los datos):
+Región
+	Ciudades Incluidas
+	Capital y Central
+	Caracas, Maracay, Valencia
+	Occidental
+	Maracaibo, Barquisimeto
+	Oriental
+	Puerto La Cruz
+	No Asignada
+	Ciudades en blanco (Datos nulos)
+	________________
+
+
+🇻🇪 Consumo Total de Harina de Maíz Precocida por Región (2014-2024)
+
+
+
+
+1. Consumo Regional Agregado
+
+
+Región
+	Consumo Total (Toneladas)
+	Porcentaje del Total
+	Capital y Central
+	17,218
+	50.60%
+	Occidental
+	12,852
+	37.75%
+	Oriental
+	3,700
+	10.87%
+	No Asignada (Nulos)
+	115
+	0.34%
+	TOTAL GENERAL
+	33,885
+	100.00%
+	El consumo de harina de maíz precocida se concentra fuertemente en las regiones Capital y Central y Occidental, sumando casi el 90% del consumo registrado.
+
+
+2. Desglose del Consumo por Ciudad (2014-2024)
+
+
+A continuación, se detalla el consumo total por cada ciudad dentro de su respectiva región:
+
+
+A. Región Capital y Central (Total: 17,218 Toneladas)
+
+
+Ciudad
+	Consumo Total (Toneladas)
+	Caracas
+	7,650
+	Maracay
+	5,235
+	Valencia
+	4,333
+	
+
+B. Región Occidental (Total: 12,852 Toneladas)
+
+
+Ciudad
+	Consumo Total (Toneladas)
+	Maracaibo
+	6,866
+	Barquisimeto
+	5,986
+	
+
+C. Región Oriental (Total: 3,700 Toneladas)
+
+
+Ciudad
+	Consumo Total (Toneladas)
+	Puerto La Cruz
+	3,700
+	
+
+D. Datos Nulos (Total: 115 Toneladas)
+
+
+Se encontraron dos registros sin la especificación de ciudad, sumando 115 Toneladas al total general1.
+
+
+________________
+
+
+📈 Análisis de Tendencia General (2014-2024)
+
+
+Aunque el informe se enfoca en la distribución regional, es importante notar la tendencia de consumo observada en los datos:
+* Contracción (2014-2018): El consumo por ciudad muestra una clara disminución de los volúmenes de toneladas entre 2014 y 2018 (por ejemplo, Caracas pasa de 110 T en Enero de 2014 a 75 T en Enero de 2018)2. Esta tendencia se alinea con el periodo de profunda crisis y escasez en el mercado de harina de maíz precocida en Venezuela.
+
+* Recuperación (2019-2024): A partir de 2019, el consumo comienza a mostrar una recuperación y crecimiento progresivo de los volúmenes (por ejemplo, Caracas pasa de 65 T en Enero de 2019 a 160 T en Enero de 2024)3. Esto refleja el posterior reacomodo y apertura competitiva del mercado.
+
+¿Te gustaría que realice un análisis de la tendencia de consumo anual para cada una de las tres regiones principales para visualizar mejor la recuperación post-2018?

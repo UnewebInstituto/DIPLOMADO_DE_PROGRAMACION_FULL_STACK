@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\Kaira Acuña\programa_enunciado.py", line 6, in <module>
+    df = pd.read_csv("data_enunciado2.txt")
+  File "D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\Kaira Acuña\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\Kaira Acuña\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\Kaira Acuña\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\Kaira Acuña\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\IA\Kaira Acuña\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: 'data_enunciado2.txt'
+
+https://gamma.app/docs/Mercado-de-Harina-de-Maiz-Precocida-en-Venezuela-vvyufkomz4fx5op?mode=doc

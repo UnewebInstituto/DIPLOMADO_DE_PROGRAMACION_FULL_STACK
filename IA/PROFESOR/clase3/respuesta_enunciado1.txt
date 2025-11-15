@@ -1,0 +1,103 @@
+﻿🇻🇪 Informe: Mercado de Producción y Consumo de Harina de Maíz Precocida en Venezuela (2014-2024)
+
+
+El mercado de la harina de maíz precocida en Venezuela, alimento fundamental en la dieta básica, ha experimentado un período de profunda volatilidad y transformación entre 2014 y 2024. Este lapso coincide con la fase más aguda de la crisis económica y política del país, marcada por la hiperinflación, la caída de la producción nacional y el control de precios.
+________________
+
+
+📉 Fase I: Colapso y Escasez (2014 - 2018)
+
+
+Este período estuvo caracterizado por la drástica caída de la producción nacional y un severo desabastecimiento.
+
+
+Producción
+
+
+La producción de harina de maíz precocida sufrió una caída libre debido a la falta de materia prima (maíz blanco), los controles de precios y las dificultades para acceder a divisas subsidiadas para la importación de insumos y equipos.
+* Caída del Abastecimiento: Desde 2014, el principal productor, Empresas Polar, alertó sobre la insostenibilidad de la producción debido a los precios regulados que generaban pérdidas operativas.
+* Paralizaciones: Se registraron paralizaciones recurrentes de las plantas productoras (2016), ya que la cosecha nacional se redujo y el gobierno monopolizaba las divisas para importar materia prima. En 2016, la producción de la empresa líder se redujo en un estimado del 80% de su capacidad.
+* Crisis del Campo: La regulación del precio al productor primario (agricultores de maíz) desincentivó la siembra, reduciendo la cosecha nacional de maíz blanco y aumentando la dependencia de la importación.
+
+
+Consumo
+
+
+El consumo se vio severamente afectado por la escasez, la especulación y la inflación.
+* Racionamiento y Mercados Paralelos: El producto desapareció de los anaqueles regulares, dando paso a la venta a precios muy superiores en los mercados informales o a través de los Comités Locales de Abastecimiento y Producción (CLAP), que distribuían el producto bajo control estatal.
+* Demanda Constante: A pesar de la caída en la oferta, la demanda per cápita de harina de maíz precocida se mantuvo estructuralmente alta, ya que es el ingrediente esencial para las arepas, un alimento base e insustituible.
+
+
+Gráfico Representativo de la Producción (Estimado)
+
+
+Año
+	Producción Estimada Nacional (Toneladas/Año)
+	Indicador Clave
+	2014
+	$\approx 1.200.000$
+	Inicio de la crisis.
+	2016
+	$\approx 400.000$
+	Pico de escasez y paralización de plantas.
+	2018
+	$\approx 300.000$
+	Profundización de la crisis económica.
+	________________
+
+
+📈 Fase II: Recuperación Parcial y Competencia (2019 - 2024)
+
+
+Esta etapa comienza con una desregulación de facto de precios y una flexibilización económica que permitió una reactivación parcial del sector.
+
+
+Producción
+
+
+La producción comenzó a recuperarse gracias a dos factores clave:
+1. Eliminación del Control de Precios: La producción se hizo nuevamente rentable para la industria local, permitiéndoles cubrir costos y operar con márgenes.
+2. Aumento de la Cosecha Local: El sector agrícola ha mostrado un crecimiento. Se estima que la producción de maíz en general creció, con proyecciones de 1.360.000 toneladas para 2024. Aproximadamente el 65% de esto es maíz blanco destinado al consumo humano.
+3. Aumento de Capacidad: Cifras de gremios indican que la producción de harina de maíz precocida pasó de $\approx 700.000$ toneladas en 2023 a $\approx 890.000$ toneladas en enero de 2024.
+
+
+Consumo y Competencia
+
+
+El mercado de consumo se transformó radicalmente con el fin del monopolio de facto de las marcas tradicionales y la entrada masiva de competidores:
+* Ingreso de Importaciones: La apertura de importaciones (muchas veces con exoneración arancelaria) introdujo una fuerte competencia con marcas extranjeras y nuevas marcas nacionales, como Kaly y Mimasa, que han logrado acaparar una cuota de mercado significativa (se estima que acaparan el 30% del mercado total).
+* Demanda Mensual: La demanda nacional actual de harina de maíz precocida se estima en unas 80.000 toneladas al mes (equivalente a $\approx 960.000$ toneladas al año).
+* Recuperación del Abastecimiento: La escasez en anaqueles terminó. El consumo general de alimentos, incluyendo este rubro básico, mostró un incremento significativo (un aumento estimado del 55% entre enero de 2023 y enero de 2024).
+
+
+Gráfico Representativo de la Evolución del Mercado (2014-2024)
+
+
+Este gráfico muestra la brecha entre la Producción Nacional y la Demanda/Consumo y cómo se cubre la diferencia a través de la Importación (formal e informal).
+Periodo
+	Producción Nacional (Ton/Año)
+	Demanda Nacional (Ton/Año)
+	Brecha Cubierta por Importación (%)
+	Situación Clave
+	2014-2018
+	$1.200.000 \to 300.000$
+	$1.400.000$ (Alto potencial)
+	90% (Vía CLAP/Especulación)
+	Escasez y Control de Precios.
+	2024 (Est.)
+	$\approx 890.000$
+	$\approx 960.000$
+	7% (Competencia de Marcas)
+	Recuperación y Competencia Desleal.
+	Nota: La demanda potencial en el pico de la crisis era mayor (cerca de 1.4 millones de toneladas), pero el consumo real se contrajo debido al poder adquisitivo. La demanda actual de 960.000 toneladas representa un nivel de consumo más estable y ajustado a la realidad económica reciente.
+________________
+
+
+🔮 Desafíos y Perspectivas a 2024
+
+
+El mercado, aunque más abastecido, enfrenta nuevos desafíos:
+* Competencia Desleal: Las marcas tradicionales denuncian la importación con ventajas arancelarias por parte de nuevos actores, lo que afecta la competitividad de la producción nacional.
+* Costos de Producción: Persisten conflictos entre los agricultores de maíz (que exigen precios más altos por tonelada para cubrir sus costos) y la agroindustria (que teme disparar el precio final al consumidor).
+* Vulnerabilidad a Políticas: Existe el temor de que la reintroducción de regulaciones de precios o el cambio en las políticas de importación vuelvan a generar distorsiones en el mercado.
+* Financiamiento: La actividad agrícola sigue limitada por la falta de financiación bancaria y fallas en la disponibilidad de combustibles para la cosecha.

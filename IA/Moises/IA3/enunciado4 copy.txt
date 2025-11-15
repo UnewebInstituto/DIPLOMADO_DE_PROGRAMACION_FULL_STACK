@@ -1,0 +1,9 @@
+Toma como referencia el archivo anexo y genera un informe con la tendencia para los próximos 5 años, 
+donde se encuentren presentes, los siguientes 
+aspectos:
+Gráfico de tendencia
+Informe estructurado
+Resumen ejecutivo
+Análisis de variables 
+y Recomendaciones Tácticas para incremento del
+consumo del harina de maíz precocida.

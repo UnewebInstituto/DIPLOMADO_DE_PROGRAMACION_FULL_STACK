@@ -1,0 +1,1 @@
+Analiza el contenido del archivo anexo y dime por región el consumo de harina de maíz precocida, agrupando las ciudades según la regíon a la que pertenecen en Venezuela.

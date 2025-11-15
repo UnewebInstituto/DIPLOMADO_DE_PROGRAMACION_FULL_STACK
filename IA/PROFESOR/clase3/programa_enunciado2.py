@@ -1,0 +1,176 @@
+import pandas as pd
+import io
+
+# Contenido del archivo "data_enunciado2.txt"
+# Nota: En un entorno de ejecución real, esta sección sería:
+df = pd.read_csv("data_enunciado2.txt")
+csv_data = """Ciudad,Mes,Toneladas de consumo
+Caracas,2014-01,110
+Maracaibo,2014-02,95
+Valencia,2014-03,88
+Barquisimeto,2014-04,75
+Maracay,2014-05,102
+Puerto La Cruz,2014-06,65
+Caracas,2014-07,115
+Maracaibo,2014-08,90
+Valencia,2014-09,85
+Barquisimeto,2014-10,72
+Maracay,2014-11,98
+Puerto La Cruz,2014-12,68
+Caracas,2015-01,105
+Maracaibo,2015-02,88
+Valencia,2015-03,82
+Barquisimeto,2015-04,65
+Maracay,2015-05,95
+Puerto La Cruz,2015-06,60
+Caracas,2015-07,100
+Maracaibo,2015-08,80
+Valencia,2015-09,75
+Barquisimeto,2015-10,62
+Maracay,2015-11,90
+Puerto La Cruz,2015-12,55
+Caracas,2016-01,95
+Maracaibo,2016-02,75
+Valencia,2016-03,70
+,2016-04,50
+Maracay,2016-05,80
+Puerto La Cruz,2016-06,45
+Caracas,2016-07,90
+Maracaibo,2016-08,70
+Valencia,2016-09,65
+Barquisimeto,2016-10,48
+Maracay,2016-11,75
+Puerto La Cruz,2016-12,42
+Caracas,2017-01,85
+Maracaibo,2017-02,68
+Valencia,2017-03,60
+Barquisimeto,2017-04,45
+Maracay,2017-05,70
+Puerto La Cruz,2017-06,38
+Caracas,2017-07,80
+Maracaibo,2017-08,65
+Valencia,2017-09,55
+Barquisimeto,2017-10,40
+Maracay,2017-11,68
+Puerto La Cruz,2017-12,35
+Caracas,2018-01,75
+Maracaibo,2018-02,60
+Valencia,2018-03,50
+Barquisimeto,2018-04,35
+Maracay,2018-05,60
+Puerto La Cruz,2018-06,30
+Caracas,2018-07,70
+Maracaibo,2018-08,58
+Valencia,2018-09,48
+Barquisimeto,2018-10,32
+Maracay,2018-11,55
+Puerto La Cruz,2018-12,28
+,2019-01,65
+Maracaibo,2019-02,70
+Valencia,2019-03,65
+Barquisimeto,2019-04,55
+Maracay,2019-05,75
+Puerto La Cruz,2019-06,50
+Caracas,2019-07,110
+Maracaibo,2019-08,80
+Valencia,2019-09,78
+Barquisimeto,2019-10,68
+Maracay,2019-11,85
+Puerto La Cruz,2019-12,60
+Caracas,2020-01,120
+Maracaibo,2020-02,95
+Valencia,2020-03,90
+Barquisimeto,2020-04,75
+Maracay,2020-05,100
+Puerto La Cruz,2020-06,70
+Caracas,2020-07,125
+Maracaibo,2020-08,98
+Valencia,2020-09,92
+Barquisimeto,2020-10,78
+Maracay,2020-11,105
+Puerto La Cruz,2020-12,72
+Caracas,2021-01,130
+Maracaibo,2021-02,100
+Valencia,2021-03,95
+Barquisimeto,2021-04,80
+Maracay,2021-05,110
+Puerto La Cruz,2021-06,75
+Caracas,2021-07,135
+Maracaibo,2021-08,105
+Valencia,2021-09,100
+Barquisimeto,2021-10,85
+Maracay,2021-11,115
+Puerto La Cruz,2021-12,80
+Caracas,2022-01,140
+Maracaibo,2022-02,108
+Valencia,2022-03,105
+Barquisimeto,2022-04,90
+Caracas,2022-04,90
+Maracay,2022-05,120
+Puerto La Cruz,2022-06,85
+Caracas,2022-07,145
+Maracaibo,2022-08,110
+Valencia,2022-09,110
+Barquisimeto,2022-10,95
+Maracay,2022-11,125
+Puerto La Cruz,2022-12,90
+Caracas,2023-01,150
+Maracaibo,2023-02,115
+Valencia,2023-03,115
+Barquisimeto,2023-04,100
+Maracay,2023-05,130
+Puerto La Cruz,2023-06,95
+Caracas,2023-07,155
+Maracaibo,2023-08,120
+Valencia,2023-09,120
+Barquisimeto,2023-10,105
+Maracay,2023-11,135
+Puerto La Cruz,2023-12,100
+Caracas,2024-01,160
+Maracaibo,2024-02,125
+Valencia,2024-03,125
+Barquisimeto,2024-04,110
+Caracas,2024-04,110
+"""
+#df = pd.read_csv(io.StringIO(csv_data))
+
+# 1. Preparación para el resumen
+registros_iniciales = len(df)
+nombre_archivo_salida = 'consumo_harina_limpio.csv'
+
+# 2. Eliminación de valores en blanco (NaN)
+# Se enfoca la limpieza en la columna 'Ciudad' para eliminar los registros en blanco.
+df_pre_limpieza = df.copy()
+df_sin_blancos = df_pre_limpieza.dropna(subset=['Ciudad'])
+registros_eliminados_nan = len(df_pre_limpieza) - len(df_sin_blancos)
+
+# 3. Eliminación de registros duplicados
+# Se eliminan las filas que son idénticas en todas sus columnas.
+df_final = df_sin_blancos.drop_duplicates()
+registros_eliminados_duplicados = len(df_sin_blancos) - len(df_final)
+
+# 4. Generación del Archivo de Salida (Simulación)
+# En un entorno real, esta línea guardaría el archivo.
+# df_final.to_csv(nombre_archivo_salida, index=False)
+
+# 5. Resumen
+registros_totales_eliminados = registros_eliminados_nan + registros_eliminados_duplicados
+registros_finales = len(df_final)
+
+print("--- Proceso de Limpieza de Datos (Simulado) ---")
+print(f"Fuente de datos: data_enunciado2.txt")
+print(f"Salida simulada: {nombre_archivo_salida}")
+
+# Mostrar el contenido del archivo limpio (primeras 10 filas)
+print("\n## 📋 Vista Previa del Archivo Limpio (Primeras 10 Filas)")
+print(df_final.head(10).to_csv(index=False))
+
+# Generar el resumen
+print("\n---")
+print("## 📊 Resumen de Registros Eliminados")
+print(f"Registros iniciales: {registros_iniciales}")
+print(f"Registros finales: {registros_finales}")
+print("-" * 30)
+print(f"❌ Registros eliminados por valor en blanco (Ciudad): {registros_eliminados_nan}")
+print(f"❌ Registros eliminados por duplicidad total: {registros_eliminados_duplicados}")
+print(f"✅ Total de registros eliminados: {registros_totales_eliminados}")

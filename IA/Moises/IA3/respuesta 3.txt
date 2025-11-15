@@ -1,0 +1,122 @@
+﻿¡Claro! Generaré 100 registros de datos de prueba en formato CSV (valores separados por comas) para simular el consumo de harina de maíz precocida en Venezuela durante el período 2014-2022.
+El conjunto de datos reflejará la estructura solicitada (Ciudad, Mes, Toneladas de consumo), incluyendo registros duplicados (en Ciudad y Mes) y algunas ciudades en blanco, lo que es común en datos reales y encaja con la sensibilidad del mercado venezolano en ese lapso1.
+
+
+
+
+Fragmento de código
+
+
+
+
+Ciudad,Mes,Toneladas de consumo
+Caracas,Enero,850
+Maracaibo,Febrero,620
+Valencia,Marzo,480
+Barquisimeto,Abril,350
+Maracay,Mayo,300
+Ciudad Guayana,Junio,250
+Caracas,Julio,800
+San Cristóbal,Agosto,180
+Puerto La Cruz,Septiembre,150
+Barcelona,Octubre,120
+Caracas,Enero,840
+Maracaibo,Febrero,630
+Valencia,Marzo,470
+Barquisimeto,Abril,360
+Maracay,Mayo,310
+Ciudad Guayana,Junio,260
+,Julio,200
+San Cristóbal,Agosto,190
+Puerto La Cruz,Septiembre,160
+Barcelona,Octubre,130
+Caracas,Noviembre,780
+Maracaibo,Diciembre,590
+Valencia,Enero,450
+Barquisimeto,Febrero,330
+Maracay,Marzo,280
+Ciudad Guayana,Abril,230
+Caracas,Mayo,750
+San Cristóbal,Junio,160
+Puerto La Cruz,Julio,130
+Barcelona,Agosto,100
+Caracas,Septiembre,720
+Maracaibo,Octubre,550
+Valencia,Noviembre,400
+Barquisimeto,Diciembre,300
+Maracay,Enero,250
+Ciudad Guayana,Febrero,200
+Caracas,Marzo,700
+San Cristóbal,Abril,140
+Puerto La Cruz,Mayo,110
+Barcelona,Junio,90
+Caracas,Julio,680
+Maracaibo,Agosto,500
+Valencia,Septiembre,380
+Barquisimeto,Octubre,280
+Maracay,Noviembre,230
+Ciudad Guayana,Diciembre,180
+Caracas,Enero,650
+San Cristóbal,Febrero,120
+Puerto La Cruz,Marzo,100
+Barcelona,Abril,80
+Caracas,Mayo,630
+Maracaibo,Junio,480
+Valencia,Julio,350
+Barquisimeto,Agosto,250
+Maracay,Septiembre,200
+Ciudad Guayana,Octubre,150
+Caracas,Noviembre,600
+San Cristóbal,Diciembre,110
+Puerto La Cruz,Enero,90
+Barcelona,Febrero,70
+Caracas,Marzo,580
+Maracaibo,Abril,450
+Valencia,Mayo,320
+Barquisimeto,Junio,230
+Maracay,Julio,180
+Ciudad Guayana,Agosto,130
+Caracas,Septiembre,550
+San Cristóbal,Octubre,100
+Puerto La Cruz,Noviembre,80
+Barcelona,Diciembre,60
+Caracas,Enero,530
+Maracaibo,Febrero,420
+Valencia,Marzo,300
+Barquisimeto,Abril,200
+Maracay,Mayo,150
+Ciudad Guayana,Junio,100
+Caracas,Julio,500
+San Cristóbal,Agosto,90
+Puerto La Cruz,Septiembre,70
+Barcelona,Octubre,50
+Caracas,Noviembre,480
+Maracaibo,Diciembre,400
+Valencia,Enero,280
+Barquisimeto,Febrero,180
+Maracay,Marzo,130
+Ciudad Guayana,Abril,80
+Caracas,Mayo,450
+San Cristóbal,Junio,80
+Puerto La Cruz,Julio,60
+,Agosto,40
+Caracas,Septiembre,430
+Maracaibo,Octubre,380
+Valencia,Noviembre,250
+Barquisimeto,Diciembre,160
+Maracay,Enero,110
+Ciudad Guayana,Febrero,60
+Caracas,Marzo,400
+San Cristóbal,Abril,70
+Puerto La Cruz,Mayo,50
+Barcelona,Junio,30
+
+
+
+📝 Notas sobre los Datos Generados
+
+
+* Periodo: Aunque no se especificó un campo de "Año" para mantener la simplicidad de la estructura solicitada (Ciudad, Mes, Toneladas de consumo), la serie de 100 registros está diseñada para representar la tendencia de consumo decreciente que caracterizó el período 2014 a 20222222. Las toneladas de consumo disminuyen progresivamente, simulando el impacto de la crisis.
+
+* Registros Duplicados: Existen entradas con la misma combinación de Ciudad y Mes (por ejemplo, Caracas, Enero) para simular la recolección de datos de diferentes fuentes o el reingreso de datos.
+* Valores Nulos: Se han incluido dos registros con el campo Ciudad en blanco (líneas 18 y 90), tal como fue solicitado.

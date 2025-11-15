@@ -1,0 +1,144 @@
+﻿Para calcular el consumo de harina de maíz precocida por región, primero clasificaré las ciudades del archivo data_enunciado2.txt en sus respectivas regiones geográficas de Venezuela, y luego sumaré el total de Toneladas de consumo para cada región.
+
+
+🗺️ Clasificación Regional de Ciudades
+
+
+Agruparemos las ciudades presentes en los datos de prueba 11 en cuatro regiones principales: Capital/Central, Occidental, Oriental y Los Llanos (aunque Los Llanos no tiene una ciudad dominante en estos datos, se incluye en Central/Maracay por proximidad a los fines del análisis):
+
+
+Ciudad
+	Región Venezolana
+	
+
+Caracas 22
+
+
+	Región Capital
+	
+
+Maracay 33
+
+
+	Región Central
+	
+
+Valencia 44
+
+
+	Región Central
+	
+
+Maracaibo 55
+
+
+	Región Occidental
+	
+
+Barquisimeto 66
+
+
+	Región Occidental
+	
+
+Puerto La Cruz 77
+
+
+	Región Oriental
+	________________
+
+
+📊 Consumo Total de Harina de Maíz Precocida por Región (2014-2024)
+
+
+El análisis del archivo data_enunciado2.txt (que contiene 100 registros 88) arroja el siguiente consumo total por región para el período de 2014 a 2024:
+
+
+Región
+	Ciudades Agrupadas
+	Total de Registros
+	Consumo Total (Toneladas)
+	Capital/Central
+	Caracas, Maracay, Valencia
+	50
+	4.880
+	Occidental
+	Maracaibo, Barquisimeto
+	39
+	3.525
+	Oriental
+	Puerto La Cruz
+	10
+	730
+	Sin Clasificar
+	(Registros con Ciudad en blanco)
+	1
+	50
+	TOTAL
+	
+
+	100
+	9.185
+	
+
+Análisis Detallado por Región
+
+
+
+
+1. Región Capital / Central (Caracas, Maracay, Valencia)
+
+
+Esta es la región con el mayor consumo acumulado, representando la concentración demográfica y económica del país.
+Ciudad
+	Consumo Total (Toneladas)
+	Caracas
+	2.505
+	Maracay
+	1.405
+	Valencia
+	970
+	Subtotal
+	4.880
+	
+
+2. Región Occidental (Maracaibo, Barquisimeto)
+
+
+Esta región muestra el segundo nivel de consumo más alto, con Maracaibo liderando la zona. El consumo aquí fue particularmente bajo en el pico de la crisis (2016-2018)99.
+
+
+Ciudad
+	Consumo Total (Toneladas)
+	Maracaibo
+	2.075
+	Barquisimeto
+	1.450
+	Subtotal
+	3.525
+	
+
+3. Región Oriental (Puerto La Cruz)
+
+
+El consumo aquí es el más bajo de las tres regiones principales, lo cual podría reflejar el menor número de ciudades representadas en el dataset1010.
+
+
+Ciudad
+	Consumo Total (Toneladas)
+	Puerto La Cruz
+	730
+	Subtotal
+	730
+	________________
+
+
+Consideraciones sobre el Período (2014-2024)
+
+
+El patrón de consumo refleja la situación del mercado venezolano11:
+
+
+* Caída (2014-2018): El consumo en todas las ciudades fue notablemente bajo y volátil durante la fase de escasez y control de precios1212121212121212.
+
+* Recuperación (2019-2024): Se observa una tendencia de incremento constante en las toneladas consumidas a medida que el mercado se abastece y se flexibiliza13131313.
