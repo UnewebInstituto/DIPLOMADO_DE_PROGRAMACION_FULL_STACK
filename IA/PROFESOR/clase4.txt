@@ -1,0 +1,447 @@
+1) Contenido API
+https://ai.google.dev/gemini-api/docs?hl=es-419
+
+2) Instalación de dependencia
+https://ai.google.dev/gemini-api/docs/quickstart?hl=es-419
+
+API KEY GENERADA
+AIzaSyB-Twb0cYoBxvrLpV9VUNoW2Wlwk95AyEU
+
+* Definir la variable de entorno
+set GEMINI_API_KEY="AIzaSyB-Twb0cYoBxvrLpV9VUNoW2Wlwk95AyEU"
+
+* Para Consultar variable de entorno
+echo %GEMINI_API_KEY%
+
+
+
+
+
+CONSULTA A GEMINI:
+
+¡Hola\! Como desarrollador en Python, te puedo guiar sobre cómo obtener tu **API Key** para la **API de Gemini**. Este proceso es crucial para empezar a usar los modelos de Gemini en tus proyectos. 🔑
+
+-----
+
+## 💻 Pasos para Obtener tu API Key de Gemini
+
+La API Key se obtiene directamente desde la plataforma de Google AI Studio, que es el centro de desarrollo para los modelos de Gemini.
+
+### 1\. Accede a Google AI Studio
+
+Ve al sitio web oficial de **Google AI Studio**. Necesitarás una cuenta de Google para iniciar sesión.
+
+### 2\. Navega a la Sección de API Keys
+
+Una vez dentro, busca la sección dedicada a las **API keys**. Suele estar en el menú de la izquierda o en un panel de control claramente etiquetado. El enlace directo más común es el panel de control de Google AI Studio o la sección de "API access" o "Get API Key".
+
+### 3\. Crea una Nueva API Key
+
+  * Haz clic en el botón para **"Create API key"** (Crear clave de API).
+  * Se generará tu clave al instante.
+  * **⚠️ ¡Importante\!** Una vez generada, asegúrate de **copiar y guardar** tu API Key en un lugar seguro (como un gestor de contraseñas). Por motivos de seguridad, generalmente **solo se muestra una vez**.
+
+-----
+
+## 🐍 Uso de la API Key en Python
+
+Una vez que tengas tu clave, el paso siguiente es usarla de forma segura en tus scripts de Python. **Nunca** debes incluir tu clave directamente en el código fuente (como una cadena de texto).
+
+La mejor práctica es establecerla como una **variable de entorno**.
+
+### 1\. Establecer la Variable de Entorno
+
+**En Linux/macOS:**
+
+```bash
+export GEMINI_API_KEY="TU_CLAVE_AQUI"
+```
+
+**En Windows (Símbolo del sistema):**
+
+```bash
+set GEMINI_API_KEY="TU_CLAVE_AQUI"
+```
+
+### 2\. Acceder a la Clave en Python
+
+En tu script de Python, puedes acceder a esta clave usando la librería `os`:
+
+```python
+import os
+from google import genai
+
+# La biblioteca de Google (genai) buscará automáticamente la variable
+# de entorno llamada GEMINI_API_KEY.
+# Si no la encuentra, puedes pasarla explícitamente:
+# client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+
+try:
+    # Inicializa el cliente. Si la variable de entorno está configurada,
+    # no se necesita pasar 'api_key'.
+    client = genai.Client() 
+    
+    # Ejemplo de uso:
+    response = client.models.generate_content(
+        model='gemini-2.5-flash',
+        contents='Hola, ¿quién eres?'
+    )
+    print(response.text)
+
+except Exception as e:
+    print(f"Error al inicializar el cliente o generar contenido: {e}")
+```
+
+Este enfoque mantiene tu clave secreta y fuera de tu código, que es esencial si planeas compartir tu código en plataformas como GitHub.
+
+¿Quieres que te muestre un ejemplo más completo de cómo usar el cliente de Python para **generar contenido** o trabajar con **imágenes** usando la API Key?
+
+
+PASOS PARA CREAR PROYECTO EN NODEJS
+
+1) Crear directorio
+md server
+
+2) Acceder al directorio 
+cd server
+
+3) Inicializar el proyecto node 
+npm init -y
+(Esto crea el archivo package.json)
+
+
+¡Por supuesto\! Como desarrollador, te proporciono el procedimiento paso a paso para implementar la API de Gemini en un entorno de **Node.js**.
+
+-----
+
+## 🚀 Implementación de la API de Gemini en Node.js
+
+El proceso se centra en instalar el SDK oficial de Google para Gemini y configurar tu clave de API para que el cliente pueda hacer peticiones.
+
+### 1\. Inicialización del Proyecto y Clave de API
+
+#### A. Inicializar el Proyecto
+
+Si aún no tienes un proyecto de Node.js, inicialízalo en una carpeta nueva:
+
+```bash
+mkdir gemini-nodejs-project
+cd gemini-nodejs-project
+npm init -y
+```
+
+#### B. Instalar el SDK Oficial
+
+Instala el paquete de Google para la API de Gemini:
+
+```bash
+npm install @google/genai
+```
+
+#### C. Configurar la API Key
+
+Al igual que con Python, la mejor práctica es usar una variable de entorno. En Node.js, la librería `@google/genai` automáticamente busca tu clave en la variable de entorno llamada **`GEMINI_API_KEY`**.
+
+**Opción 1: Configuración Temporal (en terminal)**
+
+```bash
+# macOS/Linux
+export GEMINI_API_KEY="TU_CLAVE_AQUI"
+
+# Windows (Command Prompt)
+set GEMINI_API_KEY="TU_CLAVE_AQUI"
+
+# Windows (PowerShell)
+$env:GEMINI_API_KEY="TU_CLAVE_AQUI"
+```
+
+**Opción 2: Usar un archivo `.env` (Recomendado)**
+Instala la librería `dotenv`:
+
+```bash
+npm install dotenv
+```
+
+Crea un archivo llamado `.env` en la raíz de tu proyecto y añade la clave:
+
+```
+# .env
+GEMINI_API_KEY=TU_CLAVE_AQUI
+```
+
+-----
+
+### 2\. Creación del Script de Ejemplo
+
+Crea un archivo llamado `index.js` (o similar) y escribe el siguiente código:
+
+```javascript
+// Si usas el archivo .env
+require('dotenv').config(); 
+
+const { GoogleGenAI } = require('@google/genai');
+
+// Inicializa el cliente. 
+// **Importante:** Si la variable GEMINI_API_KEY está configurada,
+// la librería la leerá automáticamente sin necesidad de pasarla aquí.
+const ai = new GoogleGenAI({});
+
+/**
+ * Función principal para generar contenido
+ */
+async function run() {
+  try {
+    // 1. Llamar al modelo
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: "Explícame en un párrafo qué es la computación cuántica.",
+    });
+
+    // 2. Imprimir la respuesta
+    console.log("Respuesta del modelo:");
+    console.log(response.text);
+
+  } catch (error) {
+    console.error("Ocurrió un error al llamar a la API de Gemini:", error);
+  }
+}
+
+run();
+```
+
+-----
+
+### 3\. Ejecución
+
+Ejecuta tu script desde la terminal:
+
+```bash
+node index.js
+```
+
+Si has configurado correctamente la variable `GEMINI_API_KEY` (sin comillas si usas `set` en Windows o en el archivo `.env`), deberías ver la respuesta generada por el modelo de Gemini.
+
+¿Te gustaría ver un ejemplo más avanzado, como la **generación de imágenes** o el uso de **multi-turno de chat** en Node.js?
+
+¡Excelente\! Para adaptar tu aplicación y mostrar la respuesta de la API de Gemini directamente en la página web (`ejemplo_api04.html`), necesitamos hacer tres cambios principales:
+
+1.  **Backend (Node.js):** Configurar un servidor web (usando Express.js) para manejar la solicitud del formulario y llamar a la API de Gemini.
+2.  **Frontend (HTML):** Modificar el formulario para usar JavaScript (AJAX/Fetch) y enviar la pregunta al servidor sin recargar la página.
+3.  **Instalar Express.js** para el manejo de rutas.
+
+Aquí tienes el procedimiento y los archivos adaptados.
+
+-----
+
+## 🛠️ Procedimiento de Adaptación
+
+### Paso 1: Instalar Express.js
+
+Necesitas un framework para crear el servidor y manejar la ruta de la API.
+
+```bash
+npm install express
+```
+
+### Paso 2: Archivo del Servidor (`server.js`)
+
+Crearemos un nuevo archivo llamado `server.js` (en lugar de `index.js`) para alojar la lógica del servidor, incluyendo la API de Gemini.
+
+Este servidor hará lo siguiente:
+
+1.  Servir el archivo HTML estático.
+2.  Definir la ruta `/api/gemini-query` para manejar las peticiones POST desde el frontend.
+
+<!-- end list -->
+
+```javascript
+// server.js
+// Si usas el archivo .env
+require('dotenv').config(); 
+
+const express = require('express');
+const { GoogleGenAI } = require('@google/genai');
+const path = require('path');
+
+const app = express();
+const PORT = 3000;
+
+// Inicializa el cliente de Gemini.
+const ai = new GoogleGenAI({});
+
+// Middleware para procesar JSON en las peticiones
+app.use(express.json());
+
+// 1. Ruta para servir el HTML estático (debes poner el HTML en una carpeta 'public')
+// 💡 Consejo: Crea una carpeta llamada 'public' y coloca 'ejemplo_api04.html' dentro.
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+// 2. Ruta de la API para interactuar con Gemini
+app.post('/api/gemini-query', async (req, res) => {
+    // Extraer la pregunta enviada desde el formulario del frontend
+    const userQuestion = req.body.pregunta;
+
+    if (!userQuestion) {
+        return res.status(400).json({ error: 'La pregunta es requerida.' });
+    }
+
+    try {
+        // Llamada a la API de Gemini
+        const response = await ai.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: userQuestion,
+        });
+
+        // Enviar la respuesta del modelo de vuelta al frontend
+        res.json({
+            respuesta: response.text
+        });
+
+    } catch (error) {
+        console.error("Error al llamar a la API de Gemini:", error);
+        // Manejo de errores (ej. API key inválida)
+        res.status(500).json({ error: 'Error interno del servidor o clave API no válida.' });
+    }
+});
+
+
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`Servidor Node.js escuchando en http://localhost:${PORT}`);
+});
+```
+
+### Paso 3: Archivo HTML Modificado (`public/ejemplo_api04.html`)
+
+El formulario HTML debe ser modificado para usar JavaScript (Fetch API) para enviar la pregunta y luego inyectar la respuesta en el `<div>` designado.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API Web Demo</title>
+</head>
+<body>
+    <h1>Ejemplo API Gemini (Node.js)</h1>
+    <form id="geminiForm">
+        <label for="preguntaArea">Hola, por favor indica la pregunta que deseas efectuar a la API de Gemini</label>
+        <br>
+        <textarea name="pregunta" id="preguntaArea" cols="50" rows="4"></textarea>
+        <br>
+        <button type="submit">Enviar</button>
+        <div id="respuesta"></div>
+    </form>
+
+    <script>
+        document.getElementById('geminiForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evita la recarga de la página
+            
+            const pregunta = document.getElementById('preguntaArea').value;
+            const respuestaDiv = document.getElementById('respuesta');
+            respuestaDiv.innerHTML = 'Cargando respuesta...'; // Mensaje de carga
+
+            try {
+                // Petición POST al servidor de Node.js
+                const response = await fetch('/api/gemini-query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    // Enviamos la pregunta como JSON
+                    body: JSON.stringify({ pregunta: pregunta }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Si la respuesta es exitosa, muestra el texto de Gemini
+                    respuestaDiv.innerHTML = `<strong>Respuesta de Gemini:</strong><br>${data.respuesta.replace(/\n/g, '<br>')}`;
+                } else {
+                    // Si hay un error del servidor (ej. 400, 500)
+                    respuestaDiv.innerHTML = `<strong>Error:</strong> ${data.error || 'No se pudo obtener la respuesta.'}`;
+                }
+
+            } catch (error) {
+                console.error('Error de red o cliente:', error);
+                respuestaDiv.innerHTML = '<strong>Error de conexión:</strong> No se pudo conectar con el servidor.';
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+### 4\. Ejecución del Servidor
+
+Ejecuta tu nuevo archivo de servidor:
+
+```bash
+node server.js
+```
+
+Abre tu navegador en `http://localhost:3000` y utiliza el formulario. La respuesta de Gemini aparecerá en el `<div>` de respuesta sin que la página se recargue.
+
+
+
+¡Gracias por la información adicional\! Con el contenido de tu `package.json` y la salida que se está cerrando, puedo confirmar la causa más probable del problema: **tu servidor Node.js no está encontrando el archivo HTML o la carpeta de archivos estáticos que debe servir.**
+
+Aunque el servidor **inicia** (`Servidor Node.js escuchando...`), la línea que se encarga de servir el HTML está fallando o no está encontrando el recurso, lo que provoca que Node.js intente finalizar el proceso si no hay más tareas pendientes (aunque en un servidor Express debería mantenerse vivo, un fallo crítico en el *setup* estático puede provocar un cierre inesperado).
+
+-----
+
+## 🛑 El Problema: Archivos Estáticos y `path.join`
+
+Tu código `server.js` incluye esta línea para servir el archivo HTML:
+
+```javascript
+// server.js
+// ...
+app.use(express.static(path.join(__dirname, 'public')));
+// ...
+```
+
+Esta línea le dice a Express que busque archivos estáticos (como `ejemplo_api04.html`) dentro de una carpeta llamada **`public`** ubicada en el mismo directorio que `server.js`.
+
+### 🔎 Verificación de la Estructura de Carpetas
+
+Basado en tu ruta de ejecución (`D:\.PROFESORES\HENRY_DUQUE\...\api\server`), tu estructura de archivos **debe** ser la siguiente para que funcione:
+
+```
+D:\.PROFESORES\HENRY_DUQUE\...\api\server
+├── node_modules/
+├── .env
+├── package.json
+├── server.js
+└── public/
+    └── ejemplo_api04.html  <-- ¡Este archivo debe estar aquí!
+```
+
+### 🛠️ Soluciones
+
+Asegúrate de que se cumpla la estructura:
+
+1.  **Crea la Carpeta `public`:** Si aún no lo has hecho, crea la carpeta `public` dentro de `D:\.PROFESORES\HENRY_DUQUE\...\api\server`.
+2.  **Mueve el HTML:** Coloca tu archivo `ejemplo_api04.html` **dentro** de esa nueva carpeta `public`.
+
+Una vez que la estructura sea correcta, el servidor debería iniciarse y permanecer ejecutándose.
+
+### 💡 Alternativa de Código (Si el HTML está en la raíz)
+
+Si por alguna razón **no quieres** crear la carpeta `public` y prefieres mantener `ejemplo_api04.html` en la misma carpeta que `server.js`, debes cambiar la forma en que sirves los archivos estáticos en `server.js`:
+
+```javascript
+// server.js (SOLO si el HTML está en la raíz junto a server.js)
+// ...
+// Usa path.join(__dirname) para servir la carpeta actual
+app.use(express.static(path.join(__dirname))); 
+
+// Ahora puedes acceder a http://localhost:3000/ejemplo_api04.html
+// ...
+```
+
+**Recomendación:** La solución de usar la carpeta **`public`** (como se diseñó originalmente) es la **práctica estándar** en Node.js y Express para mantener separados los archivos de código fuente (backend) de los archivos servibles (frontend).
+
+**Una vez que el servidor se mantenga activo, intenta acceder a `http://localhost:3000/ejemplo_api04.html` en tu navegador.**

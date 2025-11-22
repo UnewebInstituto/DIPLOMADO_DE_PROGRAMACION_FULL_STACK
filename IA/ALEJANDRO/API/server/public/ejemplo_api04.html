@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini API Web Demo</title>
+</head>
+<body>
+    <h1>Ejemplo API Gemini (Node.js)</h1>
+    <form id="geminiForm">
+        <label for="preguntaArea">Hola, por favor indica la pregunta que deseas efectuar a la API de Gemini</label>
+        <br>
+        <textarea name="pregunta" id="preguntaArea" cols="50" rows="4"></textarea>
+        <br>
+        <button type="submit">Enviar</button>
+        <div id="respuesta"></div>
+    </form>
+
+    <script>
+        document.getElementById('geminiForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evita la recarga de la página
+            
+            const pregunta = document.getElementById('preguntaArea').value;
+            const respuestaDiv = document.getElementById('respuesta');
+            respuestaDiv.innerHTML = 'Cargando respuesta...'; // Mensaje de carga
+
+            try {
+                // Petición POST al servidor de Node.js
+                const response = await fetch('/api/gemini-query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    // Enviamos la pregunta como JSON
+                    body: JSON.stringify({ pregunta: pregunta }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Si la respuesta es exitosa, muestra el texto de Gemini
+                    respuestaDiv.innerHTML = `<strong>Respuesta de Gemini:</strong><br>${data.respuesta.replace(/\n/g, '<br>')}`;
+                } else {
+                    // Si hay un error del servidor (ej. 400, 500)
+                    respuestaDiv.innerHTML = `<strong>Error:</strong> ${data.error || 'No se pudo obtener la respuesta.'}`;
+                }
+
+            } catch (error) {
+                console.error('Error de red o cliente:', error);
+                respuestaDiv.innerHTML = '<strong>Error de conexión:</strong> No se pudo conectar con el servidor.';
+            }
+        });
+    </script>
+</body>
+</html>

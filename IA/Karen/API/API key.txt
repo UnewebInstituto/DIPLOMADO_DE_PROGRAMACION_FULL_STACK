@@ -1,0 +1,4 @@
+API key: AIzaSyBviqRPqSp6bN8j_-2SKVZVfsz-6rIqy20
+set GEMINI_API_KEY= AIzaSyBviqRPqSp6bN8j_-2SKVZVfsz-6rIqy20
+para consultar lo puedo hacer en el cmd prompt asi:
+echo %GEMINI_API_KEY%
