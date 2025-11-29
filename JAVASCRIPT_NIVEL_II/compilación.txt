@@ -1,0 +1,83 @@
+El proceso de compilación para las instrucciones de "Hola Mundo" en TypeScript sigue tres pasos clave: inicialización, compilación y ejecución.
+
+Aquí tienes el flujo detallado de cómo se realiza este proceso en tu terminal:
+
+## 1\. 🛠️ Configuración del Entorno
+
+Primero, debes configurar el proyecto e instalar las herramientas necesarias (TypeScript y Node.js asumen estar ya instalados globalmente o a través de npm).
+
+### a. Crear Carpeta y Archivos
+
+```bash
+# Crear la carpeta del proyecto y acceder a ella
+mkdir ts-holamundo
+cd ts-holamundo
+
+# Inicializar un proyecto Node.js (opcional, pero buena práctica)
+npm init -y
+
+# Instalar TypeScript de manera local (como dependencia de desarrollo)
+npm install typescript --save-dev
+
+# Generar el archivo de configuración del compilador
+npx tsc --init
+```
+
+### b. Crear el Código Fuente
+
+Crea un archivo llamado `index.ts` y añade el siguiente código TypeScript:
+
+***`index.ts`***
+
+```typescript
+let mensaje: string = "¡Hola Mundo desde TypeScript!";
+console.log(mensaje);
+```
+
+-----
+
+## 2\. ⚙️ Compilación (El Proceso Central)
+
+El proceso de compilación es realizado por el compilador de TypeScript (`tsc`), que lee el archivo `tsconfig.json` para saber cómo transformar el código.
+
+### a. Ejecutar el Compilador
+
+Ejecutas el compilador para transformar el código `.ts` en código `.js`.
+
+```bash
+# Ejecutar el compilador local de TypeScript
+npx tsc 
+```
+
+> **Nota:** `npx tsc` busca el archivo `tsconfig.json` y compila todos los archivos `.ts` que encuentra.
+
+### b. Resultado de la Compilación
+
+Tras la ejecución, TypeScript crea un nuevo archivo llamado `index.js` en la misma carpeta (o en la carpeta `outDir` si está configurada en `tsconfig.json`).
+
+***`index.js` (Código de Salida)***
+
+```javascript
+"use strict";
+let mensaje = "¡Hola Mundo desde TypeScript!";
+console.log(mensaje);
+```
+
+-----
+
+## 3\. 🚀 Ejecución
+
+Finalmente, dado que los navegadores o Node.js no entienden TypeScript directamente, ejecutas el código JavaScript resultante utilizando el entorno de ejecución de Node.js.
+
+### a. Ejecutar el Código Compilado
+
+```bash
+# Ejecutar el archivo JavaScript generado
+node index.js
+```
+
+### b. Salida
+
+```
+¡Hola Mundo desde TypeScript!
+```

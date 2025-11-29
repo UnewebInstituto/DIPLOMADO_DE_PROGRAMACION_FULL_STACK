@@ -1,0 +1,111 @@
+npm init -y 
+
+//Instala la dependencia del TYPESCRIPT
+npm install 
+npm install typescript --save-dev
+
+//generar el archivo de configuracion de TYPESCRIPT
+npx tsc --init
+
+
+// Comando de compilación de todos los Typescript
+// contenidos en el directorio
+npx tsc
+
+// Ejecución del programa
+node index.js
+
+npm start
+
+
+
+
+
+
+
+se debe tener instalado node.js ya que interpreta a nivel del servidor el javascritp 
+Caracteristicas de javascript 
+* es debilmente tipado
+ej.   let edad = 25;
+	console(typeof(edad)
+
+
+microsoft desarollo typescript =js+ requisitos necesarios para tipos de daaatos
+desarrollaron 
+teanspilador = a un compilador el pasa de TS a JS (para que node.js)
+
+npm node package manager
+node.js = interperte de javascript
+
+
+Configuración del Entorno 🛠️
+1. Requisitos: Asegúrate de tener Node.js y npm instalados (son el estándar para el desarrollo moderno de
+JavaScript/TypeScript). 
+
+2. Inicialización del Proyecto:
+Bash
+npm init -y
+npm install typescript --save-dev
+
+1. creamos un directorio 
+
+
+npm init -y =crea el archivo de conf del proyecto dentro de la carpeta estando en la terminal cmd ejecuto este comando 
+
+
+
+*****C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\JAVASCRIPT_NIVEL_II>cd Yisber
+
+C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\JAVASCRIPT_NIVEL_II\Yisber>cd ejemplo01
+
+C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\JAVASCRIPT_NIVEL_II\Yisber\ejemplo01>npm init -y 
+Wrote to C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\JAVASCRIPT_NIVEL_II\Yisber\ejemplo01\package.json:
+
+{
+  "name": "ejemplo01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+luego instalo la dependencia
+
+//Instala la dependencia del TYPESCRIPT
+npm install typescript --save-dev (este crea una carpeta module)
+
+
+C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\JAVASCRIPT_NIVEL_II\Yisber\ejemplo01>npm install typescript --save-dev
+
+added 1 package, and audited 2 packages in 5s
+
+found 0 vulnerabilities
+
+luego 
+
+//generar el archivo de configuracion de TYPESCRIPT
+npx tsc --init.
+
+C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\JAVASCRIPT_NIVEL_II\Yisber\ejemplo01>npx tsc --init 
+
+Created a new tsconfig.json                                                                         
+                                                                                                 TS 
+You can learn more at https://aka.ms/tsconfig
+
+
+
+
+
+
+
+para ejecutar
+
+* npx ts-node index.ts 
+o tambien se puede con 
+* npm start

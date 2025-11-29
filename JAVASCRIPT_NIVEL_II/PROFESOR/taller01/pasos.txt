@@ -1,0 +1,18 @@
+1) Crear el directorio 
+>md taller01
+2) Acceder al directorio
+>cd taller01
+3) Crear el archivo package.json
+...taller01>npm init -y
+4) Instalar dependencia de TS 
+...taller01>npm install typescript --save-dev 
+5) Crear el archivo tsconfig.json
+...taller01>npx tsc --init
+6) Crear el programa 
+7) Compilar: 
+npx tsc
+8) Ejecución
+* node index.js
+Otra manera
+* npm start
+

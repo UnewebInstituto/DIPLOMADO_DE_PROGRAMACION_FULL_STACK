@@ -1,0 +1,131 @@
+¡Hola\! Soy un experto en **TypeScript** y **JavaScript**. El error que estás viendo es exactamente el **comportamiento esperado** del código que has mostrado.
+
+El error `Error: Esto es una prueba del tipo never` no es un problema; es la **consecuencia directa** de la función que has definido y llamado.
+
+-----
+
+## 🤯 Explicación del Comportamiento
+
+El código fuente muestra una función en **TypeScript** (aunque luego se ejecuta como JavaScript, donde el *tipo* `never` se ignora, pero el *cuerpo* de la función sí se ejecuta):
+
+```typescript
+// Caso de error
+function error(mensaje: string): never {
+    throw new Error(mensaje);
+}
+
+error('Esto es una prueba del tipo never');
+console.log('-------');
+```
+
+1.  **Función `error(mensaje: string): never`:**
+
+      * La clave está en el tipo de retorno **`: never`**. En TypeScript, el tipo `never` se asigna a funciones que **nunca devuelven un valor** y **nunca terminan su ejecución** de forma normal.
+      * La única manera de que una función no termine de forma normal es mediante un **bucle infinito** o, como en este caso, **lanzando una excepción** (`throw new Error(...)`).
+
+2.  **Llamada `error('Esto es una prueba del tipo never')`:**
+
+      * Cuando se llama a esta función, el código dentro del cuerpo (`throw new Error(mensaje);`) se ejecuta **inmediatamente**.
+      * Esto hace que se **lance un nuevo objeto `Error`** con el mensaje `'Esto es una prueba del tipo never'`.
+
+3.  **Resultado - El *Stack Trace*:**
+
+      * Una vez que se lanza la excepción, el entorno de ejecución (en este caso, **Node.js**) detiene la ejecución del programa y muestra el error y la **pila de llamadas** (*stack trace*) para indicar dónde ocurrió el fallo.
+      * El mensaje `Error: Esto es una prueba del tipo never` es el mensaje que tú mismo definiste en tu función.
+
+### 🛑 ¿Por qué no se ejecuta `console.log`?
+
+Debido a que la función `error` lanza una excepción (tipo `never`), el programa **termina abruptamente**. La línea siguiente, `console.log('-------');`, **nunca llega a ejecutarse**.
+
+-----
+
+## 🧑‍💻 El Tipo `never` en TypeScript
+
+El tipo `never` es muy útil en TypeScript para:
+
+  * **Garantizar la Exhaustividad:** Asegurar que se manejan todos los casos posibles en una construcción `switch`, obligando al desarrollador a manejar un nuevo caso si se añade un nuevo valor a un *tipo de unión* (Union Type).
+  * **Documentar Funciones que Fallan:** Como en tu ejemplo, para declarar explícitamente que una función está diseñada para terminar el proceso (lanzando o saliendo).
+
+En resumen, el error que ves **confirma que tu función funciona exactamente como fue diseñada** por el tipo de retorno `never`: **detiene la ejecución del programa** lanzando un error.
+
+¿Te gustaría ver un ejemplo de cómo usar el tipo `never` para **comprobaciones de exhaustividad** en un bloque `switch` con *Union Types*?
+
+¡Claro\! Asumiendo que tienes un archivo `package.json` en tu proyecto con el atributo `"main": "index.js"`, hay **dos formas principales** de ejecutar tu archivo `index.js` además de la llamada directa `node index.js`.
+
+-----
+
+## 🚀 1. Usando el comando `npm start`
+
+La forma más estándar y recomendada para ejecutar el archivo principal de tu aplicación (definido en `"main"`) es a través del comando `npm start`.
+
+### 📝 Configuración Requerida
+
+Para que esto funcione, debes asegurarte de tener la siguiente sección en tu archivo `package.json`:
+
+```json
+{
+  "name": "mi-proyecto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js" 👈 **Esta es la clave**
+  }
+}
+```
+
+### ⌨️ Comando de Ejecución
+
+Una vez configurado, simplemente ejecutas en tu terminal:
+
+```bash
+npm start
+```
+
+  * **Ventaja:** Este es el **estándar de facto** en el ecosistema Node.js. Cualquiera que clone tu proyecto sabrá inmediatamente cómo iniciarlo.
+
+-----
+
+## 💻 2. Usando el comando `npx` (o `npm exec`)
+
+Si el archivo `index.js` fuese un *script* o una herramienta ejecutable que no necesariamente está definida en `"scripts"`, puedes usar `npx` (el ejecutor de paquetes de npm) para **ejecutar el módulo principal** de tu paquete local.
+
+### 📝 Configuración Requerida
+
+Esto funciona automáticamente si el campo `"main"` está definido y no requiere una entrada específica en `"scripts"`.
+
+```json
+{
+  "name": "mi-proyecto",
+  "version": "1.0.0",
+  "main": "index.js"
+}
+```
+
+### ⌨️ Comando de Ejecución
+
+Para ejecutar el archivo principal usando el nombre de tu paquete (asumiendo que `"name"` es `mi-proyecto`):
+
+```bash
+npx mi-proyecto
+```
+
+  * **Nota:** `npx` primero intenta encontrar el paquete con ese nombre en el contexto local y luego global, y ejecuta su archivo principal (el definido en `"main"`).
+  * **Ventaja:** Es útil cuando deseas que tu paquete se ejecute como una herramienta de línea de comandos sin tener que instalarlo globalmente.
+
+-----
+
+### Resumen de Opciones
+
+| Comando | Dónde se define | Uso Principal |
+| :--- | :--- | :--- |
+| **`npm start`** | En el *script* `"start"` | Iniciar la aplicación principal |
+| **`npx [nombre_paquete]`** | Automático (usa el campo `"name"`) | Ejecutar el módulo principal del paquete |
+
+¿Te gustaría que te muestre un ejemplo de cómo se usa el tipo **`never`** en un *Union Type* de TypeScript para garantizar la exhaustividad del código?
+
+
+CASO DE COMPILACIÓN (TRANSPILACIÓN)
+npx tsc
+
+CASO DE INTERPREACIÓN
+npx ts-node archivo.ts
