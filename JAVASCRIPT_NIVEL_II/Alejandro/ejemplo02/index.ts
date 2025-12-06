@@ -8,6 +8,7 @@ nombres.forEach((nombre)=> {
 
 let edades:number[] = [20, 17, 25, 29, 18];
 
+console.log("-------");
 console.log("EDADES:");
 for (let index = 0; index < edades.length; index++) {
   console.log(edades[index]);
@@ -16,6 +17,7 @@ for (let index = 0; index < edades.length; index++) {
 // OTRA FORMA DE DECLARAR ARREGLOS
 let precios:Array<number> = [10.5, 20.99, 5.00];
 
+console.log("-------");
 console.log("PRECIOS:");
 precios.forEach((precio)=>{
   console.log(precio);
@@ -23,8 +25,9 @@ precios.forEach((precio)=>{
 
 let esValido:Array<boolean> = [true, false, true];
 
+console.log("-------");
 console.log("VÁLIDOS:");
-precios.forEach((valido)=>{
+esValido.forEach((valido)=>{
   console.log(valido);
 })
 
@@ -32,12 +35,14 @@ precios.forEach((valido)=>{
 let usuario:[string, number];
 usuario = ['Ana Vasquez', 32];
 
+console.log("-------");
 console.log("DATOS DEL USUARIO:");
 console.log(usuario[0]);
 console.log(usuario[1]);
 
 let coordenadas:[number, number, string] = [10.50, 66.92,'Caracas'];
 
+console.log("-------");
 console.log(`COORDENADAS DE ${coordenadas[2]}:`);
 console.log(coordenadas[0]);
 console.log(coordenadas[1]);
@@ -59,6 +64,7 @@ const libro:Producto = {
   stock:true
 }
 
+console.log("-------");
 console.log("DATOS DEL PRODUCTO:");
 console.log(libro.id);
 console.log(libro.nombre);
@@ -71,6 +77,10 @@ type ID = string|number;
 let userId:ID = 'abc-123';
 let productId:ID = 456;
 
+console.log("-------");
+console.log(userId);
+console.log(productId);
+
 // ALIAS PARA OBJETOS, SIMILARES A INTERFACES
 type Punto = {
   x:number,
@@ -78,12 +88,16 @@ type Punto = {
 };
 
 const origen:Punto = {x:0, y:0};
+console.log("-------");
+console.log(origen);
 
 // UNION, INTERSECCION Y LITERALES
 type Estado = "activo"|"inactivo"|"pendiente";
 
 let estatus:Estado = "activo";
 // estatus:Estado = 'eliminado';
+console.log("-------");
+console.log(estatus);
 
 function imprimirID(id:string|number){
   if(typeof id === 'string'){
@@ -93,5 +107,50 @@ function imprimirID(id:string|number){
   }
 }
 
+console.log("-------");
 imprimirID(108);
 imprimirID("User-200");
+
+// TIPOS LITERALES
+
+let metodo:'GET' = 'GET';
+// Prueba de asignacion de valor no predefinido
+// metodo = 'POST';
+
+console.log("-------");
+console.log(metodo);
+
+// CODIGO HTTP PUEDE VALER 200, 404, 500
+type CodigoHTTP = 200|404|500;
+
+let respuesta:CodigoHTTP = 500;
+// respuesta = 201
+
+console.log("-------");
+console.log(respuesta);
+
+interface Auditable {
+  createdAt: Date;
+}
+
+type Usuario = {
+  nombre: string;
+}
+
+// UN ADMIN, DEBE POSEER PROPIEDADES DE Auditable y de Usuario
+
+type Admin = Usuario & Auditable & {rol:'Admin'};
+
+// Se crea un objeto (nuevoAdmin) del tipo admin y asiganmos valores a sus atributos
+
+const nuevoAdmin:Admin = {
+  nombre:'Jhon Doe',
+  createdAt:new Date(),
+  rol:'Admin'
+}
+
+console.log("-------");
+console.log("PRUEBA DE INTERSECCIÓN");
+console.log('NOMBRE:', nuevoAdmin.nombre);
+console.log('ROL:', nuevoAdmin.rol);
+console.log('FEC CREACION:', nuevoAdmin.createdAt);

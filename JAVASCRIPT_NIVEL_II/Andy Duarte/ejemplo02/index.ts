@@ -106,3 +106,39 @@ function imprimirID(id:string|number){
 
 imprimirID(108);
 imprimirID("user-200");
+
+//continuacion 
+let metodo: 'GET' = 'GET'; 
+// metodo = 'POST'; //  Error: asignacion de valor no predefinido
+
+/**
+ * codigohttp puede valer 200, 404 o 500
+ */
+
+type CodigoHTTP = 200 | 404 | 500; 
+
+
+let respuesta: CodigoHTTP = 404; 
+
+interface Auditable { 
+createdAt: Date; 
+} 
+type Usuario = { 
+nombre: string; 
+} 
+// Un Admin debe tener propiedades de Auditable Y de Usuario. 
+type Admin = Usuario & Auditable & { rol: "admin" };  
+const nuevoAdmin: Admin = { 
+nombre: "John Doe", 
+createdAt: new Date(), 
+rol: "admin" 
+}; 
+
+console.log("PRUEBA DE INTERSECCION");
+console.log("Nombre:",nuevoAdmin.nombre);
+console.log("Rol:",nuevoAdmin.rol);
+console.log("fecha de creacion:",nuevoAdmin.createdAt);
+
+
+
+

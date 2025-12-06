@@ -63,4 +63,16 @@ function imprimirID(id) {
 }
 imprimirID(108);
 imprimirID("user-200");
+//continuacion 
+let metodo = 'GET';
+let respuesta = 404;
+const nuevoAdmin = {
+    nombre: "John Doe",
+    createdAt: new Date(),
+    rol: "admin"
+};
+console.log("PRUEBA DE INTERSECCION");
+console.log("Nombre:", nuevoAdmin.nombre);
+console.log("Rol:", nuevoAdmin.rol);
+console.log("fecha de creacion:", nuevoAdmin.createdAt);
 //# sourceMappingURL=index.js.map

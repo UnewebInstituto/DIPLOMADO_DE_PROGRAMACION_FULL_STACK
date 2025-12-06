@@ -93,7 +93,7 @@ const origen:Punto = {x:0, y:0};
 // Unión, Intersección y Literales
 type Estado = "activo"|"inactivo"|"pendiente";
 
-let status:Estado = "activo";
+let estatus:Estado = "activo";
 // status:Estado = "eliminado";
 
 function imprimirID(id:string|number){
@@ -106,3 +106,41 @@ function imprimirID(id:string|number){
 
 imprimirID(108);
 imprimirID("user-200");
+
+//Continuación
+
+let metodo: 'GET' = 'GET';
+//prueba de asignacion de valor no predefinido
+//metodo = 'POST' 
+
+//CodigoHTTP puede valer 200, 404 o 500
+type CodigoHTTP=200|404|500;
+//Declaracion de variablr cuyo nombre es respuesta y va a ser del tipo CodigoHTTP
+
+let respuesta: CodigoHTTP=500;
+//respuesta = 201; No lo permite dado que 201 no es un valor del tipo declarado
+
+interface Auditable{
+    createdAt: Date;
+}
+
+type Usuario = {
+    nombre:string;
+}
+
+//un Admin debe poseer propiedades de Auditable y de Usuario
+
+type Admin = Usuario & Auditable &{rol:'Admin'};
+
+//Se crea un objeto del tipo Admin y asignamos valores a sus atributos
+
+const NuevoAdmin: Admin={
+    nombre:'John Doe',
+    createdAt:new Date(),
+    rol:'Admin'
+}
+
+console.log('Resultado prueba de interseccion.');
+console.log('NOMBRE:', NuevoAdmin.nombre);
+console.log('ROL:', NuevoAdmin.rol);
+console.log('FECHA CREACION:', NuevoAdmin.createdAt);
