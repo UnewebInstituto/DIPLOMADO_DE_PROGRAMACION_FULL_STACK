@@ -1,4 +1,6 @@
-console.log('Hola Mundo');
+
+// Parte 1 del Taller
+console.log("Hola Mundo...");
 
 // Declaración explicita
 let cargo:string = "Director";
@@ -13,7 +15,7 @@ piso = 11;
 let esEmpresa = true;
 esEmpresa = false;
 
-//Declaracion de la Funcion
+// Declaración de función
 function sumar(n1:number, n2:number):number{
     return (n1+n2);
 }
@@ -21,6 +23,8 @@ function sumar(n1:number, n2:number):number{
 function resultado():void{
     console.log(sumar(numero1, numero2));
 }
+
+
 let numero1:number = 2;
 let numero2:number = 5;
 
@@ -29,7 +33,6 @@ resultado();
 function mostrarDatos(nombre:string, edad:number, cargo:any):void{
     console.log('NOMBRE:'+nombre, ", EDAD:"+edad, ", CARGO:"+cargo);
 }
-mostrarDatos("ana", 60, "Auditor");
 
 function mostrarDatos1(nombre:string, edad:number, cargo:unknown):void{
     if (typeof(cargo) === 'string'){
@@ -38,51 +41,50 @@ function mostrarDatos1(nombre:string, edad:number, cargo:unknown):void{
         console.log("Error: Tipo de dato, recibido para el cargo no es válido");
     }
 }
-mostrarDatos("ANA", 60, "Auditor");
-mostrarDatos1("YOLANDA", 25, "Asistente");
+
+mostrarDatos("ANA", 60, "AUDITOR");
+mostrarDatos1("YOLANDA", 25, "ASISTENTE");
 mostrarDatos1("YOLANDA", 60, 12345);
 
-
-//parte II Taller
+// Parte 2 del Taller
 
 const curso:string = "Typescript Fundamental";
 const horas:number = 4;
 
 function bienvenida(nombre:string, tema:string):void{
-    console.log(`Hola ${nombre}, Bienvenido al curso de ${tema}`);
+    console.log(`Hola ${nombre}, bienvenido al curso de ${tema}`);
 }
+
 bienvenida("ESTUDIANTE PROACTIVO", curso);
 console.log(`Duración de hoy ${horas} horas`);
 
+// Parte 3 del Taller
 
-//PARTE III
+console.log("\n--- Ejercicio A:Any ---");
+let datosSinControl:any = 100;
 
-console.log("\n--- Ejercicio A: Any ---");
-let datosSinControl: any = 100;
-//  TypeScript lo permite, ya que 'any' desactiva la comprobación.
-// Esto FALLARÁ en tiempo de ejecución (runtime error).
-// Un número no tiene el método toUpperCase.
-try {
-const resultado = datosSinControl.toUpperCase();
-console.log("Resultado: ", resultado);
-} catch (error) {
-console.error("Error capturado en tiempo de ejecución (¡peligro!):", error);
+try{
+    const resultado = datosSinControl.toUpperCase();
+    console.log(resultado);
+}catch(error){
+    console.error("Error capturado en tiempo de ejecución (¡Peligro!):", error);
 }
+
 // Ahora se reasigna a otro tipo
 datosSinControl = "typescript";
-console.log("Valor reasignado y usado: ", datosSinControl.toUpperCase());
+console.log("Valor asignado y usado:", datosSinControl.toUpperCase());
 
-//parte IV
+// Parte 4 del Taller
 
-console.log("\n--- Ejercicio B: Unknown ---");
-let datosDesconocidos: unknown = 100;
+console.log("\n--- Ejercicio B:Unknown ---");
+//let datosDesconocidos:unknown = 100;
+let datosDesconocidos:unknown = "es un numero";
 
-if (typeof datosDesconocidos === 'string') {
-
-console.log("Es un string, OK: ", datosDesconocidos.toUpperCase());
-} else if (typeof datosDesconocidos === 'number') {
-
-console.log("Es un número, OK: ", datosDesconocidos.toFixed(2));
-} else {
-console.log("Tipo no manejado.");
+if (typeof datosDesconocidos === "string"){
+    console.log("Es un String:", datosDesconocidos.toLocaleUpperCase());
+}else if (typeof datosDesconocidos === "number"){
+    console.log("Es un número:", datosDesconocidos.toFixed(2));
+}else{
+    console.log("Tipo de dato no manejador");
 }
+
