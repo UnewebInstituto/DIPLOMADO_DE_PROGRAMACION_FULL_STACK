@@ -1,0 +1,461 @@
+Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
+Enter "help" below or click "Help" above for more information.
+class Persona:
+    nombre=''
+    apellido=''
+    sexo=''
+    peso=0
+
+    
+class Persona:
+    # Declaración de atributos de la clase
+    nombre=''
+    apellido=''
+    sexo=''
+    peso=0
+    edad=0
+    # Declaración de los métodos de la clase
+    def caminar(self):
+        return f'{self.nombre} {self.apellido} camina'
+    def comer(self):
+        return f'{self.nombre} {self.apellido} come'
+    def dormir(self):
+        return f'{self.nombre} {self.apellido} duerme'
+
+    
+# Creación de objeto a partir de la clase
+henry = Persona()
+henry.nombre = 'HENRY'
+henry.apellido = 'DUQUE'
+henry.sexo = 'M'
+henry.peso = 71
+henry.edad = 57
+henry.nombre
+'HENRY'
+henry.apellido
+'DUQUE'
+henry.edad
+57
+henry.peso
+71
+henry.sexo
+'M'
+henry.caminar()
+'HENRY DUQUE camina'
+henry.comer()
+'HENRY DUQUE come'
+henry.dormir()
+'HENRY DUQUE duerme'
+# Declaración de un método constructor para
+# la clase mascota
+class Mascota:
+    # Atributos de la clase Mascota
+    nombre = ''
+    especie = ''
+    raza = ''
+    # Métodos de la clase Mascota
+    # Definición de método constructor
+    def __init__(self,argNom,argEsp,argRaz):
+        self.nombre = argNom
+        self.especie = argEsp
+        self.raza = argRaz
+    def consultar_datos(self):
+        return f'Datos de la mascota NOMBRE:{self.nombre}, ESPECIE:{self.especie}, RAZA:{self.raza}'
+
+    
+
+fido = Mascota('FIDO','CANINO','PASTOR ALEMÁN')
+fido.consultar_datos()
+'Datos de la mascota NOMBRE:FIDO, ESPECIE:CANINO, RAZA:PASTOR ALEMÁN'
+class Trabajador:
+    # Declaración de atributos
+    # Públicos
+    nombre=''
+    cargo=''
+    # Privado
+    _sueldo=0
+    # Declaración de métodos
+    def __init__(self,argNom,argCar,argSue):
+        self.nombre = argNom
+        self.cargo = argCar
+        self._sueldo = argSue
+
+        
+ceo = Trabajador('HENRY DUQUE','DIRECTOR EJECUTIVO',1)
+ceo.
+SyntaxError: invalid syntax
+ceo.nombre
+'HENRY DUQUE'
+ceo.
+SyntaxError: invalid syntax
+ceo.cargo
+'DIRECTOR EJECUTIVO'
+class Trabajador:
+    # Declaración de atributos
+    # Públicos
+    nombre=''
+    cargo=''
+    # Privado
+    _sueldo=0
+    # Declaración de métodos
+    def __init__(self,argNom,argCar,argSue):
+        self.nombre = argNom
+        self.cargo = argCar
+        self._sueldo = argSue
+    def setNombre(self, argNom):
+        self.nombre = argNom
+    def getNombre(self):
+        return self.nombre
+    def setCargo(self, argCar):
+        self.cargo = argCar
+    def getCargo(self):
+        return self.cargo
+    def setSueldo(self, argSue):
+        self._sueldo = argSue
+    def getSueldo(self):
+        return self.sueldo
+
+    
+ceo = Trabajador('HENRY DUQUE','DIRECTOR EJECUTIVO',1)
+ceo.getSueldo()
+Traceback (most recent call last):
+  File "<pyshell#72>", line 1, in <module>
+    ceo.getSueldo()
+  File "<pyshell#70>", line 24, in getSueldo
+    return self.sueldo
+AttributeError: 'Trabajador' object has no attribute 'sueldo'. Did you mean: '_sueldo'?
+class Trabajador:
+    # Declaración de atributos
+    # Públicos
+    nombre=''
+    cargo=''
+    # Privado
+    _sueldo=0
+    # Declaración de métodos
+    def __init__(self,argNom,argCar,argSue):
+        self.nombre = argNom
+        self.cargo = argCar
+        self._sueldo = argSue
+    def setNombre(self, argNom):
+        self.nombre = argNom
+    def getNombre(self):
+        return self.nombre
+    def setCargo(self, argCar):
+        self.cargo = argCar
+    def getCargo(self):
+        return self.cargo
+    def setSueldo(self, argSue):
+        self._sueldo = argSue
+    def getSueldo(self):
+        return self._sueldo
+
+    
+ceo = Trabajador('HENRY DUQUE','DIRECTOR EJECUTIVO',1)
+ceo.getSueldo()
+1
+type(Trabajador)
+<class 'type'>
+type(ceo)
+<class '__main__.Trabajador'>
+type(Persona)
+<class 'type'>
+type(henry)
+<class '__main__.Persona'>
+type(Mascota)
+<class 'type'>
+type(fido)
+<class '__main__.Mascota'>
+class Animal:
+    #Atributos
+    grupo=''
+    #Métodos
+    def sonido(self):
+        return f'El animal emite sonido'
+
+    
+# Ejemplo de Herencia
+class Gato(Animal)
+SyntaxError: expected ':'
+class Gato(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    # Se añade métodos
+    def __init__(self, argNom):
+        nombre = argNom
+    def sonido():
+        return 'El gato {self.nombre} maulla'
+
+    
+class Gato(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    # Se añade métodos
+    def __init__(self, argNom):
+        self.nombre = argNom
+    def sonido(self):
+        return 'El gato {self.nombre} maulla'
+
+    
+class Perro(Animal):
+    # Se añaden los atribuitos nombre y destreza
+    nombre = ''
+    destreza = ''
+    # Se añade métodos
+    def __init__(self, argNom, argDes):
+        self.nombre = argNom
+        self.destreza = argDes
+    def sonido(self):
+        return 'El perro {self.nombre} ladra y {self.destreza}'
+
+    
+class Vaca(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    raza = ''
+    # Se añade métodos
+    def __init__(self, argNom, argRaz):
+        self.nombre = argNom
+        self.raza = argRaz
+    def sonido(self):
+        return 'La vaca {self.nombre} muje y es de raza {self.raza}'
+
+    
+mascota_Jesus = Gato('Garfield')
+mascota_Gabriel = Perro('You','Mordelón')
+mascota_Alejandro = Vaca('Mariposa','Holstein')
+mascota_Jesus.nombre
+'Garfield'
+mascota_Jesus.sonido()
+'El gato {self.nombre} maulla'
+class Gato(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    # Se añade métodos
+    def __init__(self, argNom):
+        nombre = argNom
+    def sonido():
+        return f'El gato {self.nombre} maulla'
+
+    
+class Gato(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    # Se añade métodos
+    def __init__(self, argNom):
+        self.nombre = argNom
+    def sonido(self):
+        return f'El gato {self.nombre} maulla'
+
+    
+class Perro(Animal):
+    # Se añaden los atribuitos nombre y destreza
+    nombre = ''
+    destreza = ''
+    # Se añade métodos
+    def __init__(self, argNom, argDes):
+        self.nombre = argNom
+        self.destreza = argDes
+    def sonido(self):
+        return f'El perro {self.nombre} ladra y {self.destreza}'
+
+    
+class Vaca(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    raza = ''
+    # Se añade métodos
+    def __init__(self, argNom, argRaz):
+        self.nombre = argNom
+        self.raza = argRaz
+    def sonido(self):
+        return f'La vaca {self.nombre} muje y es de raza {self.raza}'
+
+    
+mascota_Jesus = Gato('Garfield')
+mascota_Gabriel = Perro('You','Mordelón')
+mascota_Alejandro = Vaca('Mariposa','Holstein')
+mascota_Jesus.sonido()
+'El gato Garfield maulla'
+mascota_Gabriel.sonido()
+'El perro You ladra y Mordelón'
+mascota_Alejandro.sonido()
+'La vaca Mariposa muje y es de raza Holstein'
+class Gato(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    # Se añade métodos
+    def __init__(self, argGru, argNom):
+        self.nombre = argNom
+        self.grupo = argGru
+    def sonido():
+        return f'El gato {self.nombre} maulla'
+
+    
+class Perro(Animal):
+    # Se añaden los atribuitos nombre y destreza
+    nombre = ''
+    destreza = ''
+    # Se añade métodos
+    def __init__(self, argGru, argNom, argDes):
+        self.grupo = argGru
+        self.nombre = argNom
+        self.destreza = argDes
+    def sonido(self):
+        return f'El perro {self.nombre} pertenece a los {self.grupo} ladra y es {self.destreza}'
+
+    
+class Gato(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    # Se añade métodos
+    def __init__(self, argGru, argNom):
+        self.nombre = argNom
+        self.grupo = argGru
+    def sonido():
+        return f'El gato {self.nombre} pertence a los {self.grupo} y maulla'
+
+    
+class Vaca(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    raza = ''
+    # Se añade métodos
+    def __init__(self, argNom, argRaz):
+        self.nombre = argNom
+        self.raza = argRaz
+    def sonido(self):
+        return f'La vaca {self.nombre} pertence a los {self.grupo}, muje y es de raza {self.raza}'
+
+    
+class Vaca(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    raza = ''
+    # Se añade métodos
+    def __init__(self, argGru, argNom, argRaz):
+        self.grupo = argGru
+        self.nombre = argNom
+        self.raza = argRaz
+    def sonido(self):
+        return f'La vaca {self.nombre} pertence a los {self.grupo}, muje y es de raza {self.raza}'
+
+    
+mascota_Jesus = Gato('Carnivoro','Garfield')
+mascota_Gabriel = Perro('Carnivoro','You','Mordelón')
+mascota_Alejandro = Vaca('Hervivoro','Mariposa','Holstein')
+mascota_Jesus.sonido()
+Traceback (most recent call last):
+  File "<pyshell#144>", line 1, in <module>
+    mascota_Jesus.sonido()
+TypeError: Gato.sonido() takes 0 positional arguments but 1 was given
+class Gato(Animal):
+    # Se añade el atributo nombre
+    nombre = ''
+    # Se añade métodos
+    def __init__(self, argGru, argNom):
+        self.nombre = argNom
+        self.grupo = argGru
+    def sonido(self):
+        return f'El gato {self.nombre} pertence a los {self.grupo} y maulla'
+
+    
+mascota_Jesus = Gato('Carnivoro','Garfield')
+mascota_Jesus.sonido()
+'El gato Garfield pertence a los Carnivoro y maulla'
+mascota_Gabriel.sonido()
+'El perro You pertenece a los Carnivoro ladra y es Mordelón'
+mascota_Alejandro.sonido()
+'La vaca Mariposa pertence a los Hervivoro, muje y es de raza Holstein'
+# Uso del modificador super, para añadir parámestros al
+# constructor
+# Se define la subclase Mascota a partir de Perro
+class Mascota(Perro):
+    # Nuevo atributo
+    categoria = ''
+    # Se redefine el constructor
+    def __init__(self, argGru, argNom, argCategoria):
+        super().__init__(argGru, argNom):
+            
+SyntaxError: invalid syntax
+class Mascota(Perro):
+    # Nuevo atributo
+    categoria = ''
+    # Se redefine el constructor
+    def __init__(self, argGru, argNom, argCategoria):
+        super().__init__(argGru, argNom)
+        self.categoria = argCategoria
+    def getCategoria(self):
+        return f'El perro {self.nombre} es {self.categoria}'
+
+    
+lazarillo = Mascota('Carnivoro','Amigo','Acompañante')
+Traceback (most recent call last):
+  File "<pyshell#164>", line 1, in <module>
+    lazarillo = Mascota('Carnivoro','Amigo','Acompañante')
+  File "<pyshell#163>", line 6, in __init__
+    super().__init__(argGru, argNom)
+TypeError: Perro.__init__() missing 1 required positional argument: 'argDes'
+class Mascota(Perro):
+    # Nuevo atributo
+    categoria = ''
+    # Se redefine el constructor
+    def __init__(self, argGru, argNom, argDes, argCategoria):
+        super().__init__(argGru, argNom, argDes)
+        self.categoria = argCategoria
+    def getCategoria(self):
+        return f'El perro {self.nombre} es {self.categoria}'
+
+    
+lazarillo = Mascota('Carnivoro','Amigo','Protector','Acompañante')
+lazarillo.getCategoria()
+'El perro Amigo es Acompañante'
+guardian = Mascota('Carnivoro','Guerrero','Agil','Cuidador')
+guardian.getCategoria()
+'El perro Guerrero es Cuidador'
+# Declaración de lista
+curso = []
+class Estudiante
+SyntaxError: expected ':'
+class Estudiante:
+    # Atributos
+    nombre=''
+    curso=''
+    # Métodos
+    def __init__(self,arg_nombre,arg_curso):
+        self.nombre = arg_nombre
+        self.curso = arg_curso
+    def getNombre(self):
+        return f{self.nombre)
+    
+SyntaxError: closing parenthesis ')' does not match opening parenthesis '{'
+class Estudiante:
+    # Atributos
+    nombre=''
+    curso=''
+    # Métodos
+    def __init__(self,arg_nombre,arg_curso):
+        self.nombre = arg_nombre
+        self.curso = arg_curso
+    def getNombre(self):
+        return f'{self.nombre}'
+    def getCurso(self):
+        return f'{self.curso}'
+
+    
+curso.append(Estudiante('YOLANDA','DIPLOMADO DE MERCADEO'))
+curso.append(Estudiante('ANA','DIPLOMADO DE PROGRAMACIÓN'))
+curso.append(Estudiante('NELLY','DIPLOMADO DE COMUNITY MANAGER'))
+curso
+[<__main__.Estudiante object at 0x0000017607D37380>, <__main__.Estudiante object at 0x0000017607D23ED0>, <__main__.Estudiante object at 0x0000017607E3C050>]
+curso[0].getCurso()
+'DIPLOMADO DE MERCADEO'
+curso[0].getNombre()
+'YOLANDA'
+
+for datos in curso:
+    datos.getNombre(), datos.getCurso()
+
+    
+('YOLANDA', 'DIPLOMADO DE MERCADEO')
+('ANA', 'DIPLOMADO DE PROGRAMACIÓN')
+('NELLY', 'DIPLOMADO DE COMUNITY MANAGER')
