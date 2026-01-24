@@ -18,26 +18,27 @@ class Encuesta:
     return self.nombre
   
   def setEdad(self,argEdad):
-    self.nombre = argEdad
+    self.edad = argEdad
   def getEdad(self):
     return self.edad
   
   def setSexo(self,argSexo):
-    self.nombre = argSexo
+    self.sexo = argSexo
   def getSexo(self):
     return self.sexo
   
   def setPeso(self,argPeso):
-    self.nombre = argPeso
+    self.peso = argPeso
   def getPeso(self):
     return self.peso
   
   def setEstatura(self,argEstatura):
-    self.nombre = argEstatura
+    self.estatura = argEstatura
   def getEstatura(self):
     return self.estatura
 
 lista_datos = list()
+contador = 1
 while True:
   nombre = input('NOMBRE:')
   edad = input('EDAD:')
@@ -47,10 +48,23 @@ while True:
   lista_datos.append(Encuesta(nombre,edad,sexo,peso,estatura))
   continuar = input("Ingresar un nuevo dato(S/N):")
   if continuar.upper() == 'S':
+    contador += 1
     continue
   else:
+    totalEdad = 0
+    totalPeso = 0
+    totalEstatura = 0
     for datos in lista_datos:
-      print(datos.getNombre(), datos.getEdad())
+      print(datos.getNombre(), datos.getEdad(), datos.getSexo(), datos.getPeso(), datos.getEstatura())
+      totalEdad += int(datos.getEdad())
+      totalPeso += float(datos.getPeso())
+      totalEstatura += float(datos.getEstatura())
+    
+    totalEstatura = round(totalEstatura, 2)
+    print(f'Existen {contador} registros en la encuesta')
+    print(f'El promedio de la Edad es: {totalEdad/contador}')
+    print(f'El promedio del Peso es: {totalPeso/len(lista_datos)}')
+    print(f'El promedio de la Estatura es: {totalEstatura/contador}')
     print("Fin")
     break
 
