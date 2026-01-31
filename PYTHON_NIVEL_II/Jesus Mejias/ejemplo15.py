@@ -22,24 +22,16 @@ def ingresar():
 
 def consultar():
   print("Consultar datos en Personas")
-  buscar = input("Por favor ingrese el valor del dato a través del cuál \nquiere efectuar la consulta (cedula, \nnombres,apellidos, dirección o teléfono):")
-  termino = f"%{buscar}%"
-  sql = """SELECT * FROM personas where 
-  cedula like %s OR
-  nombres like %s OR
-  apellidos like %s OR
-  direccion like %s OR 
-  telefono like %s"""
-  dato = (termino,termino,termino,termino,termino)
+  buscar = input("Por favor ingrese el valor del dato a través del cuál \nquiere efectuar la consulta (cedula, nombres,apellidos, dirección o teléfono):")
+  sql = "SELECT * FROM personas where cedula like '%s%' OR nombres like '%s%' OR apellidos like '%s%' OR direccion like '%s%' or telefono '%s%'"
+  dato = (buscar,buscar,buscar,buscar,buscar)
   mycursor = conexion.mydb.cursor()
-  mycursor.execute(sql, dato)
+  mycursor.execute(sql)
   myresult = mycursor.fetchall()
   print("\n")
   if (len(myresult)):
     for detalle in myresult:
       print(detalle)
-      for campo in detalle:
-         print(campo)
   else:
     print("ATENCIÓN: No se encontaron valores presentes al efectuar la consulta")
   print("\n")
@@ -69,4 +61,10 @@ while True:
             break
         case _:
             print('Opción no valida')
-from tkinter import messagebox
+
+
+
+
+
+
+
