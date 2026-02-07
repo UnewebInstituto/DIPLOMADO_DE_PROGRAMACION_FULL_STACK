@@ -1,0 +1,39 @@
+-- Se modificó la tabla personas para añadir
+-- la cédula como clave única
+
+alter table personas add unique(cedula);
+
+-- Estructura de la tabla Personas;
+
+CREATE TABLE `personas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cedula` varchar(10) DEFAULT NULL,
+  `nombres` varchar(30) DEFAULT NULL,
+  `apellidos` varchar(30) DEFAULT NULL,
+  `direccion` text DEFAULT NULL,
+  `fechanac` date DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cedula` (`cedula`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+COMPILACIÓN
+
+pip install pyinstaller --force
+pyinstaller 
+--windowed --onefile tk_main.py
+
+pyinstaller 
+--windowed --onedir tk_main.py
+
+
+Ejecutar el resultado desde la carpeta /dist/archivo.exe
+
+-- Modificación a la tabla personas 
+USE bdpy2_profesor;
+
+alter table personas add column correo_electronico varchar(255);
+
+
+
+

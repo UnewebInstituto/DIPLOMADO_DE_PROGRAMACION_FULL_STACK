@@ -1,0 +1,1 @@
+"C:\xampp\mysql\bin\mysqldump" -u root -p bdpy2_alejandro > backup_bdpy2.sql

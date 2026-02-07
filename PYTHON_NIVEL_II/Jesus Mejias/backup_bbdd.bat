@@ -1,0 +1,1 @@
+"C:\xampp\mysql\bin\mysqldump" -u root -p bdpy2_profesor > backup_bdpy2_jesus.sql

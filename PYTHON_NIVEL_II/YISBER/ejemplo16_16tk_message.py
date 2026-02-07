@@ -1,0 +1,16 @@
+from tkinter import messagebox
+
+r = messagebox.showinfo('Información','Tomar en cuentas las advertencias')
+print(r)
+r = messagebox.showerror('Alerta','Se ha producido un error')
+print(r)
+r = messagebox.askquestion('Consulta','¿Está seguro?')
+print(r)
+r = messagebox.askretrycancel('Consulta','Indique su respuesta')
+print(r)
+r = messagebox.askyesno('¿Confirmar?','¿Está seguro?')
+print(r)
+r = messagebox.askyesnocancel('¿Confirmar?','Indique su respuestas')
+print(r)
+r = messagebox.showwarning('Alerta','Esto es una alerta')
+print(r)
