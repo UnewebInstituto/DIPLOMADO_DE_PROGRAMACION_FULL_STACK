@@ -1,0 +1,25 @@
+web server gateway interface
+https://es.wikipedia.org/wiki/WSGI
+
+Sitio oficial de Flask:
+https://flask.palletsprojects.com/en/stable/quickstart/
+
+Se crea la aplicación *.py 
+
+Se procede con la ejecución:
+
+Toma puerto por omisión (5000)
+flask --app hello run
+
+Ahora con un host y puerto específico
+flask --app hello run --host=0.0.0.0 --port=5001
+flask -app hello.py run --port 5001
+
+o espacios en blanco
+flask --app hello run --host 0.0.0.0 --port 5001
+flask -app hello.py run --port 5001
+
+Incluyendo la opción de debug
+
+flask --app escape run --host 0.0.0.0 --port 5001 --debug
+
