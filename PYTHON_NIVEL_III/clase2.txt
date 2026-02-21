@@ -1,0 +1,99 @@
+https://jinja.palletsprojects.com/en/stable/
+
+https://flask.palletsprojects.com/en/stable/
+
+https://getbootstrap.com/
+
+https://www.w3schools.com/bootstrap5/index.php
+https://www.w3schools.com/bootstrap5/bootstrap_navbar.php
+
+
+¡Ya veo el problema! Como experto en Flask, te confirmo que el error es conceptual: **En Jinja2, una plantilla solo puede tener una etiqueta `{% extends %}`.**
+
+Cuando pones dos seguidas en `index.html`, Jinja2 intenta cargar la primera, luego ve la segunda y se confunde (de ahí el "extended multiple times"). Además, estás intentando usar `extends` como si fuera un "include", y funcionan de forma muy distinta.
+
+Aquí tienes la solución para que tu proyecto ** ** funcione correctamente:
+
+---
+
+### La diferencia clave
+
+* **`extends` (Herencia):** Se usa una sola vez por archivo para decir "este archivo es el hijo de este otro".
+* **`include` (Inclusión):** Se usa para insertar fragmentos de código (como un encabezado o un pie) en cualquier parte.
+
+---
+
+### Cómo corregir tu código
+
+#### 1. Opción A: Usar `include` (La más rápida para tu estructura actual)
+
+Modifica tu `index.html` para que simplemente "traiga" las piezas de código:
+
+```html
+{% include 'encabezado.html' %}
+
+<h2>Bienvenido a  </h2>
+<p>Contenido de la tabla de personas...</p>
+
+{% include 'pie.html' %}
+
+```
+
+#### 2. Opción B: Herencia Real (La mejor práctica en Flask)
+
+Si quieres que tu sitio sea escalable, lo ideal es crear un archivo `base.html` que una todo, y que `index.html` solo rellene los huecos.
+
+**Paso 1: Crea/Modifica un `base.html` (o usa tu encabezado)**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    </head>
+<body>
+    <div class="container">
+        <h1>Administración de Datos personales</h1>
+        {% block contenido %}
+        {% endblock %}
+
+    </div>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>
+
+```
+
+**Paso 2: Modifica tu `index.html**`
+
+```html
+{% extends 'encabezado.html' %}
+
+{% block contenido %}
+    <h2>Lista de Personas</h2>
+    {% endblock %}
+
+```
+
+---
+
+### ¿Por qué te daba error?
+
+En tu código original:
+
+1. `{% extends 'encabezado.html' %}`: Jinja dice "Ok, soy hijo de encabezado".
+2. `{% extends 'pie.html' %}`: Jinja dice "¡Espera! Ya me dijiste que eras hijo de otro. No puedo tener dos padres".
+
+**Mi recomendación:** Usa la **Opción A** si solo quieres que funcione rápido, pero te sugiero la **Opción B** (bloques `{% block %}`) si planeas añadir más páginas a ** **, ya que te ahorrará mucho código repetido.
+
+¿Quieres que te ayude a configurar el `base.html` completo con los bloques de Jinja2?
+
+-- Se modifica la tabla personas, para añadir
+-- el campo sexo
+
+alter table personas add column sexo char(1) after apellidos;
+
+https://getbootstrap.com/docs/5.3/forms/checks-radios/#radios
+
+
+
+
