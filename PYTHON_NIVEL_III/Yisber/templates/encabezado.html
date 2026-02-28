@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personas</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 </head>
 
 <body>
     <div class="container">
-        <h1>Administrador de Datos personales</h1>
+        <h1>Administración de Datos personales</h1>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Logo</a>
@@ -22,10 +22,10 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="ingresar">Ingresar</a>
+                            <a class="nav-link" href="/ingresar">ingresar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Consultar</a>
+                            <a class="nav-link" href="/consultar">Consultar</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Actualizar</a>
@@ -34,8 +34,8 @@
                             <a class="nav-link" href="#">Eliminar</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown">Reportes</a>
+                            <a class="nav-link dropdown-toggle" href="/reporte" role="button"
+                                data-bs-toggle="dropdown">Reportes de Personas</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Reporte 1</a></li>
                                 <li><a class="dropdown-item" href="#">Reporte 2</a></li>

@@ -46,25 +46,21 @@
         </div>
         <div class="mb-3 col">
             <label for="fechanacimiento" class="form-label">Fecha de nacimiento:</label>
-            <input type="date" class="form-control" id="fechanac" placeholder="Ingrese fecha de nacimiento" name="fechanac" required>
+            <input type="date" class="form-control" id="fechanac" name="fechanac" required>
         </div>
     </div>
     <div class="row">
-          <div class="mb-3 col">
-            <label for="telefono" class="form-label">Telefono:</label>
-            <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" required>
+        <div class="mb-3 col">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" required>
         </div>
-         <div class="mb-3 col">
+        <div class="mb-3 col">
             <label for="direccion" class="form-label">Dirección:</label>
-            <textarea name="direccion" id="direccion" class="form-control" placeholder="Ingrese direccion" rows="3"required></textarea>
+            <textarea name="direccion" id="direccion" class="form-control" rows="3" placeholder="Ingrese dirección" required></textarea>
         </div>
-
-
     </div>
-
-  <button type="submit" class="btn btn-primary">GUARDAR</button>
-  
-  <button type="reset" class="btn btn-warning">LIMPIAR</button>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="reset" class="btn btn-warning">Limpiar</button>
 </form>
 
 {% include 'pie.html' %}

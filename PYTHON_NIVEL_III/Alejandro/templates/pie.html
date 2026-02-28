@@ -1,8 +1,25 @@
 {% if mensaje %}
-  <div class="alert alert-secondary mt-3" role="alert">
-    <strong>Atención:</strong>
-    {{mensaje}}
-  </div>
+  {% if mensaje[1] == 1 %}
+    <div class="alert alert-success mt-3" role="alert">
+      <strong>Atención:</strong>
+      {{mensaje[0]}}
+    </div>
+  {% elif mensaje[1] == 2 %}
+    <div class="alert alert-warning mt-3" role="alert">
+      <strong>Precaución:</strong>
+      {{mensaje[0]}}
+    </div>
+  {% elif mensaje[1] == 3 %}
+    <div class="alert alert-primary mt-3" role="alert">
+      <strong>Alerta:</strong>
+      {{mensaje[0]}}
+    </div>
+  {% elif mensaje[1] == 4 %}
+    <div class="alert alert-danger mt-3" role="alert">
+      <strong>Error:</strong>
+      {{mensaje[0]}}
+    </div>
+  {% endif %}
 {% endif %}
 
 </div>

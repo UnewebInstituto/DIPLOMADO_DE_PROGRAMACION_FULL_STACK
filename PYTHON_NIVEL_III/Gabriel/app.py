@@ -4,7 +4,8 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from markupsafe import escape
-import mysql.connector
+import mysql.connector 
+from mysql.connector import Error
 
 app = Flask(__name__)
 
@@ -40,16 +41,49 @@ def ingresar01():
             mycursor.execute(sql, valores)
             mydb.commit()
             resultado = 'Registro almacenado con éxito'
-            return render_template('ingresar.html', mensaje=resultado)
-        except error as e:
+            severidad = 1
+        except Error as e:
             if mydb.is_connected():
-                mydb.roolback()
+                mydb.rollback()
             if e.errno == 1062:
-                resultado = f"ERROR Cédula de identidad {cedula} o correo electrónico {correo_electronico}, ya se encuentran registrados"
+                resultado = f"ERROR Cédula de identidad {cedula} o correo electrónico {correo_electronico} ya se encuentra(n) registrado(s)"
+                severidad = 2
             elif e.errno == 1045:
                 resultado = f"ERROR Usuario o contraseña de Bases de Datos incorrectos"
+                severidad = 3
             else:
                 resultado = f"ERROR de Bases de Datos inesperado {e}"
+                severidad = 4
         finally:
             if mydb.is_connected():
                 mydb.close()
+        return render_template('ingresar.html', mensaje= [resultado, severidad])
+
+@app.route('/consultar')
+def consultar():
+    return render_template('consultar.html')
+
+@app.route('/consultar01', methods=['GET', 'POST'])
+def consultar01():
+    if request.method == "POST":
+        cedula = request.form['tipo'] + request.form['numero']
+        sql = "SELECT * FROM personas WHERE cedula = %s"
+        valores = (cedula,)
+        conexion()
+        mycursor = mydb.cursor()
+        try:
+            mycursor.execute(sql, valores)
+            datos = mycursor.fetchall()
+            if (len(datos) > 0):
+                resultado = f"Consulta para la cédula {cedula} efectuada con éxito."
+                severidad = 1
+            else:
+                resultado  = f"No se encontraron datos asociados al número de  cédula {cedula}."
+                severidad = 2
+        except Error as e:
+            resultado = f"ERROR de Bases de Datos inesperado {e}"
+            severidad = 4
+        finally:
+            if mydb.is_connected():
+                mydb.close()
+        return render_template('consultar02.html', mensaje={'resultado':resultado, 'severidad':severidad, 'datos':datos})

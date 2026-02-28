@@ -1,0 +1,72 @@
+{% include 'encabezado.html' %}
+    {% if mensaje['severidad'] == 1 %}
+        
+
+
+
+        <div class="row">
+            <div class="mb-3 mt-3 col">
+                <label for="cedula" class="form-label">Cédula de identidad:</label>
+                <input type="text" class="form-control" readonly value="{{mensaje['datos'][1]}}">
+            </div>
+            <div class="mb-3 mt-3 col">
+                <label for="nombres" class="form-label">Nombre(s):</label>
+                <input type="text" class="form-control" readonly value="{{mensaje['datos'][2]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label for="apellidos" class="form-label">Apellido(s):</label>
+                <input type="text" class="form-control" readonly value="{{mensaje['datos'][3]}}">
+            </div>
+            <div class="mb-3 col">
+                <label for="sexo" class="form-label">Sexo:</label>
+                {% if mensaje['datos'][4] == 'F' %}
+                    <input type="text" class="form-control" readonly value="FEMENINO">
+                {% elif mensaje['datos'][4] == 'M' %}
+                    <input type="text" class="form-control" readonly value="MASCULINO">
+                {% else %}
+                    <input type="text" class="form-control" readonly value="">
+                {% endif %}
+            </div> 
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label for="correo_electronico" class="form-label">Correo electrónico:</label>
+                {% if mensaje['datos'][8] %}
+                    <input type="text" class="form-control" readonly value="{{mensaje['datos'][8]}}">
+                {% else %}
+                    <input type="text" class="form-control" readonly value="">
+                {% endif%}
+            </div>
+            <div class="mb-3 col">
+                <label for="fechanacimiento" class="form-label">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" readonly value="{{mensaje['datos'][6]}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <input type="text" class="form-control" readonly value="{{mensaje['datos'][7]}}">
+            </div>
+            <div class="mb-3 col">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <textarea id="direccion" class="form-control" rows="3" readonly>{{mensaje['datos'][5]}}</textarea>
+            </div>
+        </div>
+        <div class="alert alert-success mt-3" role="alert">
+            <strong>Atención:</strong>
+                {{mensaje['resultado']}}
+        </div>
+    {% elif mensaje['severidad'] == 2 %}
+        <div class="alert alert-warning mt-3" role="alert">
+            <strong>Precaución:</strong>
+            {{mensaje['resultado']}}
+        </div>
+    {% else %}
+        <div class="alert alert-danger mt-3" role="alert">
+            <strong>Error:</strong>
+            {{mensaje['resultado']}}
+        </div>
+    {% endif %}
+{% include 'pie.html' %}

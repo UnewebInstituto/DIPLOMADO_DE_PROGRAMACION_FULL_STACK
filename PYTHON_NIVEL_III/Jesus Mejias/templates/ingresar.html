@@ -41,12 +41,12 @@
     </div>
     <div class="row">
         <div class="mb-3 col">
-            <label for="correoelectronico" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="correoelectronico" placeholder="Ingrese correo electrónico" name="correoelectronico" required>
+            <label for="correo_electronico" class="form-label">Correo electrónico:</label>
+            <input type="email" class="form-control" id="correo_electronico" placeholder="Ingrese correo electrónico" name="correo_electronico" required>
         </div>
         <div class="mb-3 col">
             <label for="fechanacimiento" class="form-label">Fecha de nacimiento:</label>
-            <input type="date" class="form-control" id="fechanac" placeholder="Ingrese fecha de nacimiento" name="fechanac" required>
+            <input type="date" class="form-control" id="fechanac" name="fechanac" required>
         </div>
     </div>
     <div class="row">
@@ -56,10 +56,11 @@
         </div>
         <div class="mb-3 col">
             <label for="direccion" class="form-label">Dirección:</label>
-            <textarea name="direccion" id="direccion" class="form-control" required></textarea>
+            <textarea name="direccion" id="direccion" class="form-control" rows="3" placeholder="Ingrese dirección" required></textarea>
         </div>
     </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="reset" class="btn btn-warning">Limpiar</button>
 </form>
 
 {% include 'pie.html' %}

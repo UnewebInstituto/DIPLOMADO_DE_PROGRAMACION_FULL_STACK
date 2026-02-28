@@ -1,0 +1,46 @@
+{% include 'encabezado.html' %}
+    {% if mensaje['severidad'] == 1 %}
+        <h2>Lista de Personas</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Cédula</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Teléfono</th>
+                  <th>Correo</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for detalle in mensaje['datos'] %}
+                <tr>
+                  <td>{{detalle[1]}}</td>
+                  <td>{{detalle[2]}}</td>
+                  <td>{{detalle[3]}}</td>
+                  <td>{{detalle[7]}}</td>
+                  <td>{{detalle[8]}}</td>
+                  <td><a href=""><img src="{{ url_for('static', filename='img/remove.png')}}"" alt="Borrar registro"></a></td>
+                </tr>
+                {% endfor%}
+              </tbody>
+            </table>
+        </div>
+
+        <div class="alert alert-success mt-3" role="alert">
+            <strong>Atención:</strong>
+                {{mensaje['resultado']}}
+        </div>
+    {% elif mensaje['severidad'] == 2 %}
+        <div class="alert alert-warning mt-3" role="alert">
+            <strong>Precaución:</strong>
+            {{mensaje['resultado']}}
+        </div>
+    {% else %}
+        <div class="alert alert-danger mt-3" role="alert">
+            <strong>Error:</strong>
+            {{mensaje['resultado']}}
+        </div>
+    {% endif %}
+{% include 'pie.html' %}
