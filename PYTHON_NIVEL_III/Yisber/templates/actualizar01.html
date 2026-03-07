@@ -1,0 +1,94 @@
+{% include 'encabezado.html' %}
+<h2>Actualización de registro</h2>
+{% if mensaje['severidad'] == 1 %}
+<form action="/actualizar02" method="POST">
+    <div class="row">
+        <div class="mb-3 mt-3 col">
+            <label for="cedula" class="form-label">Cédula de identidad:</label>
+            <input type="text" class="form-control" readonly value="{{mensaje['datos'][1]}}">
+        </div>
+        <div class="mb-3 mt-3 col">
+            <label for="nombres" class="form-label">Nombre(s):</label>
+            <input type="text" class="form-control" name="nombres" value="{{mensaje['datos'][2]}}" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label for="apellidos" class="form-label">Apellido(s):</label>
+            <input type="text" class="form-control" name="apellidos" value="{{mensaje['datos'][3]}}" required>
+        </div>
+        <div class="mb-3 col">
+            <label for="sexo" class="form-label">Sexo:</label>
+            {% if mensaje['datos'][4] == 'F' %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="F" id="sexo" name="sexo" checked>
+                <label class="form-check-label">
+                    Femenino
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="M" id="sexo" name="sexo">
+                <label class="form-check-label">
+                    Masculino
+                </label>
+            </div>
+            {% else %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="F" id="sexo" name="sexo">
+                <label class="form-check-label">
+                    Femenino
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="M" id="sexo" name="sexo" checked>
+                <label class="form-check-label">
+                    Masculino
+                </label>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label for="correo_electronico" class="form-label">Correo electrónico:</label>
+            {% if mensaje['datos'][8] %}
+            <input type="text" class="form-control" readonly value="{{mensaje['datos'][8]}}">
+            {% else %}
+            <input type="text" class="form-control" readonly value="">
+            {% endif%}
+        </div>
+        <div class="mb-3 col">
+            <label for="fechanacimiento" class="form-label">Fecha de nacimiento:</label>
+            <input type="date" class="form-control" name="fechanac" value="{{mensaje['datos'][6]}}" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="text" class="form-control" name="telefono" value="{{mensaje['datos'][7]}}" required>
+        </div>
+        <div class="mb-3 col">
+            <label for="direccion" class="form-label">Dirección:</label>
+            <textarea id="direccion" class="form-control" rows="3" name="direccion"
+                required>{{mensaje['datos'][5]}}</textarea>
+        </div>
+    </div>
+    <button class="btn btn-primary">Guardar cambios</button>
+    <input type="hidden" name="id" value="{{mensaje['datos'][0]}}">
+</form>
+<div class="alert alert-success mt-3" role="alert">
+    <strong>Atención:</strong>
+    {{mensaje['resultado']}}
+</div>
+{% elif mensaje['severidad'] == 2 %}
+<div class="alert alert-warning mt-3" role="alert">
+    <strong>Precaución:</strong>
+    {{mensaje['resultado']}}
+</div>
+{% else %}
+<div class="alert alert-danger mt-3" role="alert">
+    <strong>Error:</strong>
+    {{mensaje['resultado']}}
+</div>
+{% endif %}
+{% include 'pie.html' %}

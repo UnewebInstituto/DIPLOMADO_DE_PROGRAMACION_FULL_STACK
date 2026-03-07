@@ -10,21 +10,18 @@
                     <option value="E">E</option>
                 </select>
                 <span class="input-group-text">-</span>
-                <input type="text" class="form-control" id="numero" name="numero" placeholder="Ingrese número de cédula"
-                    required>
+                <input type="text" class="form-control" id="numero" name="numero" placeholder="Ingrese número de cédula" required>
             </div>
         </div>
         <div class="mb-3 mt-3 col">
             <label for="nombres" class="form-label">Nombre(s):</label>
-            <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombre(s)" name="nombres"
-                required>
+            <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombre(s)" name="nombres" required>
         </div>
     </div>
     <div class="row">
         <div class="mb-3 col">
             <label for="apellidos" class="form-label">Apellido(s):</label>
-            <input type="text" class="form-control" id="apellidos" placeholder="Ingrese apellidos(s)" name="apellidos"
-                required>
+            <input type="text" class="form-control" id="apellidos" placeholder="Ingrese apellidos(s)" name="apellidos" required>
         </div>
         <div class="mb-3 col">
             <label for="sexo" class="form-label">Sexo:</label>
@@ -40,13 +37,12 @@
                     Masculino
                 </label>
             </div>
-        </div>
+        </div> 
     </div>
     <div class="row">
         <div class="mb-3 col">
             <label for="correo_electronico" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="correo_electronico" placeholder="Ingrese correo electrónico"
-                name="correo_electronico" required>
+            <input type="email" class="form-control" id="correo_electronico" placeholder="Ingrese correo electrónico" name="correo_electronico" required>
         </div>
         <div class="mb-3 col">
             <label for="fechanacimiento" class="form-label">Fecha de nacimiento:</label>
@@ -56,17 +52,15 @@
     <div class="row">
         <div class="mb-3 col">
             <label for="telefono" class="form-label">Teléfono:</label>
-            <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono"
-                required>
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" required>
         </div>
         <div class="mb-3 col">
             <label for="direccion" class="form-label">Dirección:</label>
-            <textarea name="direccion" id="direccion" class="form-control" rows="3" placeholder="Ingrese dirección"
-                required></textarea>
+            <textarea name="direccion" id="direccion" class="form-control" rows="3" placeholder="Ingrese dirección" required></textarea>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
-    <button type="reset" class="btn btn-warning">Limpiar</button>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="reset" class="btn btn-warning">Limpiar</button>
 </form>
 
 {% include 'pie.html' %}

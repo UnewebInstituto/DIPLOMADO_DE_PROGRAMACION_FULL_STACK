@@ -1,0 +1,7 @@
+Levantar aplicación
+
+flask --app app run --port 5000 --debug
+
+flask --app app run --port 5000
+
+https://freefrontend.com/code/animated-coffee-cup-sticker-2026-02-14/

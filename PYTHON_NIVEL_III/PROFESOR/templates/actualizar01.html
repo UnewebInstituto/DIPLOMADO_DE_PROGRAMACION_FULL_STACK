@@ -1,5 +1,7 @@
 {% include 'encabezado.html' %}
+    <h2>Actualización de registro</h2>
     {% if mensaje['severidad'] == 1 %}
+    <form action="/actualizar02" method="POST">
         <div class="row">
             <div class="mb-3 mt-3 col">
                 <label for="cedula" class="form-label">Cédula de identidad:</label>
@@ -7,22 +9,42 @@
             </div>
             <div class="mb-3 mt-3 col">
                 <label for="nombres" class="form-label">Nombre(s):</label>
-                <input type="text" class="form-control" readonly value="{{mensaje['datos'][2]}}">
+                <input type="text" class="form-control" name="nombres" value="{{mensaje['datos'][2]}}" required>
             </div>
         </div>
         <div class="row">
             <div class="mb-3 col">
                 <label for="apellidos" class="form-label">Apellido(s):</label>
-                <input type="text" class="form-control" readonly value="{{mensaje['datos'][3]}}">
+                <input type="text" class="form-control" name="apellidos" value="{{mensaje['datos'][3]}}" required>
             </div>
             <div class="mb-3 col">
                 <label for="sexo" class="form-label">Sexo:</label>
                 {% if mensaje['datos'][4] == 'F' %}
-                    <input type="text" class="form-control" readonly value="FEMENINO">
-                {% elif mensaje['datos'][4] == 'M' %}
-                    <input type="text" class="form-control" readonly value="MASCULINO">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="F" id="sexo" name="sexo" checked>
+                        <label class="form-check-label">
+                            Femenino
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="M" id="sexo" name="sexo">
+                        <label class="form-check-label">
+                            Masculino
+                        </label>
+                    </div>
                 {% else %}
-                    <input type="text" class="form-control" readonly value="">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="F" id="sexo" name="sexo">
+                        <label class="form-check-label">
+                            Femenino
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="M" id="sexo" name="sexo" checked>
+                        <label class="form-check-label">
+                            Masculino
+                        </label>
+                    </div>
                 {% endif %}
             </div> 
         </div>
@@ -37,19 +59,22 @@
             </div>
             <div class="mb-3 col">
                 <label for="fechanacimiento" class="form-label">Fecha de nacimiento:</label>
-                <input type="date" class="form-control" readonly value="{{mensaje['datos'][6]}}">
+                <input type="date" class="form-control" name="fechanac" value="{{mensaje['datos'][6]}}" required>
             </div>
         </div>
         <div class="row">
             <div class="mb-3 col">
                 <label for="telefono" class="form-label">Teléfono:</label>
-                <input type="text" class="form-control" readonly value="{{mensaje['datos'][7]}}">
+                <input type="text" class="form-control" name="telefono" value="{{mensaje['datos'][7]}}" required>
             </div>
             <div class="mb-3 col">
                 <label for="direccion" class="form-label">Dirección:</label>
-                <textarea id="direccion" class="form-control" rows="3" readonly>{{mensaje['datos'][5]}}</textarea>
+                <textarea id="direccion" class="form-control" rows="3" name="direccion" required>{{mensaje['datos'][5]}}</textarea>
             </div>
         </div>
+        <button class="btn btn-primary">Guardar cambios</button>
+        <input type="hidden" name="id" value="{{mensaje['datos'][0]}}">
+        </form>
         <div class="alert alert-success mt-3" role="alert">
             <strong>Atención:</strong>
                 {{mensaje['resultado']}}

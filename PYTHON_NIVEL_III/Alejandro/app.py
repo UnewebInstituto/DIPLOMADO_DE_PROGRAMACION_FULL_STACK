@@ -110,7 +110,7 @@ def reporte():
             mydb.close()
     return render_template('reporte.html', mensaje={'resultado':resultado, 'severidad':severidad, 'datos':datos})
   
-@app.route('/Eliminar')
+@app.route('/Eliminar', methods=['GET','POST'])
 def eliminar():
     sql = "SELECT * FROM personas"
     conexion()
@@ -131,3 +131,120 @@ def eliminar():
         if mydb.is_connected():
             mydb.close()
     return render_template('eliminar.html', mensaje={'resultado':resultado, 'severidad':severidad, 'datos':datos})
+
+@app.route('/Eliminar01/<id_registro>')
+def eliminar01(id_registro):
+  # print(f"Usted seleccionó el registro:{id_registro}")
+
+  if request.method == 'GET':
+    # id_registro = request.form['id']
+    sql = 'DELETE FROM personas WHERE id = %s'
+    valores = (id_registro,)
+    conexion()
+    mycursor = mydb.cursor()
+    # print(f"\nCommando a ejecutar {sql} con el valor {valores}\n")
+  
+    try:
+      mycursor.execute(sql, valores)
+      mydb.commit()
+      sql1 = "SELECT * FROM personas"
+      mycursor.execute(sql1)
+      datos = mycursor.fetchall()
+      if len(datos) > 0:
+        resultado = "Registro borrado con exito"
+        severidad = 1
+      else:
+        resultado  = f"No se encontraron datos de personas."
+        severidad = 2
+    except Error as e:
+        resultado = f"Error de base de datos inesperado: {e}"
+        severidad = 4 
+    finally:
+      if mydb.is_connected():
+        mydb.close()
+    return render_template('eliminar.html', mensaje = {'resultado':resultado, 'severidad':severidad,'datos':datos})
+  #return f"Usted seleciono el registro {id_registro}"
+  # return f"Commando a ejecutar {sql} con el valor {valores}"
+  
+@app.route('/Actualizar', methods=['GET','POST'])
+def actualizar():
+    sql = "SELECT * FROM personas"
+    conexion()
+    mycursor = mydb.cursor()
+    try:
+        mycursor.execute(sql)
+        datos = mycursor.fetchall()
+        if len(datos) > 0:
+            resultado = f"Reporte generado con éxito."
+            severidad = 1
+        else:
+            resultado  = f"No se encontraron datos de personas."
+            severidad = 2
+    except Error as e:
+        resultado = f"ERROR de Bases de Datos inesperado {e}"
+        severidad = 4
+    finally:
+        if mydb.is_connected():
+            mydb.close()
+    return render_template('actualizar.html', mensaje={'resultado':resultado, 'severidad':severidad, 'datos':datos})
+
+@app.route('/Actualizar01/<id_registro>')
+def actualizar01(id_registro):
+  if request.method == "GET":
+    sql = "SELECT * FROM personas WHERE id = %s"
+    valores = (id_registro,)
+    conexion()
+    mycursor = mydb.cursor()
+    try:
+      mycursor.execute(sql, valores)
+      datos = mycursor.fetchone()
+      if datos:
+        resultado = f"Consulta efectuada con éxito."
+        severidad = 1
+      else:
+        resultado  = f"No se encontraron datos asociados al registro."
+        severidad = 2
+    except Error as e:
+        resultado = f"ERROR de Bases de Datos inesperado {e}"
+        severidad = 4
+    finally:
+        if mydb.is_connected():
+            mydb.close()
+    return render_template('actualizar01.html', mensaje={'resultado':resultado, 'severidad':severidad, 'datos':datos})
+  
+@app.route('/actualizar02', methods=['GET','POST'])
+def actualizar02():
+  if request.method == 'POST':
+    id_registro = request.form['id']
+    nombres = request.form['nombres']
+    apellidos = request.form['apellidos']
+    sexo = request.form['sexo']
+    fechanac = request.form['fechanac']
+    telefono = request.form['telefono']
+    direccion = request.form['direccion']
+
+    sql = "UPDATE personas SET nombres = %s, apellidos = %s, sexo = %s, direccion = %s, fechanac = %s, telefono = %s WHERE id = %s"
+    valores = (nombres, apellidos, sexo, direccion, fechanac, telefono, id_registro)
+    conexion()
+    mycursor = mydb.cursor()
+    try:
+      mycursor.execute(sql, valores)
+      mydb.commit()
+      sql1 = "SELECT * FROM personas"
+      mycursor.execute(sql1)
+      datos = mycursor.fetchall()
+      resultado = "Registro actualizado con exito"
+      severidad = 1
+    except Error as e:
+      if mydb.is_connected():
+        mydb.rollback()
+      elif e.errno == 1045:
+        resultado = "Error de acceso: Usuario o contraseña de base de datos incorrectos"
+        severidad = 3
+      else:
+        resultado = f"Error de base de datos inesperado: {e}"
+        severidad = 4 
+    finally:
+      if mydb.is_connected():
+        mydb.close()
+    return render_template('actualizar.html', mensaje={'resultado':resultado, 'severidad':severidad, 'datos':datos})

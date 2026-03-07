@@ -1,0 +1,36 @@
+:root {
+  font-size: 13px;
+  font-family: monospace;
+  --fg-color: #323230;
+  --bg-color: #FDFDF2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--fg-color);
+  background-color: var(--bg-color);
+}
+
+svg {
+  display: block;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.credits {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+}

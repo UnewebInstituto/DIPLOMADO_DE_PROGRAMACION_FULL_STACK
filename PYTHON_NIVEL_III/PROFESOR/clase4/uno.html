@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Animación de Taza - Interaxia Style</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="100%" height="100%" viewBox="0 0 800 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <clipPath id="clipPathCupTop">
+      <path d="M7.02184767,92 L7,92 L7,0 L129,0 L129,92 L128.978152,92 C128.992687,92.1661301 129,92.332806 129,92.5 C129,102.717268 101.68937,111 68,111 C34.3106303,111 7,102.717268 7,92.5 C7,92.332806 7.00731313,92.1661301 7.02184767,92 Z"></path>
+    </clipPath>
+
+    <path id="cupBodyShape" d="M312,190 L446,164 C455.679978,208.942066 460.800657,255.464673 463,303 C470.179673,326.771115 327.481478,334.20088 327,305 C322.662603,253.027247 317.662603,214.693913 312,190 Z"></path>
+    <path id="cupBodyShape10" d="M342,176 L477,198 C472.318151,226.923654 468.318151,266.923654 465,318 C462,342 325,335 328,306 C330.871259,262.691021 334.501621,219.371745 342,176 Z"></path>
+    <path id="drop" fill="#8FCFFE" d="M6.5,18 C9,18 13,15.9705627 13,11 C13,6.02943725 8,0 6.5,0 C5,2.5434972e-16 0,6.02943725 0,11 C0,15.9705627 4,18 6.5,18 Z"></path>
+    <polyline id="wave" stroke="#D6D6BE" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
+  </defs>
+
+  <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+    <g id="vaporWrapper" transform="translate(365, 85)">
+      <use xlink:href="#wave"></use>
+      <use xlink:href="#wave" transform="translate(28, 0)"></use>
+      <use xlink:href="#wave" transform="translate(56, 0)"></use>
+    </g>
+
+    <path id="shadow" d="M364,346 L443,346" stroke="#C6C39A" stroke-linecap="round" stroke-width="8"></path>
+
+    <use id="cupHandleShape" xlink:href="#cupHandleShape" fill="#D6D6BE"></use>
+    <use xlink:href="#cupBodyShape" fill="#EAE6D8"></use>
+    
+    <g id="face" transform="translate(360, 265)">
+        </g>
+  </g>
+</svg>
+
+<div class="credits">
+    <span>Original by Jonas Mosesson</span>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

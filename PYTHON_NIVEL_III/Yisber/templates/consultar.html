@@ -1,48 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% include 'encabezado.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personas</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-</head>
-
-<body>
-    <div class="container">
-        <h1>Administración de Datos personales</h1>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Logo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ingresar">Ingresar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/consultar">Consultar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Actualizar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/eliminar">Eliminar</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown">Reportes</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/reporte">Reporte de Personas</a></li>
-                                <li><a class="dropdown-item" href="#">Reporte 2</a></li>
-                                <li><a class="dropdown-item" href="#">Reporte 3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+<form action="/consultar01" method="POST">
+    <div class="row">
+        <div class="mb-3 mt-3 col-6">
+            <label for="cedula" class="form-label">Cédula de identidad:</label>
+            <div class="input-group">
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="V">V</option>
+                    <option value="E">E</option>
+                </select>
+                <span class="input-group-text">-</span>
+                <input type="text" class="form-control" id="numero" name="numero" placeholder="Ingrese número de cédula" required>
             </div>
-        </nav>
+        </div>
+    </div>
+  <button type="submit" class="btn btn-primary">Buscar</button>
+  <button type="reset" class="btn btn-warning">Limpiar</button>
+</form>
+
+{% include 'pie.html' %}
