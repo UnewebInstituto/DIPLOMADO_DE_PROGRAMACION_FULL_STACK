@@ -1,0 +1,4 @@
+python manage.py
+ createsuperuser 
+ --username=gabriel
+ --email=gabocespsa@gmail.com 

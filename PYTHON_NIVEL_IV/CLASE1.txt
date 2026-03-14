@@ -1,0 +1,218 @@
+https://www.djangoproject.com/
+
+PROCESO DE INSTALACIÓN:
+
+PASO 1: 
+Instalar el interprete de Python o verificar su presencia.
+
+python -V 
+>python -V
+Python 3.13.9
+
+PASO 2:
+INSTALACIÓN DE DJANGO Y BBDD MYSQL
+https://docs.djangoproject.com/en/6.0/topics/install/#installing-official-release
+
+pip install django
+
+pip install mysql.conector-python
+
+Verificación de la instalación de Django
+
+Consultar desde Python la versión instalada:
+
+import django
+django.VERSION
+(6, 0, 3, 'final', 0)
+django.get_version()
+'6.0.3'
+print(django.get_version())
+6.0.3
+
+
+PASO 3:
+CREACIÓN DE PROYECTO
+
+django-admin startproject proyecto
+
+
+py m
+anage.py help
+
+Type 'manage.py help <subcommand>' for help on a specific subcommand.
+
+Available subcommands:
+
+[auth]
+    changepassword
+    createsuperuser
+
+[contenttypes]
+    remove_stale_contenttypes
+
+[django]
+    check
+    compilemessages
+    createcachetable
+    dbshell
+    diffsettings
+    dumpdata
+    flush
+    inspectdb
+    loaddata
+    makemessages
+    makemigrations
+    migrate
+    optimizemigration
+    sendtestemail
+    shell
+    showmigrations
+    sqlflush
+    sqlmigrate
+    sqlsequencereset
+    squashmigrations
+    startapp
+    startproject
+    test
+    testserver
+
+[sessions]
+    clearsessions
+
+[staticfiles]
+    collectstatic
+    findstatic
+    runserver
+
+CONFIGURACIÓN DE LA BBDD A UTILIZAR.
+
+https://docs.djangoproject.com/en/6.0/topics/install/#database-installation
+
+
+
+MIGRACIÓN DE BBDD DE LAS APLICACIONES QUE TRAE POR 
+OMISIÓN
+
+Se requiere de la instalación de:
+pip install mysqlclient
+
+python manage.py migrate
+
+COMANDO PARA BAJAR LA VERSIÓN DE DJANGO
+
+pip install "django<5.0"
+
+PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>py                      
+Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+Ctrl click to launch VS Code Native REPL
+>>> import django
+>>> django.VERSION
+(4, 2, 29, 'final', 0)
+>>> 
+
+ACTIVACIÓN DEL SERVIDOR LIGERO
+
+CORRE POR OMISIÓN EN EL PUERTO 8000
+python manage.py runserver
+
+CORRE EN UN PUERTO ESPECÍFICO
+python manage.py runserver 8001
+
+8001 PROFESOR
+8002 GABRIEL
+8003 ALEJANDRO
+8004 JESÚS
+8005 YISBER
+
+
+CREACIÓN DE SUPER USUARIO PARA LA 
+APLICACIÓN AUTH (AUTORIZADOR)
+
+python manage.py
+ createsuperuser 
+ --username=profesor 
+ --email=henry@uneweb.edu.ve
+
+
+python manage.py createsuperuser --username=profesor --email=henry@uneweb.edu.ve
+Password: 
+Password (again): 
+The password is too similar to the username.
+Bypass password validation and create user anyway? [y/N]: n
+Password: 
+Password (again): 
+Superuser created successfully.
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>
+
+
+from __future__ import print_function
+import sys
+print(sys.path)
+['', 'C:\\.PROFESORES\\HENRY_DUQUE\\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\\PYTHON_NIVEL_IV\\PROFESOR\\proyecto', 'C:\\Program Files\\Python313\\python313.zip', 'C:\\Program Files\\Python313\\DLLs', 'C:\\Program Files\\Python313\\Lib', 'C:\\Program Files\\Python313', 'C:\\.PROFESORES\\HENRY_DUQUE\\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\\PYTHON_NIVEL_IV\\PROFESOR\\.venv', 'C:\\.PROFESORES\\HENRY_DUQUE\\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\\PYTHON_NIVEL_IV\\PROFESOR\\.venv\\Lib\\site-packages']
+for directorios_entorno in sys.path:
+    directorios_entorno
+
+    
+''
+'C:\\.PROFESORES\\HENRY_DUQUE\\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\\PYTHON_NIVEL_IV\\PROFESOR\\proyecto'
+'C:\\Program Files\\Python313\\python313.zip'
+'C:\\Program Files\\Python313\\DLLs'
+'C:\\Program Files\\Python313\\Lib'
+'C:\\Program Files\\Python313'
+'C:\\.PROFESORES\\HENRY_DUQUE\\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\\PYTHON_NIVEL_IV\\PROFESOR\\.venv'
+'C:\\.PROFESORES\\HENRY_DUQUE\\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\\PYTHON_NIVEL_IV\\PROFESOR\\.venv\\Lib\\site-packages'
+
+El error en tu proyecto **Interaxia** se debe a un pequeño pero crítico error de sintaxis en tu expresión regular (`re_path`).
+
+### El Problema
+
+En la línea:
+`re_path(r'^fecha/mas/(\{1,2})/$', funcion_horas_adelante)`
+
+Estás usando una **barra invertida** (`\`) antes de la llave. En las expresiones regulares, la barra invertida sirve para "escapar" caracteres. Al poner `\{`, le estás diciendo a Django que busque literalmente el símbolo de una llave en la URL, en lugar de usar las llaves para indicar una cantidad de dígitos. Por eso, la URL `fecha/mas/24` no coincide.
+
+---
+
+### La Corrección
+
+Tienes dos formas de solucionar esto. Te recomiendo la primera por ser más moderna y legible:
+
+#### Opción A: Usar `path` (Recomendado en Django moderno)
+
+Desde Django 2.0+, ya no necesitas expresiones regulares complejas para capturar números. Puedes usar "conversores de rutas":
+
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('hola/', funcion_hola),
+    path('raiz/', funcion_raiz),
+    path('fecha/', funcion_fecha_actual),
+    # 'int' captura números y los pasa como enteros a la vista
+    path('fecha/mas/<int:horas>/', funcion_horas_adelante), 
+]
+
+```
+
+#### Opción B: Corregir el `re_path`
+
+Si prefieres (o necesitas) seguir usando expresiones regulares, debes indicar qué tipo de caracteres quieres capturar (por ejemplo, dígitos `\d`) y quitar el escape de la llave:
+
+```python
+# El \d indica que buscas dígitos (0-9)
+# {1,2} indica que esperas entre 1 y 2 dígitos
+re_path(r'^fecha/mas/(\d{1,2})/$', funcion_horas_adelante),
+
+```
+
+---
+
+### Resumen de cambios
+
+1. **Quita el `\**` delante de la llave `{`.
+2. **Agrega `\d**` antes de las llaves para que Django sepa que debe buscar números.
+3. **Asegúrate** de que tu función `funcion_horas_adelante` en `views.py` reciba el argumento (ej. `def funcion_horas_adelante(request, horas):`).
+
+¿Quieres que revisemos también cómo recibir ese parámetro en la vista para que no te dé un error de argumentos?
+
