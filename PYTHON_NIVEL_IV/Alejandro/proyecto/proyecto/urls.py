@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from proyecto.views import func_hola, func_raiz, func_fecha_actual, func_horas_adelante
+from proyecto.views import func_hola, func_raiz, func_fecha_actual, func_horas_adelante, func_fecha_actual_nueva, func_fecha_actual_nueva_include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hola/', func_hola),
     path('raiz/', func_raiz),
     path('fecha/', func_fecha_actual),
-    path('fecha/mas/<int:horas>/',func_horas_adelante)
+    path('fecha/mas/<int:horas>/',func_horas_adelante),
+    path('fecha_actual_template/', func_fecha_actual_nueva),
+    path('fecha_actual_include/', func_fecha_actual_nueva_include),
 ]

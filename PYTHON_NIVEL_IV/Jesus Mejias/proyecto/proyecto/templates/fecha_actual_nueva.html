@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/fecha_actual_nueva.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fecha actual</h1>
+    <h3 onmouseenter="mensaje()">Hoy es {{fecha_actual_tmp}}</h3>
+    <script src="{% static 'js/fecha_actual_nueva.js'%}"></script>
+</body>
+</html>

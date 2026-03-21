@@ -1,0 +1,61 @@
+python manage.py runserver 8000
+
+GENERACIÓN DE PLANTILLAS:
+python manage.py shell
+
+from django import template
+t = template.Template('Mi nombre es:{{nombre}}')
+c = template.Context({'nombre':'Henry Duque'})
+print(t.render(c))
+Mi nombre es:Henry Duque
+
+NOTA:
+* La carpeta static/ se debe colocar al mismo nivel
+de la carpeta template/
+* Si la carpeta static/, contiene sub carpetas, se 
+referencia a ellas a través del nombre del archivo,
+por ejemplo caso css
+<link rel="stylesheet" href="{% static 'css/fecha_actual_nueva.css' %}">
+
+ACCEDIENDO A LA BBDD DESDE EL shell 
+DE DJANGO
+
+python manage.py shell
+
+>>> from django.db import connection
+>>> cursor = connection.cursor()
+>>> cursor.execute('show databases')
+22
+>>> resultado = cursor.fetchall()
+>>> for db in resultado: 
+...     print(resultado)
+
+
+CREACIÓN DE UNA NUEVA APLICACIÓN
+
+python manage.py startapp personas
+
+python manage.py check agenda
+
+python manage.py makemigrations
+
+FORZAR MIGRACIÓN
+python manage.py makemigrations agenda
+
+GENERAR EL MODELO SQL
+python manage.py sqlmigrate agenda 0001
+
+CONVERTIR LA DEFINICIÓN EN UNA TABLA FÍSICA
+python manage.py migrate 
+
+ORM
+****
+python manage.py shell
+Ctrl click to launch VS Code Native REPL
+Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from agenda.models import Contacto
+>>> contacto1 = Contacto(nombre='ANA',apellido='VASQUEZ',email='av@gmail.com',telefono='+58 212 1234567',direccion='SANTA FE')
+>>> contacto1.save()
+>>> 

@@ -14,16 +14,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from __future__ import print_function
 from django.contrib import admin
 from django.urls import path
+from django.urls import re_path
 from proyecto.views import funcion_hola
 from proyecto.views import funcion_raiz
-from views import funcion_fecha_actual
-
+from proyecto.views import funcion_fecha_actual
+from proyecto.views import funcion_horas_adelante
+from proyecto.views import funcion_fecha_actual_nueva
+from proyecto.views import funcion_fecha_actual_nueva_include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hola/', funcion_hola),
     path('raiz/', funcion_raiz),
-    path('fecha/',funcion_fecha_actual)
+    path('fecha/', funcion_fecha_actual),
+    path('fecha/mas/<int:horas>/',funcion_horas_adelante),
+    # Otra forma
+    #re_path(r'^fecha/mas/(\d{1,2})/$', funcion_horas_adelante),
+    path('fecha_actual_template/',funcion_fecha_actual_nueva),
+    path('fecha_actual_include/',funcion_fecha_actual_nueva_include)
 ]

@@ -1,5 +1,6 @@
 from django.http import HttpResponse, Http404
 import datetime
+from django.shortcuts import render 
 
 def func_hola(request):
   return HttpResponse("<div style='background-color:blue;color:yellow;text-align:center;padding:20px;font-size:24px'>Hola estimados alumnos de Uneweb</div>")
@@ -20,3 +21,11 @@ def func_horas_adelante(request, horas):
   dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
   respuesta = f"<div style='background-color:orange;color:black;text-align:center;padding:20px;font-size:24px'>En {offset} hora (s) será {dt}</div>"
   return HttpResponse(respuesta)
+
+def func_fecha_actual_nueva(request):
+  ahora = datetime.datetime.now()
+  return render(request, 'fecha_actual_nueva.html', {'fecha_actual_temp':ahora})
+
+def func_fecha_actual_nueva_include(request):
+    ahora = datetime.datetime.now()
+    return render(request, 'fecha_actual_nueva_include.html',{'fecha_actual_temp':ahora, 'seccion_actual':'INCLUIR'})
