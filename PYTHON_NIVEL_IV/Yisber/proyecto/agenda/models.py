@@ -7,8 +7,8 @@ class Contacto(models.Model):
     # EmailField valida el formato y unique=True evita duplicados
     email = models.EmailField(max_length=120, unique=True)
     telefono = models.CharField(max_length=80)
-
+    # TextField se traduce automáticamente a un textarea en formularios
     direccion = models.TextField()
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+        return f"{self.nombre} {self.apellido} {self.email} {self.telefono} {self.direccion}"

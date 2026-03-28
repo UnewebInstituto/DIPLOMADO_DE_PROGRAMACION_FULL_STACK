@@ -1,0 +1,480 @@
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR>cd proyecto
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>pip list
+Package               Version
+--------------------- -------
+asgiref               3.11.1
+Django                4.2.29
+mysql-conector-python 0.1.8
+mysqlclient           2.2.8
+pip                   25.2
+sqlparse              0.5.5
+tzdata                2025.3       
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>dir 
+ El volumen de la unidad C no tiene etiqueta.
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda
+14/03/2026  13:49              .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda
+ .
+ .
+ .
+ .
+ .
+21/03/2026  14:33    <DIR>          ..
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda            
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda      
+14/03/2026  13:49               686 manage.p .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda                 1 archivos            686 byt
+14/03/2026  13:49               686 manage.py              4 dirs  560,354,758,656 bytes
+ .
+21/03/2026  14:33    <DIR>          ..                 1 archivos            686
+21/03/2026  15:55    <DIR>          agen .
+21/03/2026  14:33    <DIR>          ..      ylibres
+ .
+21/03/2026  14:33    <DIR>          ..   .
+ .
+21/03/2026  14:33    <DIR>          ..  
+21/03/2026  15:55    <DIR>          agendda
+da
+14/03/2026  13:49             da
+14/03/2026  13:49             da
+14/03/2026  13:49             da
+da
+da
+da
+da
+14/03/2026  13:49         da
+14/03/2026  13:49               686 manage.py
+21/03/2026  14:33    <DIR>          proyecto
+               1 archivos            686da
+14/03/2026  13:49               686 manage.py
+21/03/2026  14:33    <DIR>          proyecto
+da
+14/03/2026  13:49               686 manage.py          4 dir
+21/03/2026  14:33    <DIR>          proyecto        
+               1 archivos         y
+21/03/2026  14:33    <DIR>          proyecto354,758
+\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py startapp foro
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py check foro
+Traceback (most recent call last):
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\apps\registry.py", line 158, in get_app_config
+    return self.app_configs[app_label]
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'foro'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto\manage.py", line 22, in <module>
+    main()
+    ~~~~^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto\manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\__init__.py", line 436, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)     
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^     
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\base.py", line 412, in run_from_argv
+    self.execute(*args, **cmd_options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+L_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\commands\check.py", line 56, in handle
+    app_configs = [apps.get_app_config(app_label) for app_label in aL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\commands\check.py", line 56, in handle
+    app_configs = [apps.get_app_config(app_label) for app_label in app_labels]
+L_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\commands\check.py", line 56, in handle
+    app_configs = [apps.get_app_config(app_label) for app_label in aL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\commands\check.py", line 56, in handle        ssage)
+    app_configs = [apps.get_app_coL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\commands\che_IV\PROFESOR\.venv\Lib\site-packages\django\apps\registry.py", line 165, in get_app_config
+    raise LookupError(message)
+LookupError: No installed app with label 'foro'.
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py check foro
+Traceback (most recent call last):
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto\manage.py", line 22, in <module>
+    main()
+    ~~~~^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto\manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^   
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\core\management\__init__.py", line 416, in execute
+    django.setup()
+    ~~~~~~~~~~~~^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\apps\registry.py", line 116, in populate
+    app_config.import_models()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\apps\config.py", line 269, in import_models
+    self.models_module = import_module(models_module_name)
+                         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked       
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto\foro\models.py", line 19
+    return f"{self.id} {self.titulo} {self.usuario_id}
+           ^
+SyntaxError: unterminated f-string literal (detected at line 19)
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py check foro
+ACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py makemigrations
+Migrations for 'foro':                           
+  foro\migrations\0001_initial.py
+    - Create model Comentario
+    - Create model Tema
+    - Create model Usuario
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py sqlmigrate foro 0001
+--
+-- Create model Comentario
+--
+CREATE TABLE `foro_comentario` (`id` bigint AUTO_INCREMENT NOT NULL PRIMARY KEY, `texto` longtext NOT NULL, `tema_id` integer NOT NULL, `usuario_id` integer NOT NULL);
+--
+-- Create model Tema
+--
+CREATE TABLE `foro_tema` (`id` bigint AUTO_INCREMENT NOT NULL PRIMARY KEY, `titulo` longtext NOT NULL, `usuario_id` integer NOT NULL);
+--
+-- Create model Usuario
+--
+CREATE TABLE `foro_usuario` (`id` bigint AUTO_INCREMENT NOT NULL PRIMARY KEY, `nombre` varchar(80) NOT NULL, `apellido` varchar(80) NOT NULL, `correo_electronico` varchar(250) NOT NULL UNIQUE, `clave` varchar(250) NOT NULL);
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py migrate
+System check identified some issues:
+
+WARNINGS:
+?: (mysql.W002) MariaDB Strict Mode is not set for database connection 'default'
+        HINT: MariaDB's Strict Mode fixes many data integrity problems in MariaDB, such as data truncation upon insertion, by escalating warnings into errors. It is strongly recommended you activate it. See: https://docs.djangoproject.com/en/4.2/ref/databases/#mysql-sql-mode
+Operations to perform:
+  Apply all migrations: admin, agenda, auth, contenttypes, foro, sessions
+Running migrations:
+  Applying foro.0001_initial... OK
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>
+
+'foro':                           
+  foro\migrations\0001_initial.py
+    - Create model Comentario
+    - Create model Tema
+    - Create model Usuario
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py sqlmigrate foro 0001
+--
+-- Create model Comentario
+--
+CREATE TABLE `foro_comentario` (`id` bigint AUTO_INCREMENT NOT NULL PRIMARY KEY, `texto` longtext NOT NULL, `tema_id` integer NOT NULL, `usuario_id` integer NOT NULL);
+--
+-- Create model Tema
+--
+CREATE TABLE `foro_tema` (`id` bigint AUTO_INCREMENT NOT NULL PRIMARY KEY, `titulo` longtext NOT NULL, `usuario_id` integer NOT NULL);
+--
+-- Create model Usuario
+--
+CREATE TABLE `foro_usuario` (`id` bigint AUTO_INCREMENT NOT NULL PRIMARY KEY, `nombre` varchar(80) NOT NULL, `apellido` varchar(80) NOT NULL, `correo_electronico` varchar(250) NOT NULL UNIQUE, `clave` varchar(250) NOT NULL);
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py migrate
+System check identified some issues:
+
+WARNINGS:
+?: (mysql.W002) MariaDB Strict Mode is not set for database connection 'defaulrict Mode fixes many data integrity problems in MariaDB, such as data truncation upon insertion, by escalating warnings ininto errors. It is strongly recommended you activate it. See: https://docs.djangoproject.com/en/4.2/ref/databases/#mysql-sql-mode
+ migrations: admin, agenda, auth, contenttypes, foro, sessions    
+foro.0001_initial... OK
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>  
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PRprograma o archivo por lotes ejecutable.
+programa o archivo por lotes ejecutable.
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py shell
+Ctrl click to launch VS Code Native REPL
+tive REPL
+Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, email="yt@gmail.com", telefono="4141236677", direccion="CATIA LA MAR")
+>>> contacto1.save()
+>>> contacto2 = Contacto.objell="nc@gmail.com", telefono="212 4434980", direccion="CARICUAO")
+>>> contacto2.save()
+>>> lista_contactos = Contacto.objects.all()
+>>> lista_contactos
+<QuerySet [<Contacto: ANA VASQUEZ>, <Contacto: YOLANDA TORTOZA>, <Contacto: NELLY CONTRERAS>]>
+>>> from foro.models import Foro
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ImportError: cannot import name 'Foro' from 'foro.models' (C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto\foro\models.py)        
+>>> from foro.models import Usuario
+>>> usuario1 = Usuario(nombre="YOLANDA", apellido="TORTOZA", correo_electronico="yt@gmail.com", clave="1234")
+>>> usuario1.save()
+>>> tema1 = Tema(titulo="VENEZUELA POLITICA Y PETROLEO", usuario_id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in
+ <module>
+NameError: name 'Tema' is not defined
+>>> from foro.models import Tema
+>>> tema1 = Tema(titulo="VENEZUELA POLITICA Y PETROLEO", usuario_id=1)
+>>> tema1.save()
+>>> tema2 = Tema(titulo="ESTUDIO DE NOVELA: 4 CRIMENES 4 PODERES", usuario_id=1)
+>>> tema1.save()
+>>> tema2.save()
+>>> from foro.models import Comentario
+>>> comentario1 = Tema(titulo="Excelente obra de Rómulo Betancourt", usuario_id=1)        
+>>> comentario1.save()
+>>> comentario2 = Tema(titulo="Obra publicada en Amazon", usuario_id=1)
+>>> comentario2.save()
+>>> comentario3 = Tema(titulo="Texto de interés para comprender el escenario politico y energetico de Venezula", usuario_id=1)
+>>> comentario3.save()
+>>> comentario1 = Comentario(titulo="Excelente obra de Rómulo Betancourt", usuario_id=1)  
+Traceback (most recent call last):
+  File "<console>", line 1, in
+ <module>
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Comentario() got unexpected keyword arguments: 'titulo'
+>>> from foro.models import Comentario
+>>> comentario1 = Comentario(titulo="Excelente obra de Rómulo Betancourt", usuario_id=1)  
+Traceback (most recent call last):
+  File "<console>", line 1, in
+ <module>
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: Comentario() got unexpected keyword arguments: 'titulo'
+>>> from foro.models import Comentario
+>>> comentario1 = Comentario(texto="Excelente obra de Rómulo Betancourt", usuario_id=1)   
+>>> comentario1.save()
+Traceback (most recent call last):
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute     
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\MySQLdb\connections.py", line
+ 286, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.IntegrityError: (1048, "Column 'tema_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in
+ <module>
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,        
+    )
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table       
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert        
+    return manager._insert(   
+           ~~~~~~~~~~~~~~~^   
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method   
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\query.py", line 1810, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute     
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     
+    )
+    ^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\backends\mysql\base.py", line 75, in execute     
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\MySQLdb\connections.py", line
+ 286, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.IntegrityError: (1048, "Column 'tema_id' cannot be null")
+>>> from foro.models import Comentario
+>>> comentario1 = Comentario(texto="Excelente obra de Rómulo Betancourt", tema_id=1,usuario_id=1)
+>>> comentario1.save()
+>>> comentario2 = Comentario(texto="Obra publicada en Amazon", tema_id=1, usuario_id=1)   
+>>> comentario2.save()
+>>> comentario3 = Comentario(texto="Texto de interés para comprender el escenario politico y energetico de Venezula",  tema_id=1,usuario_id=1)        
+>>> comentario3.save()
+>>> from agenda.models import Contacto
+>>> lista_contactos = Contacto.objects.all()()
+Traceback (most recent call last):
+  File "<console>", line 1, in
+ <module>
+TypeError: 'QuerySet' object is not callable
+>>> lista_contactos = Contacto.objects.all()  
+>>> lista_contactos
+<QuerySet [<Contacto: ANA VASQUEZ>, <Contacto: YOLANDA TORTOZA>, <Contacto: NELLY CONTRERAS>]>
+>>> lista_contactos.filter(nombre='YOLANDA')
+<QuerySet [<Contacto: YOLANDA TORTOZA>]>
+>>> Contacto.objects.get(nombre='NELLY')
+'str'
+'str'
+>>> Contacto.objects.order_by('-apellido')
+'str'
+>>> Contacto.objects.order_by('-apellido')
+<QuerySet [<Contacto: ANA VASQUEZ>, <Contacto: YOLA'str'
+>>> Contacto.objects.order_by('-apellido')
+<QuerySet [<Contacto: ANA VASQUEZ>, <Contacto: YOLANDA TORTOZA>, <Contacto: NELLY CONTRERAS>]>        
+>>> Contacto.objects.all()[0]
+<Contacto: ANA VASQUEZ>
+>>> Contacto.objects.all()[1]
+<Contacto: YOLANDA TORTOZA>
+>>> Contacto.objects.all()[2]
+<Contacto: NELLY CONTRERAS>
+>>> Contacto.objects.order_by('apellido')[0]       
+<Contacto: NELLY CONTRERAS>
+>>> Contacto.objects.order_by('apellido')[0:1]     
+<QuerySet [<Contacto: NELLY CONTRERAS>]>
+>>> Contacto.objects.order_by('apellido')[0:2]     
+<QuerySet [<Contacto: NELLY CONTRERAS>, <Contacto: YOLANDA TORTOZA>]>
+>>> Contacto.objects.order_by('apellido')     
+<QuerySet [<Contacto: NELLY CONTRERAS>, <Contacto: YOLANDA TORTOZA>, <Contacto: ANA VASQUEZ>]>
+>>> Contacto.objects.order_by('apellido')[0:3]
+<QuerySet [<Contacto: NELLY CONTRERAS>, <Contacto: YOLANDA TORTOZA>, <Contacto: ANA VASQUEZ>]>
+>>> Contacto.objects.order_by('apellido')[0:2]
+<QuerySet [<Contacto: NELLY CONTRERAS>, <Contacto: YOLANDA TORTOZA>]>
+>>> Contacto.objects.order_by('apellido')[0:|]
+  File "<console>", line 1
+    Contacto.objects.order_by('apellido')[0:|]
+                                            ^
+SyntaxError: invalid syntax
+>>> Contacto.objects.order_by('apellido')[0:1]
+<QuerySet [<Contacto: NELLY CONTRERAS>]>  
+>>> Contacto.objects.order_by('-apell<<QuerySet [<Contacto: ANA VASQUEZ>, <Contacto: YOLANDA TORTOZA>, <Contacto: NELLY CONTRERAS>]>
+>>> contacto = Contacto.objects.get(nombre='YOLANDA')
+>>> contacto
+<Contacto: YOLANDA TORTOZA>
+>>> contacto.nombre = 'YOLANDA ESTEFANIA'
+>>> contacto.apellido = 'TORTOZA SUAREZ'
+>>> contacto.save()
+>>> contacto                          
+<Contacto: YOLANDA ESTEFANIA TORTOZA SUAREZ>
+>>> from agenda.models import Contacto               
+>>> contacto = Contacto.objects.get(nombre='ANA')
+>>> contacto
+<Contacto: ANA VASQUEZ>
+>>> python manage.py check agenda
+  File "<console>", line 1
+    python manage.py check agenda     
+           ^^^^^^
+SyntaxError: invalid syntax
+>>> quit()
+now exiting InteractiveConsole...
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py shell
+Ctrl click to launch VS Code Native REPL
+Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.      
+(InteractiveConsole)
+>>> quit()
+now exiting InteractiveConsole...
+anage.py makemigrations
+anage.py makemigrations
+No changes detected
+
+anage.py makemigrations
+No changes detected
+OGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>python manage.py shell  
+Ctrl click to launch VS Code Native REPL
+Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from agenda.models import Contacto  
+>>> contacto = Contacto.objects.get(nombre='ANA')
+>>> contacto
+<Contacto: ANA VASQUEZ av@gmail.com +58 212 1234567 SANTA FE>
+>>> Contacto.objects.all().update(direccion='CHACAITO')
+3
+>>> Contacto.objects.all()              
+<QuerySet [<Contacto: ANA VASQUEZ av@gmail.com +58 212 1234567 CHACAITO>, <Contacto: YOLANDA ESTEFANIA TORTOZA SUAREZ yt@gmail.com 4141236677 CHACAITO>, <Contacto: NELLY CONTRERAS nc@gmail.com 212 4434980 CHACAITO>]>
+>>> contacto = Contacto.objects.get(nombre='ANA')
+>>> contacto.delete()
+(1, {'agenda.Contacto': 1})
+>>> contacto.objects.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module> 
+  File "C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\.venv\Lib\site-packages\django\db\models\manager.py", line 186, in __get__
+    raise AttributeError(
+        "Manager isn't accessible via %s instances" % cls.__name__
+    )
+AttributeError: Manager isn't accessible via Contacto instances
+>>> Contacto.objects.all()
+<QuerySet [<Contacto: YOLANDA ESTEFANIA TORTOZA SUAREZ yt@gmail.com 4141236677 CHACAITO>, <Contacto: NELLY CONTRERAS nc@gmail.com 212 4434980 CHACAITO>]>       
+>>> Contacto.objects.filter(direccion='CHACAITO').delete()
+(2, {'agenda.Contacto': 2})
+>>>

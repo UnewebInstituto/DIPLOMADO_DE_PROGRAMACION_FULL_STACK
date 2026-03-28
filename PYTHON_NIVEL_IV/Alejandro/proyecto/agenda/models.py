@@ -11,4 +11,4 @@ class Contacto(models.Model):
     direccion = models.TextField()
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido}"
+        return f"{self.nombre} {self.apellido} {self.email} {self.telefono} {self.direccion}"

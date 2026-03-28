@@ -33,7 +33,7 @@ python manage.py shell
 
 CREACIÓN DE UNA NUEVA APLICACIÓN
 
-python manage.py startapp personas
+python manage.py startapp agenda
 
 python manage.py check agenda
 
@@ -59,3 +59,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> contacto1 = Contacto(nombre='ANA',apellido='VASQUEZ',email='av@gmail.com',telefono='+58 212 1234567',direccion='SANTA FE')
 >>> contacto1.save()
 >>> 
+

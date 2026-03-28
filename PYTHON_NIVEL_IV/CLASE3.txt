@@ -1,0 +1,297 @@
+REPASO DEL PROCESO DE MIGRACIÓN:
+
+1-) CREACIÓN DE LA APLICACIÓN QUE TENDRÁ A BBDDD Y DECLARAR EN EL ARCHIVO settings.py
+python manage.py startapp agenda
+
+2-) Creación del modelo de entidades de datos. Definir como clases las tablas, por ejemplo (ARCHIVO models.py):
+
+Ejemplo del contenido del archivo: 
+./PROFESOR/PROYECTO/AGENDA/models.py
+#---------------------------------------------------------
+from django.db import models
+
+# Create your models here.
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=80)
+    apellido = models.CharField(max_length=80)
+    # EmailField valida el formato y unique=True evita duplicados
+    email = models.EmailField(max_length=120, unique=True)
+    telefono = models.CharField(max_length=80)
+    # TextField se traduce automáticamente a un textarea en formularios
+    direccion = models.TextField()
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
+
+#---------------------------------------------------------
+
+3-) VERIFICACIÓN DE LA SINTÁXIS DECLARADA EN EL MODELO.
+
+python manage.py check agenda
+
+4-) CREAR ARCHIVOS DE MIGRACIÓN.
+python manage.py makemigrations
+
+Es donde se construyen los archivos con las secuencias enumeradas.
+
+0001_initial.py
+0002_....
+
+5-) EJECUTAR EL ARCHIVO SE SECUENCIA ENUMERADA PARA 
+PRODUCDIR EL COMANDO SQL.
+
+python manage.py sqlmigrate agenda 0001
+
+6-) CONVERTIR LA DEFINCIÓN EN TABLA FÍSICA:
+python manage.py migrate
+
+*************************************
+PRACTICA DE CREACIÓN DE ENTIDADES DE MIGRACIÓN
+
+1) Activar entorno virtual.
+>.venv\acripts\activate
+
+2) Acceder al directorio del proyecto
+>cd proyecto 
+>dir
+
+(.venv) C:\.PROFESORES\HENRY_DUQUE\DIPLOMADO_DE_PROGRAMACION_FULL_STACK\PYTHON_NIVEL_IV\PROFESOR\proyecto>dir 
+ El volumen de la unidad C no tiene etiqueta.
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda
+14/03/2026  13:49              .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda
+14/03/2026  13:49               686 manage.py
+ .
+21/03/2026  14:33    <DIR>          ..
+21/03/2026  15:55    <DIR>          agenda      
+14/03/2026  13:49               686 manage.py   
+21/03/2026  14:33    <DIR>          proyecto    
+               1 archivos            686 bytes  
+               4 dirs  560,354,758,656 bytes libres
+
+3) Crear una nueva aplicación (APP)
+python manage.py startapp foro 
+
+4) Definición de las entidades, que corresponden al modelo.
+
+tabla: usuario
+    id integer primary_key, <-- implicito
+    nombre varchar(80),
+    apellido varchar(80),
+    correo_electronico varchar(250) unique,
+    clave varchar(250)
+
+tabla: tema
+    id integer primary_key, <-- implicito
+    titulo text unique
+    usuario_id integer
+
+tabla: comentario 
+    id integer primary_key, <-- implicito
+    texto text,
+    tema_id integer,
+    usuario_id integer
+
+ACCESO A LA CONSOLA INTERACTIVA
+
+>python manage.py shell
+
+MODELO SOBRE EL CUAL SE VA A TRABAJAR
+>>>from agenda.models import Contacto
+
+>>> contacto1 = Contacto(nombre="YOLANDA", apellido="TORTOZA", email="yt@gmail.com", telefono="4141236677", direccion="CATIA LA MAR")
+
+>>> contacto1.save()
+
+OTRA FORMA
+>>> contacto2 = Contacto.objects.create(nombre="NELLY",apellido="CONTRERAS",email="nc@gmail.com", telefono="212 4434980", direccion="CARICUAO")
+
+>>> contacto2.save()
+
+CONSULTA DEL CONTENIDO DE UNA ENTIDAD
+
+>>> lista_contactos = Contacto.objects.all()
+
+MODELO SOBRE EL CUAL SE VA A TRABAJAR
+>>>from agenda.models import Contacto
+
+>>> contacto1 = Contacto(nombre="YOLANDA", apellido="TORTOZA", email="yt@gmail.com", telefono="4141236677", direccion="CATIA LA MAR")
+
+>>> contacto1.save()
+
+OTRA FORMA
+>>> contacto2 = Contacto.objects.create(nombre="NELLY",apellido="CONTRERAS",email="nc@gmail.com", telefono="212 4434980", direccion="CARICUAO")
+
+>>> contacto2.save()
+
+CONSULTA DEL CONTENIDO DE UNA ENTIDAD
+
+>>> lista_contactos = Contacto.objects.all()
+
+/////////////////////
+
+ACCESO A LA CONSOLA INTERACTIVA caso foro
+
+>python manage.py shell
+
+MODELO SOBRE EL CUAL SE VA A TRABAJAR
+# USUARIO
+>>>from foro.models import Usuario
+
+>>> usuario1 = Usuario(nombre="YOLANDA", apellido="TORTOZA", correo_electronico="yt@gmail.com", clave="1234")
+
+>>> usuario1.save()
+
+#tema
+>>>from foro.models import Tema
+
+>>> tema1 = Tema(titulo="VENEZUELA POLITICA Y PETROLEO", usuario_id=1)
+
+>>> tema1.save()
+
+tema2 = Tema(titulo="ESTUDIO DE NOVELA: 4 CRIMENES 4 PODERES", usuario_id=1)
+
+>>> tema1.save()
+
+#comentario
+>>>from foro.models import Comentario
+
+>>> comentario1 = Comentario(texto="Excelente obra de Rómulo Betancourt", tema_id=1,usuario_id=1)
+
+>>> comentario1.save()
+
+>>> comentario2 = Comentario(texto="Obra publicada en Amazon", tema_id=1, usuario_id=1)
+
+>>> comentario2.save()
+
+>>> comentario3 = Comentario(texto="Texto de interés para comprender el escenario politico y energetico de Venezula",  tema_id=1,usuario_id=1)
+
+>>> comentario3.save()
+
+
+OTRA FORMA
+>>> contacto2 = Contacto.objects.create(nombre="NELLY",apellido="CONTRERAS",email="nc@gmail.com", telefono="212 4434980", direccion="CARICUAO")
+
+>>> contacto2.save()
+
+CONSULTA DEL CONTENIDO DE UNA ENTIDAD
+
+>>> lista_contactos = Contacto.objects.all()
+
+MODELO SOBRE EL CUAL SE VA A TRABAJAR
+>>>from agenda.models import Contacto
+
+>>> contacto1 = Contacto(nombre="YOLANDA", apellido="TORTOZA", email="yt@gmail.com", telefono="4141236677", direccion="CATIA LA MAR")
+
+>>> contacto1.save()
+
+OTRA FORMA
+>>> contacto2 = Contacto.objects.create(nombre="NELLY",apellido="CONTRERAS",email="nc@gmail.com", telefono="212 4434980", direccion="CARICUAO")
+
+>>> contacto2.save()
+
+CONSULTA DEL CONTENIDO DE UNA ENTIDAD
+
+>>> lista_contactos = Contacto.objects.all()
+
+USO DE QUERYSET
+***************
+CONSULTAS
+*********
+# Importando la Clase del Modelo
+>>>from agenda.models import Contacto
+
+# Se genera una colección de objetos
+# contenidos en el modelo
+>>> lista_contactos = Contacto.objects.all()
+
+# Aplicar filtro a la colección de objetos
+>>> lista_contactos.filter(nombre='YOLANDA')
+
+# Acceder directamente a traves del objetos
+>>> Contacto.objects.get(nombre='NELLY')
+
+# Ordenamiento Ascendente o Descendente
+# Caso Ascendente 
+>>> Contacto.objects.order_by('apellido')
+
+# Caso Descendente
+# Signo negativo por delante del nombre
+# del campo entre comillas
+>>> Contacto.objects.order_by('-apellido')
+
+# Acceso a un registro específico
+>>> Contacto.objects.all()[0]
+>>> Contacto.objects.all()[1]
+>>> Contacto.objects.all()[2]
+
+# Acceso a un registro específico, según
+# un orden y número determinado 
+# de registros.
+# Ascendente
+>>> Contacto.objects.order_by('apellido')[0:1]
+>>> Contacto.objects.order_by('apellido')[0:2]
+>>> Contacto.objects.order_by('apellido')[0:3]
+
+# Descendente
+>>> Contacto.objects.order_by('-apellido')[0:1]
+>>> Contacto.objects.order_by('-apellido')[0:2]
+>>> Contacto.objects.order_by('-apellido')[0:3]
+
+# ACTUALIZACIÓN
+# Consulta el registro
+>>> contacto = Contacto.objects.get(nombre='YOLANDA')
+# Mostrar información
+>>> contacto
+# ACTUALIZACIÓN
+>>> contacto.nombre = 'YOLANDA ESTEFANIA'
+>>> contacto.apellido = 'TORTOZA SUAREZ'
+>>> contacto.save()
+
+# Actualización del valor de un campo 
+# en multiples registros
+
+Contacto.objects.all().update(direccion='CHACAITO')
+
+# BORRAR registros
+# Se crea el objeto del registro 
+# que será borrado 
+contacto = Contacto.objects.get(nombre='ANA')
+contacto.delete()
+
+# Revisar los registros que hayan quedado
+Contacto.objects.all()
+
+# BORRAR registros de forma masiva
+Contacto.objects.filter(direccion='CHACAITO').delete()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
