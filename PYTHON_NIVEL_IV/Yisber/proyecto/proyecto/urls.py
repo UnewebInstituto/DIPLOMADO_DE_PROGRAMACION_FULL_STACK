@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import re_path
+
+from django.urls import include
+
 from proyecto.views import funcion_hola
 from proyecto.views import funcion_raiz
 from proyecto.views import funcion_fecha_actual
@@ -25,6 +28,7 @@ from proyecto.views import funcion_fecha_actual_nueva
 from proyecto.views import funcion_fecha_actual_nueva_include
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('agenda/', include('agenda.urls')),
     path('hola/', funcion_hola),
     path('raiz/', funcion_raiz),
     path('fecha/', funcion_fecha_actual),

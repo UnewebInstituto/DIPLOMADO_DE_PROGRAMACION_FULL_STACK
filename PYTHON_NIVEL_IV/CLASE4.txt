@@ -1,0 +1,222 @@
+https://getbootstrap.com/docs/5.3/components/navbar/?#nav
+
+¡Hola! Entiendo perfectamente el error. El problema ocurre porque el comando `runserver` de Django espera como argumento opcional una dirección IP o un puerto (por ejemplo, `8080`), y al pasarle la palabra `agenda`, el sistema intenta interpretarla como un número de puerto, lo cual falla.
+
+En Django, no necesitas especificar el nombre de la app para iniciar el servidor de desarrollo. Una vez que las aplicaciones están registradas en el archivo `settings.py`, el comando `manage.py` se encarga de levantar todo el proyecto integralmente.
+
+### El Comando Correcto
+
+Para activar el servidor desde la ubicación donde te encuentras, simplemente ejecuta:
+
+```bash
+python manage.py runserver
+```
+
+Si necesitas que el servidor corra en un puerto específico (por si el 8000 está ocupado), el formato sería:
+
+```bash
+python manage.py runserver 8080
+```
+
+---
+
+### Pasos de Verificación Críticos
+
+Para que la aplicación `agenda` funcione correctamente dentro de tu estructura `./proyecto/agenda`, asegúrate de haber completado estos dos pasos:
+
+1.  **Registro en Settings:** En `proyecto/settings.py`, verifica que `agenda` esté en la lista de aplicaciones instaladas:
+    ```python
+    INSTALLED_APPS = [
+        ...
+        'agenda',
+    ]
+    ```
+
+2.  **Rutas (URLs):** Asegúrate de que las URLs de tu aplicación estén vinculadas en el archivo `proyecto/urls.py`:
+    ```python
+    from django.urls import path, include
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('agenda/', include('agenda.urls')), # Si tienes un urls.py dentro de agenda
+    ]
+    ```
+
+### Estructura de Ejecución
+
+
+Al estar posicionado en `...\proyecto>`, el archivo `manage.py` tiene visibilidad de todo el entorno, por lo que al ejecutar `runserver` sin argumentos adicionales, Django cargará automáticamente la configuración y todas las apps que hayas declarado.
+
+
+El error que estás experimentando es un **`ImportError`**. Django te está indicando que dentro de tu archivo `agenda/urls.py` estás intentando importar algo que no existe (o no se encuentra) en la ubicación especificada.
+
+Específicamente, el problema está aquí:
+> `ImportError: cannot import name 'principal' from 'proyecto.views'`
+
+Esto significa que en la línea 20 de `agenda/urls.py`, tienes una instrucción:
+`from proyecto.views import principal`
+
+Pero Django no encuentra la función o clase llamada `principal` dentro del archivo `proyecto/views.py`.
+
+---
+
+### Cómo solucionarlo
+
+Revisa los siguientes puntos en orden:
+
+#### 1. Verifica el archivo `proyecto/views.py`
+Abre el archivo ubicado en `./proyecto/proyecto/views.py` y asegúrate de que la función `principal` esté definida y el nombre esté escrito exactamente igual (Python distingue entre mayúsculas y minúsculas). Debería verse algo así:
+
+```python
+# proyecto/views.py
+from django.shortcuts import render
+
+def principal(request):  # <--- Asegúrate de que este nombre coincida
+    return render(request, 'tu_plantilla.html')
+```
+
+#### 2. Revisa la ruta de importación
+Si la función `principal` está en realidad dentro de la aplicación **agenda** y no en la carpeta raíz del proyecto, debes cambiar el import en `agenda/urls.py`:
+
+* **Si está en la misma app:** `from . import views` y luego usa `views.principal`.
+* **Si está en la carpeta del proyecto:** Asegúrate de que la estructura sea:
+    ```text
+    proyecto/
+    ├── manage.py
+    ├── proyecto/
+    │   ├── __init__.py
+    │   ├── views.py  <-- ¿Está aquí la función?
+    │   └── urls.py
+    └── agenda/
+        └── urls.py   <-- Aquí es donde falla el import
+    ```
+
+#### 3. Error de Circularidad (Posible)
+A veces, si `proyecto/urls.py` importa a `agenda/urls.py`, y `agenda/urls.py` intenta importar algo de `proyecto`, se crea un círculo que confunde a Python. 
+
+**Recomendación técnica:**
+Lo ideal es que las vistas de la agenda estén en `agenda/views.py`. Si `principal` es la página de inicio general, intenta importarla de forma absoluta o moverla a una aplicación dedicada a "core" o "base" para evitar conflictos de nombres con la carpeta de configuración del proyecto.
+
+---
+
+### Prueba esto rápidamente:
+En `agenda/urls.py`, comenta la línea 20 y la ruta que usa `principal`. Si el servidor levanta con `python manage.py runserver 8001`, confirmarás que ese import es el único culpable.
+
+El error 404 que estás viendo es muy común y se debe a un pequeño detalle en cómo Django concatena las rutas cuando usas `include()`.
+
+### El problema: El "Slash" (`/`) duplicado o innecesario
+
+En la imagen que enviaste, tienes configurado:
+`path('/', principal),`
+
+Cuando Django procesa las URLs, funciona como un sistema de piezas que se arman:
+1.  En tu archivo **principal** (`proyecto/urls.py`), seguramente tienes: `path('agenda/', include('agenda.urls'))`.
+2.  En tu archivo de **app** (`agenda/urls.py`), tienes: `path('/', principal)`.
+
+**Resultado final:** Django está buscando la dirección `http://127.0.0.1:8001/agenda//` (con doble barra al final). Como tú escribes en el navegador `/agenda` (sin la segunda barra), no coincide.
+
+---
+
+### La Solución Correcta
+
+Para que la vista `principal` cargue justo cuando entras a `/agenda`, debes dejar el string de la ruta **vacío** en el archivo de la aplicación.
+
+Modifica tu archivo `agenda/urls.py` de la siguiente manera:
+
+```python
+# agenda/urls.py
+from django.urls import path
+from agenda.views import principal
+
+urlpatterns = [
+    # Quita la barra '/' y deja comillas vacías ''
+    path('', principal, name='principal'), 
+]
+```
+
+---
+
+### ¿Por qué esto soluciona el error?
+
+* **Ruta principal (`proyecto/urls.py`):** Ya contiene `'agenda/'`. Django "consume" esa parte de la URL.
+* **Ruta de la app (`agenda/urls.py`):** Si pones `''`, le dices a Django: "Si ya entraste a agenda, no pidas nada más para ejecutar esta vista".
+* **Si pones `'/'`:** Le estás diciendo a Django: "Después de agenda, debe venir otra barra obligatoriamente".
+
+**Resumen de coincidencia:**
+* Con `path('', ...)` -> Coincide con `agenda/` ✅
+* Con `path('/', ...)` -> Coincide con `agenda//` ❌
+
+Haz ese cambio, guarda el archivo y el servidor se reiniciará automáticamente. Ahora al entrar a `http://127.0.0.1:8001/agenda/` debería funcionar perfectamente.
+
+Este error es un clásico en Django y tiene una solución muy sencilla. El mensaje `Invalid block tag: 'static'` significa que estás intentando usar la etiqueta `{% static %}` en tu plantilla, pero no le has dicho a Django que cargue las herramientas necesarias para manejar archivos estáticos en ese archivo específico.
+
+### La Solución
+
+Debes agregar la línea `{% load static %}` al **puro principio** de tu archivo de plantilla. 
+
+En tu caso, el error ocurre en `encabezado.html`. Modifícalo para que se vea así:
+
+```html
+{% load static %}  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Administración de contactos</title>
+</head>
+...
+```
+
+---
+
+### ¿Por qué sucede esto?
+
+1.  **Ámbito de las etiquetas:** En Django, las librerías de etiquetas de plantilla (como `static`) no son globales. Deben cargarse de forma explícita en **cada archivo** `.html` donde se utilicen.
+2.  **Herencia de plantillas:** Si usas `{% include 'encabezado.html' %}`, el archivo incluido necesita su propio `{% load static %}`, incluso si el archivo que lo incluye ya lo tiene. 
+
+### Recomendación Adicional
+
+Ya que estás trabajando con archivos estáticos, asegúrate de que en tu archivo `proyecto/settings.py` tengas configurado el directorio donde Django debe buscar estos archivos:
+
+```python
+# proyecto/settings.py
+
+STATIC_URL = 'static/'
+
+# Esto es necesario si tus archivos CSS están en una carpeta 'static' en la raíz del proyecto
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+```
+
+Una vez que agregues `{% load static %}` al inicio de `encabezado.html`, refresca el navegador y el error debería desaparecer, cargando correctamente tu archivo de Bootstrap.
+
+¡Exacto! Es el mismo principio que con el archivo anterior. Como te comentaba, las librerías de etiquetas en Django **no se heredan** entre archivos incluidos; cada archivo `.html` es un compartimento estanco para el motor de plantillas.
+
+### La Solución para `pie.html`
+
+Debes agregar la misma línea al principio de tu archivo `C:\...\proyecto\agenda\templates\pie.html`:
+
+```html
+{% load static %}  </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
+```
+
+### ¿Por qué te pasó de nuevo?
+Cuando usas `{% include 'encabezado.html' %}` e `{% include 'pie.html' %}` dentro de un `index.html`, Django procesa cada uno de esos archivos por separado. 
+
+* Si `encabezado.html` usa `{% static %}`, necesita su propio `{% load static %}`.
+* Si `pie.html` usa `{% static %}`, también lo necesita.
+* Incluso si tu `index.html` tuviera la línea al principio, los archivos incluidos **no la verían**.
+
+### Un consejo para el futuro: La Herencia Real (`extends`)
+Si en lugar de usar muchos `include`, utilizas un archivo **base.html** y herencia con `{% extends "base.html" %}`, podrías centralizar mucho mejor estos cargadores. Sin embargo, para la estructura que tienes armada ahora, la solución es simplemente poner el `load` en cada archivo que use archivos estáticos.
+
+Una vez que guardes el cambio en `pie.html`, refresca la página en `http://127.0.0.1:8001/agenda/` y ya deberías ver tu aplicación funcionando con todo el estilo de Bootstrap cargado.
+
+https://getbootstrap.com/docs/5.3/forms/overview/
+
+https://getbootstrap.com/docs/5.3/content/tables/#overview

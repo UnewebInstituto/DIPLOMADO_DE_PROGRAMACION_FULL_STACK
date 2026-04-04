@@ -1,0 +1,33 @@
+{% include 'encabezado.html' %}
+    <h3>Borrar contacto</h3>
+    {% if datos %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dato in datos %}
+                <tr>
+                    <td>{{dato.id}}</td>
+                    <td>{{dato.nombre}}</td>
+                    <td>{{dato.apellido}}</td>
+                    <td>{{dato.telefono}}</td>
+                    <td>{{dato.email}}</td>
+                    <td><a href="/agenda/contactos_borrar01/?id={{dato.id}}" class="btn btn-warning">Borrar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning">
+            <strong>Atención: </strong>No se tienen contactos almacenados
+        </div>
+    {% endif %}
+{% include 'pie.html' %}

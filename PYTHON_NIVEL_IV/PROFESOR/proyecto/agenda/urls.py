@@ -15,17 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
-from django.urls import include
-from proyecto.views import func_hola, func_raiz, func_fecha_actual, func_horas_adelante, func_fecha_actual_nueva, func_fecha_actual_nueva_include
-
+from django.urls import path
+from django.urls import re_path
+from agenda.views import principal
+from agenda.views import ingresar
+from agenda.views import ingresar01
+from agenda.views import consultar
+from agenda.views import consultar01
+from agenda.views import borrar
+from agenda.views import borrar01
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('agenda/', include('agenda.urls')),
-    path('hola/', func_hola),
-    path('raiz/', func_raiz),
-    path('fecha/', func_fecha_actual),
-    path('fecha/mas/<int:horas>/',func_horas_adelante),
-    path('fecha_actual_template/', func_fecha_actual_nueva),
-    path('fecha_actual_include/', func_fecha_actual_nueva_include),
+    path('', principal),
+    path('contactos_ingresar/', ingresar),
+    path('contactos_ingresar01/', ingresar01),
+    path('contactos_consultar/', consultar),
+    path('contactos_consultar01/', consultar01),
+    path('contactos_borrar/', borrar),
+    path('contactos_borrar01/', borrar01),
 ]

@@ -1,0 +1,13 @@
+{% include 'encabezado.html' %}
+<h3>Consultar contactos</h3>
+<form action="/agenda/contactos_consultar01/" method="POST">
+  {% csrf_token %}
+  <div class="row">
+      <div class="mb-3 col">
+        <label for="correo_electronico" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% include 'pie.html' %}
